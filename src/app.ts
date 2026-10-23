@@ -14,6 +14,8 @@ type GalleryRoute = Extract<Route, { page: 'overview' | 'list' }>;
 type Position = { y: number; slug?: string };
 const isGallery = (route: Route): route is GalleryRoute => route.page === 'overview' || route.page === 'list';
 const pad = (value: number) => String(value).padStart(2, '0');
+/** Page transitions play this much faster than their authored durations (the intro keeps its own pace). */
+const speed = 1.3;
 
 export class App {
   private route = parseRoute(location.hash);
@@ -205,12 +207,8 @@ export class App {
     const tile = this.opening && this.scene.tiles.find(item => item.key === this.opening && item.shown);
     this.opening = undefined;
     this.openedKey = undefined;
-    if (from.page === 'project' && isGallery(to)) {
-      // Close: the series' cover returns from where its first frame was (or the centre) to its gallery place.
-      const frame = this.main.querySelector('.project-photo-frame')?.getBoundingClientRect();
-      this.returnRect = frame && frame.bottom > 0 && frame.top < innerHeight ? { x: frame.left, y: frame.top, w: frame.width, h: frame.height } : this.firstFrameRect(from.slug);
-      this.openedKey = this.lastOpened?.startsWith(`${from.slug}-`) ? this.lastOpened : `${from.slug}-0`;
-    }
+    const closing = from.page === 'project' && isGallery(to) && Boolean(this.sceneMode(to) && this.main.querySelector('.project-photo-frame'));
+    if (closing) this.openedKey = this.lastOpened?.startsWith(`${from.slug}-`) ? this.lastOpened : `${from.slug}-0`;
     if (isGallery(from) && to.page === 'project' && tile && this.scene.enabled) {
       this.lastOpened = tile.key;
       exit = this.scene.open(tile.key, this.firstFrameRect(to.slug));
@@ -222,10 +220,21 @@ export class App {
       exit = gsap.timeline();
       const heading = this.main.querySelector<HTMLElement>('[data-mask]');
       if (heading) exit.add(maskOut(heading), 0);
-      exit.add(hideChars(this.main.querySelectorAll<HTMLElement>('[data-reveal]')), 0)
-        .to(this.main, { autoAlpha: 0, duration: .45, ease: 'power2.out' }, .1);
+      exit.add(hideChars(this.main.querySelectorAll<HTMLElement>('[data-reveal]')), 0);
+      if (closing) {
+        // Close: scroll back up to the first frame, which then becomes the cover flying to its gallery place.
+        const scroll = { y: window.scrollY };
+        this.lenis?.stop();
+        exit.to(this.main.querySelector('.project-counter'), { autoAlpha: 0, duration: .3 }, 0)
+          .to(scroll, { y: 0, duration: Math.min(1.2, .2 + scroll.y / innerHeight * .2), ease: 'power3.inOut', onUpdate: () => this.lenis ? this.lenis.scrollTo(scroll.y, { immediate: true, force: true }) : window.scrollTo(0, scroll.y) }, 0)
+          .call(() => {
+            const frame = this.main.querySelector('.project-photo-frame')!.getBoundingClientRect();
+            this.returnRect = { x: frame.left, y: frame.top, w: frame.width, h: frame.height };
+          });
+      } else exit.to(this.main, { autoAlpha: 0, duration: .45, ease: 'power2.out' }, .1);
     }
     exit.call(enter);
+    exit.timeScale(speed);
     this.transition = exit;
   }
 
@@ -252,6 +261,7 @@ export class App {
       ? `${categories.find(category => category.id === route.filter)?.title}. ${this.scene.tiles.filter(tile => tile.shown && tile.key.endsWith('-0')).length} серий.`
       : document.title;
     this.transition = timeline;
+    if (from) timeline.timeScale(speed);
     timeline.call(() => { if (revision === this.revision) this.root.dataset.phase = 'ready'; });
     if (reducedMotion.matches) timeline.progress(1);
     this.root.dataset.ready = 'true';

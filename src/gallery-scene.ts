@@ -118,9 +118,9 @@ export class GalleryScene {
     const before = new Map(this.tiles.map(tile => [tile, tile.shown ? this.screen(tile) : undefined]));
     this.saved.set(this.key(), this.offset);
     this.moving?.kill();
+    const timeline = this.timeline();
     const key = this.prepare(mode, filter);
     this.offset = this.target = this.clamp(this.saved.get(key) ?? 0);
-    const timeline = this.timeline();
     const shown = this.shown();
     for (const tile of this.tiles) {
       const start = before.get(tile);
@@ -151,7 +151,7 @@ export class GalleryScene {
     shown.forEach((tile, index) => {
       const end = this.toScreen(this.plan.boxes[index]);
       const isHero = tile === heroTile;
-      if (isHero && hero?.rect) { tile.box = { ...hero.rect }; tile.state.opacity = 0; }
+      if (isHero && hero?.rect) tile.box = { ...hero.rect };
       else if (kind === 'stack') tile.box = { x: (innerWidth - stackSize.w) / 2, y: (innerHeight - stackSize.h) / 2, ...stackSize };
       else { tile.box = { ...end, x: this.aside(end) }; tile.state.opacity = 0; }
       tile.state.order = isHero || (kind === 'stack' && index === 0) ? 2 : 0;
@@ -174,7 +174,6 @@ export class GalleryScene {
     this.saved.set(this.key(), this.offset);
     const timeline = this.timeline();
     this.shown().forEach((tile, index) => {
-      tile.box = this.screen(tile);
       timeline.to(tile.box, { x: this.aside(tile.box), duration: .9, ease: 'power3.in' }, (index % 6) * .025)
         .to(tile.state, { opacity: 0, duration: .5 }, .35);
     });
@@ -187,7 +186,6 @@ export class GalleryScene {
     this.saved.set(this.key(), this.offset);
     const timeline = this.timeline();
     for (const tile of this.shown()) {
-      tile.box = this.screen(tile);
       if (tile.key !== key) {
         timeline.to(tile.box, { x: this.aside(tile.box), duration: 1.4, ease: 'power4.inOut' }, 0);
         continue;
@@ -285,7 +283,8 @@ export class GalleryScene {
         if (this.moving === timeline) this.moving = undefined;
       },
     });
-    for (const tile of this.tiles) tile.free = true;
+    // Freeze each tile where it is drawn now: free boxes are screen coordinates, the scroll offset must not leak in.
+    for (const tile of this.tiles) { tile.box = this.screen(tile); tile.free = true; }
     this.moving = timeline;
     if (reducedMotion.matches) queueMicrotask(() => timeline.progress(1));
     return timeline;
