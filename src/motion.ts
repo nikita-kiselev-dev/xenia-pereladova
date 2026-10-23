@@ -70,13 +70,29 @@ export function maskOut(element: HTMLElement, vars: gsap.TweenVars = {}): gsap.c
   return gsap.to(chars, { yPercent: -115, rotate: -8, duration: .6, stagger: .02, ease: 'power2.in', overwrite: true, ...vars });
 }
 
+/** Same word, new place: each letter leaves upward through its mask and rolls back in from below, like a digit reel. */
+export function maskRoll(element: HTMLElement): gsap.core.Tween {
+  const chars = split(element, true);
+  if (reducedMotion.matches) return gsap.set(chars, { yPercent: 0, rotate: 0, autoAlpha: 1, overwrite: true });
+  return gsap.to(chars, {
+    keyframes: [
+      { yPercent: -115, rotate: -8, autoAlpha: 1, duration: .42, ease: 'power3.in' },
+      { yPercent: 115, rotate: 12, duration: 0 },
+      { yPercent: 0, rotate: 0, duration: .8, ease: 'expo.out' },
+    ],
+    stagger: .07,
+    overwrite: true,
+  });
+}
+
 /** Short hover scramble for interactive labels; always ends on the original letters. */
 export function scramble(element: HTMLElement): void {
   if (reducedMotion.matches) return;
   split(element).forEach((char, index) => gsap.to(char, {
     duration: .5,
     delay: index * .03,
-    overwrite: true,
+    // 'auto', not true: a hover must not kill a pending reveal/hide of the same letters, or they stay hidden.
+    overwrite: 'auto',
     scrambleText: { text: char.dataset.c!, chars: scrambleSet, speed: .6 },
     // Page transitions kill this mid-flight (overwrite: true on the same chars); never leave a random letter.
     onInterrupt: () => { char.textContent = char.dataset.c!; },

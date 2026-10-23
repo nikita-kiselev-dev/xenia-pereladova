@@ -3,7 +3,7 @@ import Lenis from 'lenis';
 import { categories, profile, projects } from './data/projects';
 import { GalleryScene } from './gallery-scene';
 import type { Box, Mode } from './gallery-layout';
-import { Counter, hideChars, maskIn, maskOut, reducedMotion, revealChars, scramble } from './motion';
+import { Counter, hideChars, maskIn, maskOut, maskRoll, reducedMotion, revealChars, scramble } from './motion';
 import { galleryHash, parseRoute, type Route } from './navigation';
 import { categoryName, escapeHtml, galleryMarkup, projectNumber } from './views/gallery';
 import { projectMarkup } from './views/project';
@@ -278,6 +278,8 @@ export class App {
   private showGallery(route: GalleryRoute, how: 'intro' | 'morph' | 'return' | 'sides' | 'instant'): gsap.core.Timeline {
     const mode = this.sceneMode(route);
     const previousView = this.main.dataset.view;
+    // Read before the view class moves it: in a scrolled List the in-flow initials are off screen.
+    const wordmarkSeen = how === 'morph' && this.compact.matches && this.wordmark.getBoundingClientRect().bottom > 0;
     if (this.scene.root.parentElement !== this.main) this.main.replaceChildren(this.scene.root);
     this.main.className = `gallery-main view-${route.page}`;
     this.main.dataset.view = route.page;
@@ -323,8 +325,8 @@ export class App {
       timeline.to(chars, { autoAlpha: 1, duration: .01, stagger: .005 }, 0).to(this.footer.querySelectorAll('.progress, .overview-focus'), { autoAlpha: 1, duration: .4 }, 0);
       if (previousView !== route.page) {
         timeline.add(this.footerSwap(route.page), 0);
-        // The initials jump between their fixed (Overview) and in-flow (List) place: they rise in again there.
-        if (this.compact.matches) timeline.add(maskIn(this.wordmark), .15);
+        // The initials switch between their fixed (Overview) and in-flow (List) place: seen ones roll over, others rise in.
+        if (this.compact.matches) timeline.add(wordmarkSeen ? maskRoll(this.wordmark) : maskIn(this.wordmark), 0);
       }
       else if (route.page === 'list') timeline.to(this.footer.querySelectorAll('[data-filter] .char'), { yPercent: 0, rotate: 0, autoAlpha: 1, duration: .6, ease: 'power2.out' }, 0);
     }
