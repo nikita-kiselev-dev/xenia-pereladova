@@ -37,6 +37,8 @@ export class GalleryScene {
   speed = 0;
   private plan: Layout = { boxes: [], axis: 'y', period: 1, margin: 0, cycling: false, max: 0 };
   private offset = 0;
+  /** Offset at the previous frame: velocity must include finger drags, which move offset directly. */
+  private last = 0;
   private target = 0;
   private velocity = 0;
   private saved = new Map<string, number>();
@@ -102,7 +104,7 @@ export class GalleryScene {
     this.moving = undefined;
     const phase = this.cycling ? this.phase() / 100 : 0;
     const key = this.prepare(mode, filter);
-    this.offset = this.target = this.plan.cycling ? phase * this.plan.period : this.clamp(this.saved.get(key) ?? 0);
+    this.offset = this.target = this.last = this.plan.cycling ? phase * this.plan.period : this.clamp(this.saved.get(key) ?? 0);
     this.shown().forEach((tile, index) => { tile.box = { ...this.plan.boxes[index] }; tile.free = false; tile.state.opacity = 1; });
     this.write();
   }
@@ -228,11 +230,11 @@ export class GalleryScene {
 
   tick(dt: number, time: number): void {
     if (!this.moving) {
-      const previous = this.offset;
       this.offset += (this.target - this.offset) * (1 - Math.pow(1 - .085, dt * 60));
       if (Math.abs(this.target - this.offset) < .05) this.offset = this.target;
-      this.velocity = dt > 0 ? (this.offset - previous) / dt : 0;
+      this.velocity = dt > 0 ? (this.offset - this.last) / dt : 0;
     } else this.velocity = 0;
+    this.last = this.offset;
     // Bend in px at screen centre: fast flicks give a clear curve, rest returns to a flat photo.
     const bend = Math.max(-260, Math.min(260, this.velocity * (innerWidth > 600 ? .06 : .025)));
     this.speed += (bend - this.speed) * (1 - Math.pow(1 - .1, dt * 60));

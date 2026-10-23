@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 /* Horizontal gallery swipes must not trigger browser history navigation. */
-html { background: var(--paper); color: var(--ink); scrollbar-width: thin; scrollbar-color: #b9b9b9 transparent; overscroll-behavior-x: none; }
+html { background: var(--paper); color: var(--ink); scrollbar-width: thin; scrollbar-color: #b9b9b9 transparent; overscroll-behavior-x: none; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); font: 400 12px/1.2 var(--mono); overflow-x: clip; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
@@ -29,9 +29,10 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* Stepped blur: three masked layers grow stronger toward the screen edge instead of one flat blur. */
 .edge-blur { position: absolute; inset: 0 0 -30px; z-index: -1; pointer-events: none; background: linear-gradient(#fefefecc 35%, #fefefe00); }
 .edge-blur>i { position: absolute; inset: 0; }
-.edge-blur>i:nth-child(1) { backdrop-filter: blur(1px); mask-image: linear-gradient(black 60%, transparent); }
-.edge-blur>i:nth-child(2) { backdrop-filter: blur(3px); mask-image: linear-gradient(black 40%, transparent 75%); }
-.edge-blur>i:nth-child(3) { backdrop-filter: blur(7px); mask-image: linear-gradient(black 25%, transparent 50%); }
+/* -webkit- copies: Safari before 18 ignores unprefixed backdrop-filter. */
+.edge-blur>i:nth-child(1) { -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px); mask-image: linear-gradient(black 60%, transparent); }
+.edge-blur>i:nth-child(2) { -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); mask-image: linear-gradient(black 40%, transparent 75%); }
+.edge-blur>i:nth-child(3) { -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); mask-image: linear-gradient(black 25%, transparent 50%); }
 .site-footer .edge-blur { inset: -40px 0 0; transform: scaleY(-1); background: linear-gradient(#fefefeee 30%, #fefefe00); }
 .site-name { align-self: flex-start; }
 .site-bio { position: absolute; left: 33.333%; top: 20px; }
@@ -145,8 +146,16 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .filters button { font-size: clamp(40px, 5.7vw, 65px); }
 }
 @media (max-width: 1023px) {
-  .gallery-main .mobile-wordmark { display: block; font: 900 73vw/.75 var(--display); letter-spacing: -.10em; margin-bottom: 30px; transform: scaleY(1.115); }
-  .view-overview .mobile-wordmark { position: fixed; top: 75px; left: 15px; z-index: 4; margin: 0; pointer-events: none; }
+  /* Initials: as wide as the screen, but never taller than the room above the strip (tablet portrait, phone landscape).
+     Drawn glyph height ≈ .815 × font size; the caption sits 15px under it. */
+  .gallery-main { --wm: min(73vw, calc(77svh - 190px)); --wm-top: 75px; }
+  .gallery-main .mobile-wordmark { display: block; font: 900 var(--wm)/.75 var(--display); letter-spacing: -.10em; margin-bottom: calc(var(--wm) * .1); transform: scaleY(1.115); }
+  .view-overview .mobile-wordmark { position: fixed; top: var(--wm-top); left: 15px; z-index: 4; margin: 0; pointer-events: none; }
+  .view-overview .gallery-intro--overview { display: flex; flex-direction: column; position: fixed; top: calc(var(--wm-top) + 15px + var(--wm) * .815); left: 15px; right: 15px; z-index: 4; margin: 0; text-transform: uppercase; pointer-events: none; }
+  .view-overview [data-mobile-title] { margin-top: 8px; }
+  .view-overview [data-mobile-category] { margin-top: 4px; }
+  .view-list .gallery-intro--list { display: flex; flex-direction: column; gap: 6px; margin: 28px 0 70px; }
+  .view-list .text-list { margin-top: -30px; }
   .site-footer[data-view='overview'] .overview-focus { display: none; }
   .gallery-main.view-list { height: auto; overflow: visible; padding: 95px var(--edge) 190px; }
   .view-list .list-stage { display: none; }
@@ -155,7 +164,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .text-list small { display: block; font: inherit; color: var(--muted); margin-top: 7px; }
   .text-list-open { text-transform: uppercase; }
   .text-list>a:hover .text-list-name { text-decoration: underline; }
-  .info-content { grid-template-columns: 1fr 1fr; gap: 25px; }
+  .info-content { grid-template-columns: 1fr 1fr; gap: 25px; align-content: start; }
   .info-content h1 { grid-column: 1/-1; font-size: 15vw; }
   .info-copy { padding-top: 25px; }
   .info-portrait { margin-top: 40px; }
@@ -169,19 +178,14 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .site-nav .info-nav { order: -1; flex-basis: auto; margin-top: 0; }
   .site-nav a { padding: 4px 0; opacity: .65; }
   .gallery-main.view-list { padding: 65px var(--edge) 160px; }
-  .gallery-main .mobile-wordmark { font: 900 70vw/.75 var(--display); letter-spacing: -.10em; margin-left: -7px; margin-bottom: 24px; }
-  .view-overview .mobile-wordmark { top: 65px; }
-  .view-overview .gallery-intro--overview { display: flex; flex-direction: column; position: fixed; top: calc(90px + 54.6vw); left: 15px; right: 15px; z-index: 4; margin: 0; text-transform: uppercase; pointer-events: none; }
-  .view-overview [data-mobile-title] { margin-top: 8px; }
-  .view-overview [data-mobile-category] { margin-top: 4px; }
-  .view-list .gallery-intro--list { display: flex; flex-direction: column; gap: 6px; margin: 28px 0 70px; }
+  .gallery-main { --wm: min(70vw, calc(77svh - 190px)); --wm-top: 65px; }
+  .gallery-main .mobile-wordmark { margin-left: -7px; }
   .site-footer { flex-wrap: wrap; row-gap: 18px; padding-top: 24px; }
   .filters { order: -1; width: 100%; justify-content: space-between; gap: 5px; margin: 0; }
   .site-footer[data-view='overview'] .filters { display: flex; }
   .filters button { font: 700 clamp(17px, 5.5vw, 27px)/1.1 var(--display); letter-spacing: -.04em; }
   .copyright, .progress { font-size: 10px; }
   .text-list>a { grid-template-columns: 30px minmax(0, 1fr) auto; gap: 10px; padding: 18px 0; font-size: 10px; line-height: 1.5; }
-  .view-list .text-list { margin-top: -30px; }
   .project-heading>div { max-width: 60%; font-size: 10px; }
   .project-photo-frame { width: min(calc(66svh * var(--ratio)), 92vw); }
   .project-counter { font-size: 64px; }

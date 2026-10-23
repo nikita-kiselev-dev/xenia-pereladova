@@ -31,8 +31,9 @@ export function layout(mode: Mode, ratios: number[], vw: number, vh: number): La
     }
     return finish(boxes, 'y', row * pitch, h + 20, vh);
   }
-  const h = mode === 'list' ? Math.max(130, vh * .18) : vh * (vw <= 600 ? .3 : .15);
-  const y = mode === 'strip' && vw <= 600 ? vh * .775 - h / 2 : (vh - h) / 2;
+  // Strip (every compact width, phone to tablet portrait): low band under the fixed initials and caption.
+  const h = mode === 'list' ? Math.max(130, vh * .18) : vh * .3;
+  const y = mode === 'strip' ? vh * .775 - h / 2 : (vh - h) / 2;
   let x = mode === 'list' ? vw * .08 : vw * .25;
   const boxes = ratios.map(ratio => { const w = h * Math.min(ratio, 2); const box = { x, y, w, h }; x += w + gap; return box; });
   const widest = Math.max(0, ...boxes.map(box => box.w));
