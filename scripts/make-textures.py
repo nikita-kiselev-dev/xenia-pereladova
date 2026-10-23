@@ -9,18 +9,20 @@ import numpy as np
 from PIL import Image
 
 root = Path(__file__).resolve().parent.parent / 'public'
-rng = np.random.default_rng(88)
+rng = np.random.default_rng(88)  # grain; the displacement map has its own seed below
 
-# Grain: independent pixels tile seamlessly. Reference noise2.png: 100px, alpha mean ~6/255, max ~52.
+# Grain: independent pixels tile seamlessly. Reference noise2.png: about half the pixels fully transparent,
+# the rest mid-tone colour noise (channels independent) at alpha ~12/255; on white that is std ~3.8 levels.
 size = 128
-dark = rng.random((size, size)) < 0.7
-value = np.where(dark, rng.integers(0, 40, (size, size)), rng.integers(200, 256, (size, size)))
-alpha = np.clip(rng.exponential(9, (size, size)), 0, 64)
-grain = np.dstack([value, value, value, alpha]).astype(np.uint8)
+visible = rng.random((size, size)) > 0.49
+colour = rng.integers(64, 200, (size, size, 3))
+alpha = np.where(visible, np.clip(rng.exponential(11, (size, size)), 0, 52), 0)
+grain = np.dstack([colour, alpha]).astype(np.uint8)
 Image.fromarray(grain, 'RGBA').save(root / 'grain.png', optimize=True)
 
 # Displacement: periodic 1/f^2 noise (FFT keeps it tileable) with contrast close to disp88.jpeg.
 size = 512
+rng = np.random.default_rng(89)
 spectrum = np.fft.fft2(rng.standard_normal((size, size)))
 fy = np.fft.fftfreq(size)[:, None]
 fx = np.fft.fftfreq(size)[None, :]
