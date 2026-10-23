@@ -14,10 +14,15 @@ import type { Texture } from 'three';
 
 /** Per-photo values the app tweens; the renderer copies them into uniforms every frame. */
 export interface PhotoState { hover: number; anim: number; opacity: number; order: number }
+/** A gallery photo: its image, tweened state and the screen box the scene drew it at this frame. */
+export interface Photo { img: HTMLImageElement; state: PhotoState; rect: { x: number; y: number; w: number; h: number }; el: HTMLElement }
 
 interface GalleryImage {
   image: HTMLImageElement;
+  photo: Photo;
   state: PhotoState;
+  /** Uniform/position values at the last draw: an unchanged scene is not redrawn. */
+  drawn: number[];
   opacity: string;
   opacityPriority: string;
   source: string;
@@ -85,6 +90,8 @@ export class GalleryRenderer {
   private disp: Texture = new DataTexture(new Uint8Array(4), 1, 1);
   private width = 1;
   private height = 1;
+  private active = false;
+  private dirty = true;
   disposed = false;
 
   constructor() {
@@ -109,6 +116,7 @@ export class GalleryRenderer {
         this.disp.dispose();
         this.disp = texture;
         for (const entry of this.images) if (entry.mesh) entry.mesh.material.uniforms.uDisp.value = texture;
+        this.dirty = true;
       }, undefined, () => undefined);
       this.canvas.setAttribute('aria-hidden', 'true');
       this.canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;';
@@ -122,14 +130,16 @@ export class GalleryRenderer {
   }
 
   /** Tracks these images with the state objects the app tweens; textures stay cached across calls. */
-  bind(photos: { img: HTMLImageElement; state: PhotoState }[]): void {
+  bind(photos: Photo[]): void {
     for (const entry of this.images) if (!photos.some(photo => photo.img === entry.image)) this.release(entry);
     const known = new Map(this.images.map(entry => [entry.image, entry]));
-    this.images = photos.map(({ img, state }) => known.get(img) || {
-      image: img,
-      state,
-      opacity: img.style.getPropertyValue('opacity'),
-      opacityPriority: img.style.getPropertyPriority('opacity'),
+    this.images = photos.map(photo => known.get(photo.img) || {
+      image: photo.img,
+      photo,
+      state: photo.state,
+      drawn: [],
+      opacity: photo.img.style.getPropertyValue('opacity'),
+      opacityPriority: photo.img.style.getPropertyPriority('opacity'),
       source: '',
       generation: 0,
       hidden: false,
@@ -137,35 +147,44 @@ export class GalleryRenderer {
   }
 
   setActive(active: boolean): void {
+    this.active = active;
+    this.dirty = true;
     this.canvas.style.visibility = active ? '' : 'hidden';
   }
 
   /** @param speed z offset in px at the screen centre; @param time seconds. */
   update(speed: number, time: number): void {
-    if (this.disposed || !this.renderer) return;
+    // Hidden canvas (series, Info): no draw and no per-photo work at all.
+    if (this.disposed || !this.renderer || !this.active) return;
 
     try {
       const bend = Number.isFinite(speed) ? Math.max(-260, Math.min(260, speed)) : 0;
+      let dirty = this.dirty;
 
       for (const entry of this.images) {
-        const { image, state } = entry;
-        const rect = image.getBoundingClientRect();
+        const { image, state, photo } = entry;
+        const rect = photo.rect;
         const source = image.currentSrc || image.src;
 
-        if (!image.isConnected || entry.source !== source) this.release(entry);
+        if (!image.isConnected || entry.source !== source) { if (entry.mesh) dirty = true; this.release(entry); }
         if (!image.isConnected || image.hidden) continue;
 
-        const visible = rect.width > 0 && rect.height > 0 && state.opacity > 0.001
-          && rect.bottom >= -250 && rect.top <= this.height + 250
-          && rect.right >= -250 && rect.left <= this.width + 250;
+        const visible = !photo.el.hidden && rect.w > 0 && rect.h > 0 && state.opacity > 0.001
+          && rect.y + rect.h >= -250 && rect.y <= this.height + 250
+          && rect.x + rect.w >= -250 && rect.x <= this.width + 250;
 
         if (visible && !entry.source && image.complete && image.naturalWidth > 0) this.load(entry, source);
         if (!entry.mesh) continue;
-        entry.mesh.visible = visible;
+        if (entry.mesh.visible !== visible) { entry.mesh.visible = visible; dirty = true; }
         if (!visible) continue;
 
-        entry.mesh.position.set(rect.left + rect.width / 2 - this.width / 2, this.height / 2 - rect.top - rect.height / 2, 0);
-        entry.mesh.scale.set(rect.width, rect.height, 1);
+        // uTime only moves the shape while uAnim > 0, so a resting photo has a constant time.
+        const values = [rect.x, rect.y, rect.w, rect.h, state.order, bend, state.anim ? time : 0, state.anim, state.hover, state.opacity];
+        if (values.every((value, index) => value === entry.drawn[index])) continue;
+        entry.drawn = values;
+        dirty = true;
+        entry.mesh.position.set(rect.x + rect.w / 2 - this.width / 2, this.height / 2 - rect.y - rect.h / 2, 0);
+        entry.mesh.scale.set(rect.w, rect.h, 1);
         entry.mesh.renderOrder = state.order;
         const { uniforms } = entry.mesh.material;
         uniforms.uSpeed.value = bend;
@@ -175,10 +194,13 @@ export class GalleryRenderer {
         uniforms.uOpacity.value = state.opacity;
         uniforms.uViewport.value = [this.width, this.height];
         const imageAspect = image.naturalWidth / image.naturalHeight;
-        const boxAspect = rect.width / rect.height;
+        const boxAspect = rect.w / rect.h;
         uniforms.uUvScale.value = [Math.min(1, boxAspect / imageAspect), Math.min(1, imageAspect / boxAspect)];
       }
 
+      // A static gallery keeps its last frame: the compositor reuses the canvas instead of a redraw each vsync.
+      if (!dirty) return;
+      this.dirty = false;
       this.renderer.render(this.scene, this.camera);
     } catch {
       this.dispose();
@@ -243,8 +265,11 @@ export class GalleryRenderer {
         });
         entry.mesh = new Mesh(this.geometry, material);
         entry.mesh.visible = false;
+        entry.drawn = [];
         this.scene.add(entry.mesh);
+        // data-gl: the DOM frame behind loses its placeholder fill, so a bent (shrunk) photo never shows a grey box.
         entry.image.style.setProperty('opacity', '0', 'important');
+        entry.image.dataset.gl = '';
         entry.hidden = true;
       } catch {
         this.dispose();
@@ -260,6 +285,7 @@ export class GalleryRenderer {
       if (entry.opacity) entry.image.style.setProperty('opacity', entry.opacity, entry.opacityPriority);
       else entry.image.style.removeProperty('opacity');
       entry.hidden = false;
+      delete entry.image.dataset.gl;
     }
     if (entry.mesh) {
       this.scene.remove(entry.mesh);
@@ -281,6 +307,7 @@ export class GalleryRenderer {
       this.camera.updateProjectionMatrix();
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
       this.renderer.setSize(this.width, this.height, false);
+      this.dirty = true;
     } catch {
       this.dispose();
     }

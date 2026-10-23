@@ -24,7 +24,7 @@ export function galleryMarkup(): string {
       ${tiles.map(({ project, index }, tileIndex) => {
         const photo = index === 0 ? project.cover : project.photos[index];
         return `<a class="photo-link" draggable="false" data-tile="${project.slug}-${index}" data-project="${project.slug}" data-category="${project.category}" href="#/project/${project.slug}" aria-label="Открыть серию «${escapeHtml(project.title)}»">
-          <figure><div class="photo-frame">${photoMarkup(photo, { webgl: true, eager: tileIndex < 10 })}</div>
+          <figure><div class="photo-frame">${photoMarkup(photo, { webgl: true, eager: tileIndex < 10, sizes: '(max-width: 1023px) 40vw, 12vw' })}</div>
           <figcaption aria-hidden="true"><span>${escapeHtml(project.title)}</span><span>${String(projectNumber(project)).padStart(2, '0')}</span></figcaption></figure>
         </a>`;
       }).join('')}

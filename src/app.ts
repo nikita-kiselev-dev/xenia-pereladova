@@ -38,8 +38,8 @@ export class App {
   private cursorEl: HTMLElement;
   private hovered?: GalleryScene['tiles'][number];
   private mobileSlug?: string;
-  private pointer = { x: -100, y: -100, inside: false, mouse: false };
-  private cursor = { x: -100, y: -100 };
+  private pointer = { x: -100, y: -100, inside: false, mouse: false, overChrome: false };
+  private cursor = { x: -100, y: -100, scale: 1, css: '' };
   private progress: Counter;
   private hoverIndex: Counter;
   private mobileIndex: Counter;
@@ -401,7 +401,7 @@ export class App {
 
   /** Box of a series' first frame at the top of its page (same rule as .project-photo-frame CSS). */
   private firstFrameRect(slug: string): Box {
-    const photo = projects.find(project => project.slug === slug)?.photos[0];
+    const photo = projects.find(project => project.slug === slug)?.cover;
     const ratio = photo ? photo.width / photo.height : .8;
     const narrow = innerWidth <= 600;
     const w = Math.min(innerHeight * (narrow ? .66 : .7) * ratio, innerWidth * (narrow ? .92 : .8));
@@ -448,9 +448,10 @@ export class App {
     const dt = Math.min(deltaMs, 100) / 1000;
     this.lenis?.raf(time * 1000);
     if (this.renderer?.disposed) { this.renderer = undefined; this.scene.attach(undefined); this.main.dataset.renderer = 'unavailable'; }
-    this.scene.tick(dt, time);
+    // Series/Info without the kept cover: the gallery is detached, nothing to place or draw.
+    if (this.scene.root.isConnected) this.scene.tick(dt, time);
     if (this.scene.enabled) {
-      if (this.pointer.mouse && !this.compact.matches) this.setHover(this.pointer.inside && !this.scene.busy ? this.scene.pick(this.pointer.x, this.pointer.y) : undefined);
+      if (this.pointer.mouse && !this.compact.matches) this.setHover(this.pointer.inside && !this.pointer.overChrome && !this.scene.busy ? this.scene.pick(this.pointer.x, this.pointer.y) : undefined);
       if (this.scene.mode === 'strip') this.updateMobileCaption();
       this.progress.set(this.scene.phase());
     } else if (isGallery(this.route)) {
@@ -462,7 +463,16 @@ export class App {
       const k = 1 - Math.pow(1 - .075, dt * 60);
       this.cursor.x += (this.pointer.x - this.cursor.x) * k;
       this.cursor.y += (this.pointer.y - this.cursor.y) * k;
-      gsap.set(this.cursorEl, { x: this.cursor.x, y: this.cursor.y, xPercent: -50, yPercent: -50, opacity: this.pointer.inside ? .85 : 0, scale: this.hovered ? 2.4 : 1 });
+      // The dot swells over a photo with the same inertia it follows the pointer with, instead of jumping.
+      this.cursor.scale += ((this.hovered ? 2.4 : 1) - this.cursor.scale) * Math.min(1, k * 2);
+      // Direct style instead of a gsap.set per frame; a settled cursor writes nothing.
+      const css = `translate3d(${this.cursor.x.toFixed(1)}px,${this.cursor.y.toFixed(1)}px,0) translate(-50%,-50%) scale(${this.cursor.scale.toFixed(3)})|${this.pointer.inside ? .85 : 0}`;
+      if (css !== this.cursor.css) {
+        const [transform, opacity] = css.split('|');
+        this.cursorEl.style.transform = transform;
+        this.cursorEl.style.opacity = opacity;
+        this.cursor.css = css;
+      }
     }
   };
 
@@ -515,6 +525,8 @@ export class App {
   private onPointerMove = (event: PointerEvent) => {
     this.pointer.mouse = event.pointerType === 'mouse';
     this.pointer.inside = true;
+    // Header and footer controls sit above the photos: no photo hover through them (the browser already hit-tested this event).
+    this.pointer.overChrome = event.target instanceof Element && Boolean(event.target.closest('.site-header, .site-footer a, .site-footer button, .intro'));
     this.pointer.x = event.clientX;
     this.pointer.y = event.clientY;
   };

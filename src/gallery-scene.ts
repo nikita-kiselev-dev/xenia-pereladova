@@ -16,6 +16,10 @@ interface Tile {
   category: string;
   ratio: number;
   box: Box;
+  /** Screen box drawn at the last frame: the renderer and picking read it instead of measuring the DOM. */
+  rect: Box;
+  /** Last written styles, so tiles at rest cost no style recalculation. */
+  css: string[];
   /** During transitions boxes are screen coordinates; at rest they live in the cyclic layout space. */
   free: boolean;
   shown: boolean;
@@ -53,7 +57,7 @@ export class GalleryScene {
         el, img, frame: el.querySelector('.photo-frame')!,
         key: el.dataset.tile!, slug: el.dataset.project!, category: el.dataset.category!,
         ratio: Number(img.getAttribute('width')) / Number(img.getAttribute('height')),
-        box: { x: 0, y: 0, w: 0, h: 0 }, free: false, shown: true, state: { hover: 0, anim: 0, opacity: 1, order: 0 },
+        box: { x: 0, y: 0, w: 0, h: 0 }, rect: { x: 0, y: 0, w: 0, h: 0 }, css: ['', '', '', ''], free: false, shown: true, state: { hover: 0, anim: 0, opacity: 1, order: 0 },
       };
     });
     root.addEventListener('click', this.onClickCapture, true);
@@ -198,10 +202,14 @@ export class GalleryScene {
     return timeline;
   }
 
-  /** Tile under a viewport point, from the DOM that mirrors the drawn photos. */
+  /** Tile under a viewport point, from the drawn boxes (no forced layout, unlike elementFromPoint). */
   pick(x: number, y: number): Tile | undefined {
-    const link = document.elementFromPoint(x, y)?.closest<HTMLElement>('.photo-link');
-    return this.tiles.find(tile => tile.el === link);
+    let hit: Tile | undefined;
+    for (const tile of this.tiles) {
+      const { x: left, y: top, w, h } = tile.rect;
+      if (tile.shown && x >= left && x < left + w && y >= top && y < top + h && (!hit || tile.state.order > hit.state.order)) hit = tile;
+    }
+    return hit;
   }
 
   /** Tile nearest to the viewport centre (narrow Overview caption). */
@@ -294,11 +302,13 @@ export class GalleryScene {
   private write(): void {
     for (const tile of this.tiles) {
       if (!tile.shown && !tile.free) continue;
-      const box = this.screen(tile);
-      tile.el.style.transform = `translate3d(${box.x.toFixed(2)}px,${box.y.toFixed(2)}px,0)`;
-      tile.frame.style.width = `${box.w.toFixed(2)}px`;
-      tile.frame.style.height = `${box.h.toFixed(2)}px`;
-      tile.el.style.opacity = tile.state.opacity < .999 ? String(tile.state.opacity) : '';
+      const box = tile.rect = this.screen(tile);
+      const css = [`translate3d(${box.x.toFixed(2)}px,${box.y.toFixed(2)}px,0)`, `${box.w.toFixed(2)}px`, `${box.h.toFixed(2)}px`, tile.state.opacity < .999 ? tile.state.opacity.toFixed(3) : ''];
+      if (css[0] !== tile.css[0]) tile.el.style.transform = css[0];
+      if (css[1] !== tile.css[1]) tile.frame.style.width = css[1];
+      if (css[2] !== tile.css[2]) tile.frame.style.height = css[2];
+      if (css[3] !== tile.css[3]) tile.el.style.opacity = css[3];
+      tile.css = css;
     }
   }
 
