@@ -472,7 +472,7 @@ export class App {
     this.hovered = tile;
     if (previous) {
       gsap.to(previous.state, { hover: 0, duration: 1.2, ease: 'expo.out', overwrite: 'auto' });
-      if (this.scene.mode === 'list') hideChars(previous.el.querySelectorAll<HTMLElement>('figcaption span'));
+      if (this.scene.mode === 'list') hideChars(previous.el.querySelectorAll<HTMLElement>('figcaption>span'));
       previous.el.removeAttribute('data-hover');
     }
     const caption = this.root.querySelector<HTMLElement>('[data-hover-caption]')!;
@@ -485,7 +485,8 @@ export class App {
     tile.el.setAttribute('data-hover', '');
     const project = projects.find(item => item.slug === tile.slug)!;
     if (this.scene.mode === 'list') {
-      revealChars(tile.el.querySelectorAll<HTMLElement>('figcaption span'), .08, .03);
+      // Direct children only: after the first split the spans also contain SplitText's char/word spans.
+      revealChars(tile.el.querySelectorAll<HTMLElement>('figcaption>span'), .08, .03);
     } else {
       this.hoverIndex.set(projectNumber(project), false, { delay: .2 });
       caption.replaceChildren();
