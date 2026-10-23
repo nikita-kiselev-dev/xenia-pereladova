@@ -1,0 +1,61 @@
+{
+  "url": "https://nikita-kiselev-dev.github.io/xenia-pereladova/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "results": [
+    {
+      "name": "overview and horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "list",
+      "result": "PASS"
+    },
+    {
+      "name": "portrait filter",
+      "result": "PASS"
+    },
+    {
+      "name": "open project with keyboard",
+      "result": "PASS"
+    },
+    {
+      "name": "Escape restores filter and focus",
+      "result": "PASS"
+    },
+    {
+      "name": "Info and contact links",
+      "result": "PASS"
+    },
+    {
+      "name": "Back / Forward / Close",
+      "result": "PASS"
+    },
+    {
+      "name": "all four categories",
+      "result": "PASS"
+    },
+    {
+      "name": "interrupted transitions settle",
+      "result": "PASS"
+    },
+    {
+      "name": "direct project URL and refresh",
+      "result": "PASS"
+    },
+    {
+      "name": "unknown project recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "return from unknown project",
+      "result": "PASS"
+    },
+    {
+      "name": "no runtime/asset console errors",
+      "result": "PASS"
+    }
+  ]
+}

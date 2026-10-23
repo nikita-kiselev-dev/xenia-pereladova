@@ -1,7 +1,7 @@
 # Xenia Photo Website
 
 Статическое портфолио Ксении Переладовой: пространственный Обзор на desktop, горизонтальная галерея с fixed инициалами на узком экране, desktop-лента/мобильный Список, фотосерии и информация о фотографе.
-Vite + TypeScript, GSAP, Lenis, Three.js. Рабочая локальная реализация; визуальная приёмка и публикация остаются отдельными этапами.
+Vite + TypeScript, GSAP, Lenis, Three.js. [Опубликованный сайт](https://nikita-kiselev-dev.github.io/xenia-pereladova/); визуальная приёмка остаётся отдельным этапом.
 
 ## Запуск
 
@@ -71,15 +71,17 @@ Workflow подготовлен в `.github/workflows/deploy.yml`, запуск�
 Он выполняет `npm ci`, typecheck, tests, build и deploy `dist`; `base` берётся из настроек Pages.
 Конфигурация опирается на [официальный workflow Vite](https://vite.dev/guide/static-deploy.html#github-pages) и [outputs configure-pages](https://github.com/actions/configure-pages/blob/v6/action.yml).
 
-После визуальной приёмки выбрать GitHub repository, включить Settings → Pages → GitHub Actions, отправить исходники и запустить workflow.
-Фактический remote и домен пока не заданы; workflow на GitHub не запускался.
+Репозиторий: [nikita-kiselev-dev/xenia-pereladova](https://github.com/nikita-kiselev-dev/xenia-pereladova), ветка `main`. Pages source — GitHub Actions.
+Публикация 23 октября 2026 выполнена: [успешный workflow](https://github.com/nikita-kiselev-dev/xenia-pereladova/actions/runs/39990920004), commit `bd801807137b6555f371c9b8999e48ae9c269e51`.
+Для обновления отправить изменения в `main`, затем открыть Actions → «Публикация GitHub Pages» → Run workflow → `main`.
 Для ручной проверки project prefix:
 
 ```powershell
-$env:VITE_BASE_PATH='/xenia-photo/'
+$env:VITE_BASE_PATH='/xenia-pereladova/'
 npm run build
 Remove-Item Env:VITE_BASE_PATH
-npm run preview -- --base /xenia-photo/
+npm run preview -- --base /xenia-pereladova/
 ```
 
-Перед релизом остаются реальный iPhone/Android, утверждение отбора/текста/движения и smoke опубликованного URL.
+Smoke опубликованного URL прошёл на desktop 1440×900 и viewport 390×844: по 13 групп, включая direct hash, refresh, фото и отсутствие ошибок console. Результаты — в `docs/qa/published-*-smoke.json`.
+Не проверено, проверить так: открыть опубликованный URL на реальных iPhone/Safari и Android/Chrome; проверить scroll, серии, Close, Back и поворот экрана. Утверждение отбора/текста/движения остаётся открытым.

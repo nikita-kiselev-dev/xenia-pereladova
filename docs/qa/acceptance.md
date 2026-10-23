@@ -1,7 +1,7 @@
 # Локальная проверка Xenia Photo Website
 
 Дата: **23 октября 2026**, Asia/Novosibirsk.
-Статус: **локальная техническая версия проверена; художественная приёмка, реальные устройства и опубликованный сайт остаются открытыми**.
+Статус: **техническая версия опубликована и проверена на GitHub Pages; художественная приёмка и реальные устройства остаются открытыми**.
 
 ## Реализовано
 
@@ -84,7 +84,7 @@ Vite предупреждает о Three.js chunk: **529.43 kB minified / 132.09
 
 1. **Визуальная приёмка:** открыть локальный preview, проверить отбор/порядок кадров, описание, подписи, XP и контакты; утвердить адаптивную композицию и motion. Художественное сходство пока не принято.
 2. **Реальные устройства — не проверено, проверить так:** `npm run dev -- --host 0.0.0.0`, открыть LAN-адрес на iPhone/Safari и Android/Chrome; пройти scroll в обе стороны, List, категории, серию, Close, поворот экрана, Back и reduced motion. Зафиксировать модель, ОС, браузер и результаты.
-3. **GitHub Actions — не проверено, проверить так:** выбрать repository, настроить Pages source, отправить исходники и вручную запустить подготовленный workflow после приёмки.
-4. **Published smoke — не проверено, проверить так:** открыть реальный URL и прямую hash-ссылку, обновить страницу, проверить изображения/fonts/noise, console, Back/Forward и mobile. Локальный prefix smoke не заменяет этот этап.
+3. **GitHub Actions — PASS:** [workflow 39990920004](https://github.com/nikita-kiselev-dev/xenia-pereladova/actions/runs/39990920004), commit `bd801807137b6555f371c9b8999e48ae9c269e51`; установка зависимостей, typecheck, 3 Node-теста, build и deploy успешны.
+4. **Published smoke — PASS:** [публичный URL](https://nikita-kiselev-dev.github.io/xenia-pereladova/), HTTP 200. Существующий `runCore` прошёл по 13 групп на 1440×900 и 390×844; категории, открытие/закрытие серии, Info, keyboard/focus, Back/Forward, прерывание переходов, direct hash, refresh и восстановление неизвестной серии. Ошибок runtime/assets в console нет. Свидетельства: [desktop](published-desktop-smoke.json), [mobile viewport](published-mobile-smoke.json), [исходный viewport браузера](published-smoke.json).
 
-Remote и домен не заданы. Публичный сайт не создавался, workflow на GitHub не запускался, задача не отмечена закрытой.
+Remote: `git@github.com:nikita-kiselev-dev/xenia-pereladova.git`, ветка `main`; Pages source — GitHub Actions. Публикация выполнена по прямому запросу пользователя. Техническая проверка опубликованного сайта не заменяет художественную приёмку и проверку реальных устройств.

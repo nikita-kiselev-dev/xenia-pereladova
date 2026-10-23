@@ -1,6 +1,6 @@
 # План создания Xenia Photo Website
 
-Дата: **23 октября 2026**. Статус: **локальная реализация подготовлена; визуальная приёмка и публикация не выполнены**.
+Дата: **23 октября 2026**. Статус: **сайт опубликован на GitHub Pages; визуальная приёмка остаётся открытой**.
 
 Актуальный отчёт: [QA и открытые критерии](docs/qa/acceptance.md), [запуск и публикация](README.md).
 Ниже сохранён исходный план; его формулировки о будущих действиях описывают первоначальный этап подготовки.
@@ -14,7 +14,7 @@
 | Основа / вёрстка | Реализованы четыре маршрута, оба вида галереи, фильтры, серии, Info, keyboard/history и responsive layout |
 | WebGL / motion | Реализованы один canvas, velocity shader, GSAP/Lenis, прерываемые переходы и DOM fallback; визуальная калибровка остаётся открытой |
 | Проверки | Чистая установка, typecheck, build, Node tests, production browser smoke, пять размеров и fault injection выполнены; подробности в QA |
-| GitHub Pages | Подготовлен ручной workflow и проверен локальный repository prefix. Remote/домен не выбраны, внешний deploy не выполнялся |
+| GitHub Pages | Опубликован [nikita-kiselev-dev/xenia-pereladova](https://nikita-kiselev-dev.github.io/xenia-pereladova/). Workflow успешен; published smoke прошёл на desktop и mobile viewport |
 
 Это техническая версия для приёмки, не утверждение о завершении всех P0/P1 и художественном совпадении с референсом.
 
