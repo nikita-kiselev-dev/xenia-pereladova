@@ -1,0 +1,644 @@
+{
+  "projects": [
+    {
+      "slug": "sasha-s-synom-v-otele",
+      "title": "Саша с сыном в отеле",
+      "category": "family",
+      "source": "https://pereladova.wfolio.pro/sasha-s-synom-v-otele",
+      "cover": {
+        "src": "images/sasha-s-synom-v-otele/100.webp",
+        "thumbnail": "images/sasha-s-synom-v-otele/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Саша с сыном в отеле",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iKa1Nrg7WQ2R/HE2kQB-eU16MQbUQDSLHr6pDKC5KoOt7/DLjNpKYmB7l0E49o0VlusA.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/sasha-s-synom-v-otele/01.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/01-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfhGumRr03EjP/Od9vSuNHTHPmAE3nTL7DsVr1eNC5PM5y/Qt_EvJd4h1Jlq9BDmRg1Vw.jpg"
+        },
+        {
+          "src": "images/sasha-s-synom-v-otele/02.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/02-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfgjqZ8BFQ4hh/s45eiHuu3IAxWbzlMZS1hyKuy_G9a1LI/rFVuKf8IAx3SdeSscdXuNg.jpg"
+        },
+        {
+          "src": "images/sasha-s-synom-v-otele/03.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/03-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfujk2ZEOTnDS/J9Q7-FfUdo6cSlp8vaYUcixa4IgdZg-_/17VgXw4A243fLk-dM5UcXw.jpg"
+        },
+        {
+          "src": "images/sasha-s-synom-v-otele/04.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/04-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfnXfKIrCTrCF/-wWDXNSHGBy1ljuOZweqpm58Ridxn7-2/d6n6Sj8XVa28SmKknoJBKQ.jpg"
+        },
+        {
+          "src": "images/sasha-s-synom-v-otele/05.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/05-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfiTFuJrzHtwK/JDWtIDgAGKxZ3EyxHFzaO2PFjQXIpn3l/T44wMKqcKC0UhFVIzs1bkQ.jpg"
+        },
+        {
+          "src": "images/sasha-s-synom-v-otele/06.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfqe2MkovolCN/oN6kCzIRWMt4C4PwHrsXwQCtU-mF2uhe/SL9oJLOGHzmsA5y5iuyRtg.jpg"
+        },
+        {
+          "src": "images/sasha-s-synom-v-otele/07.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKft5AiwEiH8FY/dlkI0P9yTBrRU1UH_lpT5qAZPW5047Rg/Z2n1MOdTNdKnaQcfiH_30Q.jpg"
+        },
+        {
+          "src": "images/sasha-s-synom-v-otele/08.webp",
+          "thumbnail": "images/sasha-s-synom-v-otele/08-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Саша с сыном в отеле",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfr8Y8JGuaJb9/mC8jZrR03UdrtCyOXvUS4eajOXwwsOwh/_Tyd3H9Ikwo2bCBHkScF4A.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "mama-s-dochkoy",
+      "title": "Мама с дочкой",
+      "category": "family",
+      "source": "https://pereladova.wfolio.pro/mama-s-dochkoy",
+      "cover": {
+        "src": "images/mama-s-dochkoy/100.webp",
+        "thumbnail": "images/mama-s-dochkoy/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Мама с дочкой",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iOFq8DxWo4MI/IbrZREVr9hzcROxHUR-HPIR0fkyIVGZP/caty41Bzo-wsGC1VY4FKdQ.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/mama-s-dochkoy/01.webp",
+          "thumbnail": "images/mama-s-dochkoy/01-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfomtUjVUnPw4/0LKbyZanMVX1d0HaCrB9CqTL0alH4lux/yJiwVWhUCmi0NDO5AoZdMg.jpg"
+        },
+        {
+          "src": "images/mama-s-dochkoy/02.webp",
+          "thumbnail": "images/mama-s-dochkoy/02-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKft2bpkdENzsy/ijK_mM-2Atg_tzLSbHFwqd2OEZzNujHw/QCMfB_sLvnfyGje1skAhGA.jpg"
+        },
+        {
+          "src": "images/mama-s-dochkoy/03.webp",
+          "thumbnail": "images/mama-s-dochkoy/03-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKflqC593y4vcx/nf7MfcBLSQgeNGzFe1uipG75QEf52GxM/YHMmwOuKuPzEHs0UYWvZ6g.jpg"
+        },
+        {
+          "src": "images/mama-s-dochkoy/04.webp",
+          "thumbnail": "images/mama-s-dochkoy/04-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfrh2i3Xid9iN/RN27PJwXNtzoS2ZltPM5zZ0xL-9-PM4o/x20ivz94PZoHdq7uPTcpfA.jpg"
+        },
+        {
+          "src": "images/mama-s-dochkoy/05.webp",
+          "thumbnail": "images/mama-s-dochkoy/05-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfi8QbowPUA0X/ORSkJ_eLo15x6kn57HI63PXaxUbGRzUi/V3aOHELIDiJ7CsDKPymmKw.jpg"
+        },
+        {
+          "src": "images/mama-s-dochkoy/06.webp",
+          "thumbnail": "images/mama-s-dochkoy/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfjgLRdJlrqbt/tO85WV3_5BT1-QWquJq1mYLMKAdaGhhp/iQrWKZcDM7eSD5hvklXxwQ.jpg"
+        },
+        {
+          "src": "images/mama-s-dochkoy/07.webp",
+          "thumbnail": "images/mama-s-dochkoy/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfiq3ghEVRLc2/H5zjPWZ2be2TmkyxEI5NS_cq8JUKGLRE/BAQdsXRPBhMKXGCuMxz7vw.jpg"
+        },
+        {
+          "src": "images/mama-s-dochkoy/08.webp",
+          "thumbnail": "images/mama-s-dochkoy/08-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Мама с дочкой",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfpI1XDOZXffw/9XZKqhASRfhRv3xtFFq32CDkGnYDWmvJ/uSORQsMfCng-eOtFYlSbsQ.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "korolevskaya-dvoynya",
+      "title": "Королевская двойня",
+      "category": "family",
+      "source": "https://pereladova.wfolio.pro/korolevskaya-dvoynya",
+      "cover": {
+        "src": "images/korolevskaya-dvoynya/100.webp",
+        "thumbnail": "images/korolevskaya-dvoynya/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Королевская двойня",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iPbHRTNhPl9b/p4GyWy7YAI4JRkX6y_umoPZdOCrGT28e/2rFCkIzHxyPqZUcA-aazCg.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/korolevskaya-dvoynya/01.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/01-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfvGwv4FOlEVO/3do7y4GpiIvqYf_RIr40jhj3_ETGhRwv/M3gkFsdx0MvxCHbUbug8Ag.jpg"
+        },
+        {
+          "src": "images/korolevskaya-dvoynya/02.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/02-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfphn6CYzaf2x/fQjqsQHOpbgpixooBbMA_wcJpVIN7rVE/uJal7IJO3t9NBpP5KEouqw.jpg"
+        },
+        {
+          "src": "images/korolevskaya-dvoynya/03.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/03-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfgvN8uf-0qLT/bwr9uAJgiIhPr34nrvH1KXs6UxMDwat2/KgXw6l-VEgz3hI08CMLiEw.jpg"
+        },
+        {
+          "src": "images/korolevskaya-dvoynya/04.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/04-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKftK-ZrD_IlQv/3_cU9ZFt6gKCTmiIVtR_gHL_8jLz5_En/lBXZDY83EOERAezdY8N0vQ.jpg"
+        },
+        {
+          "src": "images/korolevskaya-dvoynya/05.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/05-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfnqTsZ_5t5xl/gbuzda8KsZp5C1QWdXjlA3hjlq2sSuXV/59g9pUZNRkXmz5mKxCG0iQ.jpg"
+        },
+        {
+          "src": "images/korolevskaya-dvoynya/06.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfpwTZBWFPTaJ/qkFJiKnD1FFmHnT2rlsEQoOHEERca52h/BTh1VRt1iRp_cLAy0u5Ydg.jpg"
+        },
+        {
+          "src": "images/korolevskaya-dvoynya/07.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfsp_NL2IinNr/vMk5JQelzclP4ItyfaJg6KSTxwoKkNWz/HDA_6uDx4IgAqmieHFvpuw.jpg"
+        },
+        {
+          "src": "images/korolevskaya-dvoynya/08.webp",
+          "thumbnail": "images/korolevskaya-dvoynya/08-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Королевская двойня",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfrnQ4Jw6q18a/82QEtpXKovvB0hpPDgp3A-V7Z-nPwUct/99DISe9J0xfb5yqTTXrRew.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "novogodnie-studiynye",
+      "title": "Новогодние студийные",
+      "category": "family",
+      "source": "https://pereladova.wfolio.pro/novogodnie-studiynye",
+      "cover": {
+        "src": "images/novogodnie-studiynye/100.webp",
+        "thumbnail": "images/novogodnie-studiynye/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Новогодние студийные",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iIAoJ_zHyhMJ/ZzjIg4Iug6lpic1lKBPkyA0l-pQM-Xug/99IHfFt41LEbkvS9quGqaQ.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/novogodnie-studiynye/01.webp",
+          "thumbnail": "images/novogodnie-studiynye/01-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Новогодние студийные",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfjCtVpLEWfB4/pe06r9LblNCuGJBBBTTAGKvK6oD_Id9q/rVho8CasABwzqXlSZHIq8A.jpg"
+        },
+        {
+          "src": "images/novogodnie-studiynye/02.webp",
+          "thumbnail": "images/novogodnie-studiynye/02-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Новогодние студийные",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfo4eJ2vnv_Y_/OgNBwwc2qtsb9ql1ey_4-u-4CbXq8I8P/yV3_TppPAiBWQoKcuK4Z2Q.jpg"
+        },
+        {
+          "src": "images/novogodnie-studiynye/03.webp",
+          "thumbnail": "images/novogodnie-studiynye/03-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Новогодние студийные",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfq2eb7ZdQAvk/0EuKRxIEG_Wx7fMFC0DZHnLgyhF5NDl1/XLX1W0GfpONNmWu4lZqLDA.jpg"
+        },
+        {
+          "src": "images/novogodnie-studiynye/04.webp",
+          "thumbnail": "images/novogodnie-studiynye/04-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Новогодние студийные",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfrUIBNPtWpWQ/9ctj0UjnBP4oaIDx9yHYXjD86z6UdGbt/5mV_Mg9qsXQNBGj7mFNgtA.jpg"
+        },
+        {
+          "src": "images/novogodnie-studiynye/05.webp",
+          "thumbnail": "images/novogodnie-studiynye/05-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Новогодние студийные",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfuv1Sktf2qP5/5xRLjSM7-8gtlp7eFYmvl-PcVQsdy2LC/P4BCYPkPIP4bzEKMQwtSsw.jpg"
+        },
+        {
+          "src": "images/novogodnie-studiynye/06.webp",
+          "thumbnail": "images/novogodnie-studiynye/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Новогодние студийные",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfmO4Y3iq1e8h/A80ChlYormqf9kGHi96jJ2GlTYw5W_M5/fTrrsFUtFhIJQ4xAIf6jaA.jpg"
+        },
+        {
+          "src": "images/novogodnie-studiynye/07.webp",
+          "thumbnail": "images/novogodnie-studiynye/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Новогодние студийные",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfq_bgz8-NEpG/tVi-wxPUL4JdKP-qWkuZ00CIxExQhZn2/y4yw7ifhHE-eVX3uvW6ltQ.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "fashion",
+      "title": "Fashion",
+      "category": "portrait",
+      "source": "https://pereladova.wfolio.pro/fashion",
+      "cover": {
+        "src": "images/fashion/100.webp",
+        "thumbnail": "images/fashion/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Fashion",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iOKEEigSsETR/geqvvPuTkI3-M1kSKLlSPRQTAcW3jdmx/OxBecBhee1WuymTXPY-YsA.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/fashion/01.webp",
+          "thumbnail": "images/fashion/01-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfnWV_56Cb9f9/9IkCQy5rZpZlyyHVg6jeu8Yj3IJL96mT/sWIkTMVgsime9QvdKLxWqQ.jpg"
+        },
+        {
+          "src": "images/fashion/02.webp",
+          "thumbnail": "images/fashion/02-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfmqMCq8yMv63/-u5DC-kmMVKhFjlX1PCOR2LgtUzGVGTD/2OYdWfoOnuy7FFnKPQJGmQ.jpg"
+        },
+        {
+          "src": "images/fashion/03.webp",
+          "thumbnail": "images/fashion/03-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfudEpqs9aKNv/MrYf0SZH-oLBOcR_Pw6FMFhyCgcUqRrJ/j7irOo7yTjxNp4M4ZFws6g.jpg"
+        },
+        {
+          "src": "images/fashion/04.webp",
+          "thumbnail": "images/fashion/04-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfuil98d6lJqf/DvF2zYUZnNh_TajEaADCGlZDLAd-os2E/8ShMYzfJB14lmD_qlKOf5Q.jpg"
+        },
+        {
+          "src": "images/fashion/05.webp",
+          "thumbnail": "images/fashion/05-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfgoCu33i50_l/IxI0GCdcvW3q_kJ4YSmCna7ZQHnT4nIs/fJv37WLGmEg2Z69Gyyqk-g.jpg"
+        },
+        {
+          "src": "images/fashion/06.webp",
+          "thumbnail": "images/fashion/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfkTDNuueNzuD/DsoeSPNOgQcBrnl5xixnqEm1H0o6RS54/TCLzlGJ_gUwuPJfogx5tiw.jpg"
+        },
+        {
+          "src": "images/fashion/07.webp",
+          "thumbnail": "images/fashion/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfsnfUIKqmRVY/5SVGRcHyRnPp-PbVFKEf7_1Wny03maX3/aaQcOKLfa0e3WDn4MIAAfA.jpg"
+        },
+        {
+          "src": "images/fashion/08.webp",
+          "thumbnail": "images/fashion/08-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Fashion",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfmOl2YZdVJVG/xu3fpwG8JiFv4IYfBC6RtIz1z4rwpmWg/YQM-hnMJ-yRWwnh6VSva4A.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "vyhodnoy-na-dache",
+      "title": "Выходной на даче",
+      "category": "portrait",
+      "source": "https://pereladova.wfolio.pro/vyhodnoy-na-dache",
+      "cover": {
+        "src": "images/vyhodnoy-na-dache/100.webp",
+        "thumbnail": "images/vyhodnoy-na-dache/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Выходной на даче",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iGI6qK9Edsxb/W4ijwSKgedmNRL1HwexBonNxUAX6QPXu/yeKge4eTYOScCTFEFen-Tw.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/vyhodnoy-na-dache/01.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/01-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfjVFVfFPVBms/rH0sNbod-xcIkrffXirwk5KNCRI6qQbG/hl2hFVdPjF_r_POOpVmIXA.jpg"
+        },
+        {
+          "src": "images/vyhodnoy-na-dache/02.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/02-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfmzkb2kGC3XO/vtFNgfQmBOaN_dKrKp_t5_xfekSCwWHM/RnhG4Hsbr5KxWaS3EmO6Jw.jpg"
+        },
+        {
+          "src": "images/vyhodnoy-na-dache/03.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/03-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfloy9-hs4oB3/hIxmgDEX8RxlDkNZ7E5EBkGDuvIoRU3E/SfND4vOJV6KmQuzJ_0E6IA.jpg"
+        },
+        {
+          "src": "images/vyhodnoy-na-dache/04.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/04-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKftVjhYKFyqG1/16owGT5K3fkUXCTLzetcL3jZY7P9X_Uz/QzUL_sA93QIM_0mJZnyfvw.jpg"
+        },
+        {
+          "src": "images/vyhodnoy-na-dache/05.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/05-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfpA68VwyxfkD/BqCmDCiVlGAOohjZqYPwLkP0AbgquscN/7ywSLdb8ALLmldfV0ePxxA.jpg"
+        },
+        {
+          "src": "images/vyhodnoy-na-dache/06.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfg5dk8c1OOMn/2zbj6ysgjkZtp43T3e9BBU_kPMPZhw7p/Z-JSJ0bWvYa8-HkLC3EggQ.jpg"
+        },
+        {
+          "src": "images/vyhodnoy-na-dache/07.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfvtYePD83G2h/k3n7xITgtQ6tdMgohr5uUrH9MWQD2JCI/-mI6b2WmthUVK1wxL-gBxQ.jpg"
+        },
+        {
+          "src": "images/vyhodnoy-na-dache/08.webp",
+          "thumbnail": "images/vyhodnoy-na-dache/08-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Выходной на даче",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfikFPyBxxx4o/0tj8IhxBIJcUfnYpqk6qBPwcETfDFtj5/Dbp7zh7C-ZR9wkyE1qMoZQ.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "varvare-5-let",
+      "title": "Варваре 5 лет",
+      "category": "events",
+      "source": "https://pereladova.wfolio.pro/varvare-5-let",
+      "cover": {
+        "src": "images/varvare-5-let/100.webp",
+        "thumbnail": "images/varvare-5-let/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Варваре 5 лет",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iExqs33ojArF/1vBqFmwmi0IFFtBGx_Whgwp3iuIIOg1i/OkXrUziZqZaiG0deMfSH7Q.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/varvare-5-let/01.webp",
+          "thumbnail": "images/varvare-5-let/01-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfuUeUIfvkZDp/P8vqdHltsZTvJDVVXmH6Swo7G5dsKFwB/KXKRUQdGH1_u-yMvByWwEA.jpg"
+        },
+        {
+          "src": "images/varvare-5-let/02.webp",
+          "thumbnail": "images/varvare-5-let/02-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfgerg59n07y1/pkUeHU_FCQXUcPA5sUYU4ZAwjCfadJtZ/irrMobr4oGHZ6UXUUYPUpA.jpg"
+        },
+        {
+          "src": "images/varvare-5-let/03.webp",
+          "thumbnail": "images/varvare-5-let/03-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfmADLeWFVwum/rkvADnGpr-JKCysv-pJuGwno0T1rBNtY/bOv98wziB2Xq6CTJa2JCTA.jpg"
+        },
+        {
+          "src": "images/varvare-5-let/04.webp",
+          "thumbnail": "images/varvare-5-let/04-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfiOVi7bwKcDI/ooqlBOonBL7YCBNIuKmu8AtpcEVxFKt_/E0Agu-rG7QMXbN4PveQcBQ.jpg"
+        },
+        {
+          "src": "images/varvare-5-let/05.webp",
+          "thumbnail": "images/varvare-5-let/05-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfhelVBw4c5Bk/z9JKT_zhU62vn8eoJpOw2ZaZL37_pfmj/yrm1szNkdENed6JzNiemQQ.jpg"
+        },
+        {
+          "src": "images/varvare-5-let/06.webp",
+          "thumbnail": "images/varvare-5-let/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfsPyOac7lSsL/kHYQwZIygSPcxGWMLj57KBlzOoNfuJQH/DfIec4mZNwk471CYZV1Bog.jpg"
+        },
+        {
+          "src": "images/varvare-5-let/07.webp",
+          "thumbnail": "images/varvare-5-let/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfpsT_AQF9rkl/Ott8pCWh6UjOz54O4VJyHtFspgVUkk5s/82bpKN1xbLADx6CxVtFXzA.jpg"
+        },
+        {
+          "src": "images/varvare-5-let/08.webp",
+          "thumbnail": "images/varvare-5-let/08-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Варваре 5 лет",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfrp1wU8jPySV/PEjcSkPp91lqyUVtqj9fCedUxHLliCih/d7I43ECAhIAk1akQ_d5tXg.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "loft-yula",
+      "title": "Лофт Юла",
+      "category": "events",
+      "source": "https://pereladova.wfolio.pro/loft-yula",
+      "cover": {
+        "src": "images/loft-yula/100.webp",
+        "thumbnail": "images/loft-yula/100-small.webp",
+        "width": 1280,
+        "height": 1600,
+        "alt": "Лофт Юла",
+        "source": "https://i.wfolio.ru/x/XEFEvE-Nu381pOR4oV5MYaKedzTrz-K0/ZHg_OJcJMp_XDHwTr00OuZne6s3uULET/eMjdyiD5EOo9urVhP6F0iNsccNu7LxQ4/l82bLQ26ORe4fVxVqiFM2s-9sRNzIlVl/tvpsMMP1Bf4M_rJN4HIVBQ.jpg"
+      },
+      "photos": [
+        {
+          "src": "images/loft-yula/01.webp",
+          "thumbnail": "images/loft-yula/01-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfsJSw077nXb_/vpE1pTAJLaJcGtndFrXDHtrIcGihcBnh/RdifqfR5zIv-M2gK7vPIMw.jpg"
+        },
+        {
+          "src": "images/loft-yula/02.webp",
+          "thumbnail": "images/loft-yula/02-small.webp",
+          "width": 1280,
+          "height": 853,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfq81pvSPZA9w/QW3Le1yjdHlCcH4CLXs5EYYaQqDn8jPE/Lw1FZqxDReljPfy2tvA5Kg.jpg"
+        },
+        {
+          "src": "images/loft-yula/03.webp",
+          "thumbnail": "images/loft-yula/03-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfoGEi_9WwV7d/mLq6rqef4ryXghGLQf1shjO7ndW-ECIe/4H9gqp5uPoV5BulwNi8mNw.jpg"
+        },
+        {
+          "src": "images/loft-yula/04.webp",
+          "thumbnail": "images/loft-yula/04-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfiqQwgk410hB/ZzMWjq575m0iUOTAUYQ4dUonMtKAhXhy/egj-zUejJLOa0SA1WF--PA.jpg"
+        },
+        {
+          "src": "images/loft-yula/05.webp",
+          "thumbnail": "images/loft-yula/05-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfsyBhEbONhF5/iN-979A9rbWQ1MJAXoCmOAwa1UWDYxGe/k5Zd3QdvbEMEv1GJ6PlKYw.jpg"
+        },
+        {
+          "src": "images/loft-yula/06.webp",
+          "thumbnail": "images/loft-yula/06-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfrUZEp7bA-4T/c8WxVwMMkvioh8Zl3oIoecWc14KGLGy8/hSq9PFegAeB2ndeGA7ByAA.jpg"
+        },
+        {
+          "src": "images/loft-yula/07.webp",
+          "thumbnail": "images/loft-yula/07-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfqoRtaW2sJEc/OdN1hO3RYhUo1cDUfw-58q8o-n8v_fAP/gbCBrmu26saug49BrDwhaQ.jpg"
+        },
+        {
+          "src": "images/loft-yula/08.webp",
+          "thumbnail": "images/loft-yula/08-small.webp",
+          "width": 1067,
+          "height": 1600,
+          "alt": "Лофт Юла",
+          "source": "https://i.wfolio.ru/x/cXPZPmu9lCw5tkRNat7JtyHjrPiZiclN/VJgIrluFLtZWGwzaT5FJ07DuSK__bTQA/VE0Wgpun9GXOGUwyDYUKfkqyFvl51kTB/wFSFjIJEK1D9u03rWMGzJOyeIsjIxyQt/FOdIkFP-iE66gf5dHp0rEg.jpg"
+        }
+      ]
+    }
+  ],
+  "portrait": {
+    "src": "images/profile/01.webp",
+    "thumbnail": "images/profile/01-small.webp",
+    "width": 900,
+    "height": 1600,
+    "alt": "Ксения Переладова",
+    "source": "https://i.wfolio.ru/x/hdvo9Y0WrB43Mjc4mVZ2Hnoxbby9QQAR/fO_uvR4dkHUMyN6CrRHZ2Zp1cWATsrQO/L-C5k4Fn8NqmXxD5Ub0L_l4JLgPn6RSo/xIcCv6xD6wowN7QA_1WhslzyPfxqLQoh/WXDg8RAj0hSH4VQkA8o5Nrq_GkkyaFyY/S2SZOEjLiaQUhXUakC_pZorNS2HGNIT0.jpg"
+  }
+}

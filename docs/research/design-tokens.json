@@ -1,0 +1,29 @@
+{
+  "observedAt": "2026-10-23",
+  "source": "https://www.richardprescott.com/",
+  "measured": {
+    "viewport": [1440, 900],
+    "paper": "#fefefe",
+    "ink": "#080808",
+    "navigationFontPx": 12,
+    "navigationLineHeightPx": 13.8,
+    "desktopEdgePx": 20,
+    "mobileEdgePx": 15,
+    "filterFontPxAt1440": 80,
+    "projectImageMaxHeightVh": 70,
+    "cursorDiameterPx": 14,
+    "breakpointsFromCss": [380, 600, 800, 1023, 1140, 1500, 1780]
+  },
+  "substitutions": {
+    "mono": "IBM Plex Mono 400, OFL, Latin + Cyrillic, self-hosted through Fontsource",
+    "display": "Arial/Helvetica 700, system font; commercial font of reference unidentified",
+    "noise": "own SVG turbulence, static",
+    "filters": "все, семья, портрет, праздники",
+    "branding": "Xenia / Ксения Переладова"
+  },
+  "calibratedApproximation": {
+    "transitionSeconds": 0.48,
+    "easing": "power3.out",
+    "shader": "velocity-dependent signed curve, settles at zero"
+  }
+}

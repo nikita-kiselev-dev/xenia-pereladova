@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "before": {
+    "height": 844,
+    "label": "Саша с сыном в отеле",
+    "stageHeight": 844,
+    "wordmarkTop": 53.22687530517578
+  },
+  "after": {
+    "height": 844,
+    "label": "Мама с дочкой",
+    "stageHeight": 844,
+    "wordmarkTop": 53.22687530517578
+  },
+  "transition": {
+    "height": 844,
+    "label": "Саша с сыном в отеле",
+    "stageHeight": 844,
+    "wordmarkTop": 53.22687530517578
+  }
+}

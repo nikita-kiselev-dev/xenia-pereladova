@@ -1,0 +1,142 @@
+[
+  {
+    "width": 320,
+    "height": 740,
+    "view": "overview",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "view": "list",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "view": "project",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "view": "info",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "view": "overview",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "view": "list",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "view": "project",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "view": "info",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "view": "overview",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "view": "list",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "view": "project",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "view": "info",
+    "overflow": 0,
+    "result": "PASS"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "view": "overview",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "view": "list",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "view": "project",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "view": "info",
+    "overflow": 0,
+    "result": "PASS"
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "view": "overview",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "view": "list",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "view": "project",
+    "overflow": -10,
+    "result": "PASS"
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "view": "info",
+    "overflow": 0,
+    "result": "PASS"
+  }
+]

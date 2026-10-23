@@ -1,0 +1,12 @@
+:root {
+  --paper: #fefefe;
+  --ink: #080808;
+  --muted: #707070;
+  --ghost: #8a8a8a;
+  --line: #dedede;
+  --mono: 'IBM Plex Mono', monospace;
+  --display: Arial, Helvetica, sans-serif;
+  --edge: 20px;
+  --ease: cubic-bezier(.55, 0, .1, 1);
+}
+@media (max-width: 600px) { :root { --edge: 15px; } }

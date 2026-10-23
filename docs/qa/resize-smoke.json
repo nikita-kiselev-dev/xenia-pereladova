@@ -1,0 +1,6 @@
+{
+  "name": "project resize preserves scroll",
+  "beforeY": 605,
+  "afterY": 662,
+  "result": "PASS"
+}

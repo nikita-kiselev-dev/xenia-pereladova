@@ -1,0 +1,151 @@
+{
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "viewport": [
+    390,
+    844
+  ],
+  "devicePixelRatio": 1,
+  "visibility": "visible",
+  "frames": 120,
+  "averageFrameMs": 6.2125,
+  "p95FrameMs": 6.2000000000000455,
+  "maxFrameMs": 12.100000000000023,
+  "transferBytes": 0,
+  "resources": [
+    {
+      "name": "http://localhost:4177/assets/fixture-BjBM1Mn3.js",
+      "encodedBodySize": 2733,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "encodedBodySize": 670,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/preload-helper-BLdHbfdN.js",
+      "encodedBodySize": 1519,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/main-CIFp4wFF.js",
+      "encodedBodySize": 27,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/main-DWnVS9UR.js",
+      "encodedBodySize": 134251,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/main-IwxGu0dl.css",
+      "encodedBodySize": 13808,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2",
+      "encodedBodySize": 14708,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/ibm-plex-mono-cyrillic-400-normal-BSMlKf0J.woff2",
+      "encodedBodySize": 8356,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/noise.svg",
+      "encodedBodySize": 250,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/sasha-s-synom-v-otele/100-small.webp",
+      "encodedBodySize": 31256,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/mama-s-dochkoy/100-small.webp",
+      "encodedBodySize": 19052,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/korolevskaya-dvoynya/100-small.webp",
+      "encodedBodySize": 20134,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/novogodnie-studiynye/100-small.webp",
+      "encodedBodySize": 39384,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/fashion/100-small.webp",
+      "encodedBodySize": 19376,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/vyhodnoy-na-dache/100-small.webp",
+      "encodedBodySize": 71402,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/varvare-5-let/100-small.webp",
+      "encodedBodySize": 24010,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/loft-yula/100-small.webp",
+      "encodedBodySize": 60512,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/sasha-s-synom-v-otele/04-small.webp",
+      "encodedBodySize": 29518,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/mama-s-dochkoy/04-small.webp",
+      "encodedBodySize": 26636,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/assets/gallery-renderer-BtIl_jeZ.js",
+      "encodedBodySize": 529438,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/sasha-s-synom-v-otele/100-small.webp",
+      "encodedBodySize": 31256,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/mama-s-dochkoy/100-small.webp",
+      "encodedBodySize": 19052,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/korolevskaya-dvoynya/100-small.webp",
+      "encodedBodySize": 20134,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/novogodnie-studiynye/100-small.webp",
+      "encodedBodySize": 39384,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/fashion/100-small.webp",
+      "encodedBodySize": 19376,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/vyhodnoy-na-dache/100-small.webp",
+      "encodedBodySize": 71402,
+      "transferSize": 0
+    },
+    {
+      "name": "http://localhost:4177/images/varvare-5-let/100-small.webp",
+      "encodedBodySize": 24010,
+      "transferSize": 0
+    }
+  ]
+}

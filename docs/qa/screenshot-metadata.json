@@ -1,0 +1,149 @@
+[
+  {
+    "file": "docs/qa/info-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "docs/qa/info-390.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 380,
+    "height": 999
+  },
+  {
+    "file": "docs/qa/info-768.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "file": "docs/qa/list-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1430,
+    "height": 894
+  },
+  {
+    "file": "docs/qa/list-390.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 380,
+    "height": 822
+  },
+  {
+    "file": "docs/qa/list-768.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 758,
+    "height": 1011
+  },
+  {
+    "file": "docs/qa/overview-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1430,
+    "height": 894
+  },
+  {
+    "file": "docs/qa/overview-390.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 380,
+    "height": 822
+  },
+  {
+    "file": "docs/qa/overview-768.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 758,
+    "height": 1011
+  },
+  {
+    "file": "docs/qa/project-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1430,
+    "height": 894
+  },
+  {
+    "file": "docs/qa/project-390.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 380,
+    "height": 822
+  },
+  {
+    "file": "docs/qa/project-768.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 758,
+    "height": 1011
+  },
+  {
+    "file": "docs/design-references/reference-info-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "docs/design-references/reference-info-390.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "docs/design-references/reference-info-768.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "file": "docs/design-references/reference-list-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "docs/design-references/reference-list-390.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "docs/design-references/reference-overview-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "docs/design-references/reference-overview-390.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "docs/design-references/reference-overview-768.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "file": "docs/design-references/reference-project-1440.png",
+    "exportedFormat": "JPEG",
+    "container": "PNG",
+    "width": 1440,
+    "height": 900
+  }
+]
