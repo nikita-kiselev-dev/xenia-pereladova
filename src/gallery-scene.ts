@@ -92,7 +92,6 @@ export class GalleryScene {
   nudge(delta: number): void {
     if (!this.enabled || this.moving || !Number.isFinite(delta)) return;
     this.target = this.clamp(this.target + delta);
-    if (reducedMotion.matches) this.offset = this.target;
   }
 
   /** 0…100: phase of one cycle, or position inside a short non-cyclic selection. */
@@ -122,6 +121,7 @@ export class GalleryScene {
     const key = this.prepare(mode, filter);
     this.offset = this.target = this.clamp(this.saved.get(key) ?? 0);
     const shown = this.shown();
+    if (reducedMotion.matches) return this.fade(timeline, this.tiles.filter(tile => before.get(tile)), shown);
     for (const tile of this.tiles) {
       const start = before.get(tile);
       const index = shown.indexOf(tile);
@@ -146,6 +146,7 @@ export class GalleryScene {
     this.moving?.kill();
     const timeline = this.timeline();
     const shown = this.shown();
+    if (reducedMotion.matches) return this.fade(timeline, [], shown);
     const heroTile = shown.find(tile => tile.key === hero?.key);
     const stackSize = (() => { const box = this.plan.boxes[0]; return box ? { w: box.h * .8, h: box.h } : { w: 100, h: 125 }; })();
     shown.forEach((tile, index) => {
@@ -173,6 +174,7 @@ export class GalleryScene {
     this.moving?.kill();
     this.saved.set(this.key(), this.offset);
     const timeline = this.timeline();
+    if (reducedMotion.matches) return this.fade(timeline, this.shown(), []);
     this.shown().forEach((tile, index) => {
       timeline.to(tile.box, { x: this.aside(tile.box), duration: .9, ease: 'power3.in' }, (index % 6) * .025)
         .to(tile.state, { opacity: 0, duration: .5 }, .35);
@@ -185,6 +187,7 @@ export class GalleryScene {
     this.moving?.kill();
     this.saved.set(this.key(), this.offset);
     const timeline = this.timeline();
+    if (reducedMotion.matches) return this.fade(timeline, this.shown(), []);
     for (const tile of this.shown()) {
       if (tile.key !== key) {
         timeline.to(tile.box, { x: this.aside(tile.box), duration: 1.4, ease: 'power4.inOut' }, 0);
@@ -231,7 +234,6 @@ export class GalleryScene {
     const viewport = axis === 'x' ? innerWidth : innerHeight;
     if (box[axis] >= 70 && box[axis] + size <= viewport - 90) return;
     this.target = this.clamp(this.offset + box[axis] + size / 2 - viewport / 2);
-    if (reducedMotion.matches) this.offset = this.target;
   }
 
   tick(dt: number, time: number): void {
@@ -286,7 +288,19 @@ export class GalleryScene {
     // Freeze each tile where it is drawn now: free boxes are screen coordinates, the scroll offset must not leak in.
     for (const tile of this.tiles) { tile.box = this.screen(tile); tile.free = true; }
     this.moving = timeline;
-    if (reducedMotion.matches) queueMicrotask(() => timeline.progress(1));
+    return timeline;
+  }
+
+  /** Reduced motion: nothing flies or bends. `out` fade where they are, then `into` (the shown tiles) fade in at their place. */
+  private fade(timeline: gsap.core.Timeline, out: Tile[], into: Tile[]): gsap.core.Timeline {
+    const at = out.length ? .35 : 0;
+    out.forEach(tile => { tile.el.hidden = false; });
+    into.forEach(tile => { if (!out.includes(tile)) tile.state.opacity = 0; });
+    if (out.length) timeline.to(out.map(tile => tile.state), { opacity: 0, duration: .35, ease: 'power1.in' }, 0);
+    if (into.length) {
+      timeline.call(() => into.forEach((tile, index) => { tile.box = this.toScreen(this.plan.boxes[index]); }), [], at)
+        .to(into.map(tile => tile.state), { opacity: 1, duration: .6, stagger: { amount: .3 }, ease: 'power1.out' }, at);
+    }
     return timeline;
   }
 

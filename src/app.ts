@@ -45,6 +45,7 @@ export class App {
   private progress: Counter;
   private hoverIndex: Counter;
   private mobileIndex: Counter;
+  private wordmark: HTMLElement;
   private photoCounter?: Counter;
   private intro?: { timeline: gsap.core.Timeline; skip: () => void; element: HTMLElement };
 
@@ -73,6 +74,7 @@ export class App {
     const holder = document.createElement('div');
     holder.innerHTML = galleryMarkup();
     this.scene = new GalleryScene(holder.firstElementChild as HTMLElement);
+    this.wordmark = this.scene.root.querySelector('.mobile-wordmark')!;
     this.mobileIndex = new Counter(this.scene.root.querySelector('[data-mobile-index]')!, 2);
     try { this.lastGallery = sessionStorage.getItem('xenia:gallery') || this.lastGallery; } catch { /* Storage may be disabled. */ }
     if (!isGallery(parseRoute(this.lastGallery))) this.lastGallery = '#/overview';
@@ -90,7 +92,8 @@ export class App {
     reducedMotion.addEventListener('change', this.onMotionChange);
     this.compact.addEventListener('change', this.onLayoutChange);
     document.querySelector('.skip-link')?.addEventListener('click', this.onSkip);
-    if (!reducedMotion.matches) this.lenis = new Lenis({ lerp: .085, smoothWheel: true, syncTouch: false });
+    // Wheel only: on touch Lenis adds nothing but non-passive touchmove listeners, which make native scrolling wait for every busy frame.
+    if (!reducedMotion.matches && !matchMedia('(hover: none), (pointer: coarse)').matches) this.lenis = new Lenis({ lerp: .085, smoothWheel: true, syncTouch: false });
     this.go(true);
     gsap.ticker.add(this.tick);
     if (!reducedMotion.matches) void this.mountRenderer();
@@ -201,13 +204,14 @@ export class App {
     this.root.dataset.phase = 'transition';
     this.setHover(undefined);
     const enter = () => { if (revision === this.revision) this.enter(from, revision); };
-    if (initial || !from || reducedMotion.matches || (isGallery(from) && isGallery(to))) { enter(); return; }
+    if (initial || !from || (isGallery(from) && isGallery(to))) { enter(); return; }
 
     let exit: gsap.core.Timeline;
     const tile = this.opening && this.scene.tiles.find(item => item.key === this.opening && item.shown);
     this.opening = undefined;
     this.openedKey = undefined;
-    const closing = from.page === 'project' && isGallery(to) && Boolean(this.sceneMode(to) && this.main.querySelector('.project-photo-frame'));
+    // Reduced motion: no scroll-back and no cover flight, the series simply fades out.
+    const closing = !reducedMotion.matches && from.page === 'project' && isGallery(to) && Boolean(this.sceneMode(to) && this.main.querySelector('.project-photo-frame'));
     if (closing) this.openedKey = this.lastOpened?.startsWith(`${from.slug}-`) ? this.lastOpened : `${from.slug}-0`;
     if (isGallery(from) && to.page === 'project' && tile && this.scene.enabled) {
       this.lastOpened = tile.key;
@@ -263,7 +267,6 @@ export class App {
     this.transition = timeline;
     if (from) timeline.timeScale(speed);
     timeline.call(() => { if (revision === this.revision) this.root.dataset.phase = 'ready'; });
-    if (reducedMotion.matches) timeline.progress(1);
     this.root.dataset.ready = 'true';
   }
 
@@ -318,7 +321,11 @@ export class App {
       // An interrupted entry/exit may have left chrome text hidden: bring back whatever is not visible yet.
       const chars = this.root.querySelectorAll('.site-header .char, .site-footer [data-reveal] .char');
       timeline.to(chars, { autoAlpha: 1, duration: .01, stagger: .005 }, 0).to(this.footer.querySelectorAll('.progress, .overview-focus'), { autoAlpha: 1, duration: .4 }, 0);
-      if (previousView !== route.page) timeline.add(this.footerSwap(route.page), 0);
+      if (previousView !== route.page) {
+        timeline.add(this.footerSwap(route.page), 0);
+        // The initials jump between their fixed (Overview) and in-flow (List) place: they rise in again there.
+        if (this.compact.matches) timeline.add(maskIn(this.wordmark), .15);
+      }
       else if (route.page === 'list') timeline.to(this.footer.querySelectorAll('[data-filter] .char'), { yPercent: 0, rotate: 0, autoAlpha: 1, duration: .6, ease: 'power2.out' }, 0);
     }
     if (how === 'intro' && this.startIntro(timeline)) timeline.pause();
@@ -334,9 +341,11 @@ export class App {
     if (show) {
       timeline.add(revealChars(reveal, 0, .03), 0).fromTo(counters, { autoAlpha: 0 }, { autoAlpha: 1, duration: .6 }, .3);
       if (this.footer.dataset.view === 'list') filters.forEach((filter, index) => timeline.add(maskIn(filter), index * .08));
+      if (this.compact.matches) timeline.add(maskIn(this.wordmark), .1);
     } else {
       timeline.add(hideChars(reveal), 0).to(counters, { autoAlpha: 0, duration: .4 }, 0);
       if (this.footer.dataset.view === 'list') filters.forEach(filter => timeline.add(maskOut(filter), 0));
+      if (this.compact.matches) timeline.add(maskOut(this.wordmark), 0);
     }
     return timeline;
   }
