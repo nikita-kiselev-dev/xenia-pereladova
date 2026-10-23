@@ -1,0 +1,453 @@
+(self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([
+  [327],
+  {
+    3308: function (e, t, a) {
+      Promise.resolve().then(a.bind(a, 4838));
+    },
+    4838: function (e, t, a) {
+      "use strict";
+      (a.r(t),
+        a.d(t, {
+          default: function () {
+            return m;
+          },
+        }));
+      var i = a(7437),
+        s = a(2964),
+        n = a(587),
+        c = a.n(n),
+        r = a(7048),
+        l = a(6648),
+        o = a(1056),
+        p = a(2265),
+        d = a(3523),
+        u = a(7138),
+        h = a(5506);
+      function m() {
+        let e = (0, p.useRef)(),
+          t = (0, p.useRef)(),
+          a = (0, p.useRef)(),
+          n = (0, p.useRef)(),
+          m = (0, p.useRef)(),
+          [f, v] = (0, p.useState)((0, s.fD)(new Date())),
+          {
+            isSingle: x,
+            clients: _,
+            setView: j,
+            setLenisEnabled: y,
+          } = (0, r.P)(),
+          [N, g] = (0, p.useState)(null),
+          w = async () => {
+            try {
+              let e = await fetch("".concat(s.or, "/api/info"), {
+                method: "GET",
+                next: { tags: ["all"] },
+              });
+              if (e.ok) {
+                let { data: t } = await e.json();
+                g(t.data.attributes);
+              }
+            } catch (e) {
+              console.error(e);
+            }
+          };
+        ((0, o.Z)(() => {
+          (x &&
+            d.p8.set([".webglWrapper", "nav", "#footerWrapper"], {
+              opacity: 1,
+              duration: 0,
+              delay: 1,
+              onComplete: () => {
+                window.innerWidth >= 1024 && j("overview");
+              },
+            }),
+            N &&
+              (x ||
+                d.p8.to(e.current, {
+                  opacity: 1,
+                  duration: window.innerWidth >= 800 ? 1 : 0.5,
+                  ease: "power2.out",
+                  delay: 0.55,
+                }),
+              e.current.querySelectorAll("[split]").forEach((e) => {
+                let t = (0, d.O)(e),
+                  a = d.p8.timeline({ paused: !0, delay: x ? 0.1 : 0.6 });
+                (a.to(t.chars, { visibility: "visible", stagger: 0.07 }),
+                  a.play());
+              }),
+              d.p8.to(a.current.querySelectorAll(".char"), {
+                y: 0,
+                rotate: 0,
+                duration: 1,
+                stagger: 0.07,
+                ease: "power2.inOut",
+                delay: x ? 0.1 : 0.7,
+              }),
+              d.p8.to(t.current.children, {
+                scale: 1,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power2.inOut",
+                delay: x ? 0.1 : 0.86,
+              }),
+              d.p8.set(
+                Array.from(e.current.querySelectorAll(".textMask > span")),
+                { autoAlpha: 1 },
+              )));
+        }, [e, x, N]),
+          (0, p.useEffect)(() => {
+            (y(!0), w());
+            let e = null;
+            return (
+              setTimeout(() => {
+                e = setInterval(() => {
+                  let e = new Date();
+                  v((0, s.fD)(e));
+                }, 1e3);
+              }, 3e3),
+              () => clearInterval(e)
+            );
+          }, []));
+        let A = (e) => {
+          let t = d.p8.timeline({ paused: !0 }),
+            a = e.current.querySelectorAll(".char");
+          (t.to(a, {
+            duration: 1.2,
+            stagger: 0.04,
+            scrambleText: {
+              text: "{original}",
+              chars: "upperCase",
+              speed: 0.1,
+            },
+          }),
+            t.play());
+        };
+        return (
+          N &&
+          (0, i.jsxs)("div", {
+            id: "contactPage",
+            className: c().contactWrapper,
+            ref: e,
+            style: { opacity: x ? null : 0 },
+            children: [
+              (0, i.jsxs)("div", {
+                className: c().navigation,
+                children: [
+                  (0, i.jsxs)("div", {
+                    className: c().timezone,
+                    children: [
+                      (0, i.jsx)("span", { split: "", children: "UK ZONE /" }),
+                      (0, i.jsx)("span", { split: "", children: f }),
+                    ],
+                  }),
+                  (0, i.jsx)("div", {
+                    className: c().navContact,
+                    children: (0, i.jsx)("span", {
+                      children: (0, i.jsx)(u.default, {
+                        href: "mailto:info@richardprescott.com",
+                        split: "",
+                        className: "link",
+                        children: "INFO@RICHARDPRESCOTT.COM",
+                      }),
+                    }),
+                  }),
+                  (0, i.jsxs)("div", {
+                    className: c().navAvailability,
+                    children: [
+                      (0, i.jsx)("span", {
+                        split: "",
+                        children: "AVAILABLE WORLDWIDE | ".concat(
+                          N.Availability,
+                        ),
+                      }),
+                      (0, i.jsx)("span", {
+                        split: "",
+                        children: "BASED IN UK",
+                      }),
+                    ],
+                  }),
+                  (0, i.jsx)("div", {
+                    className: c().closeWrapper,
+                    children: (0, i.jsx)(h.Z, { to: "/", children: "[CLOSE]" }),
+                  }),
+                ],
+              }),
+              (0, i.jsxs)("div", {
+                className: c().content,
+                children: [
+                  (0, i.jsx)("div", {
+                    className: c().colWrapper,
+                    children: (0, i.jsx)("h1", {
+                      className: "h1",
+                      ref: a,
+                      split: "",
+                      children: "Info",
+                    }),
+                  }),
+                  (0, i.jsxs)("div", {
+                    className: c().colWrapper,
+                    children: [
+                      (0, i.jsxs)("div", {
+                        className: c().availability,
+                        children: [
+                          (0, i.jsx)("span", {
+                            split: "",
+                            children: "AVAILABLE WORLDWIDE | ".concat(
+                              N.Availability,
+                            ),
+                          }),
+                          (0, i.jsx)("span", {
+                            split: "",
+                            children: "BASED IN UK",
+                          }),
+                        ],
+                      }),
+                      (0, i.jsxs)("div", {
+                        className: c().clients,
+                        children: [
+                          (0, i.jsx)("div", {
+                            className: c().label,
+                            children: (0, i.jsx)("span", {
+                              split: "",
+                              children: "CLIENTS:",
+                            }),
+                          }),
+                          _.map((e, t) =>
+                            (0, i.jsx)(
+                              "div",
+                              {
+                                className: c().client,
+                                children: (0, i.jsx)("span", {
+                                  split: "",
+                                  children: e.attributes.Title,
+                                }),
+                              },
+                              "client-".concat(t),
+                            ),
+                          ),
+                        ],
+                      }),
+                      (0, i.jsxs)("div", {
+                        className: c().awards,
+                        children: [
+                          (0, i.jsx)("div", {
+                            className: c().label,
+                            children: (0, i.jsx)("span", {
+                              split: "",
+                              children: "AWARDS:",
+                            }),
+                          }),
+                          N.Awards.map((e, t) =>
+                            (0, i.jsx)(
+                              "div",
+                              {
+                                className: c().award,
+                                children: (0, i.jsx)("span", {
+                                  split: "",
+                                  children: e.Award,
+                                }),
+                              },
+                              "award-".concat(t),
+                            ),
+                          ),
+                        ],
+                      }),
+                      (0, i.jsx)("div", {
+                        className: c().action,
+                        children: (0, i.jsx)("a", {
+                          href: "mailto:info@richardprescott.com",
+                          split: "",
+                          children: "INFO@RICHARDPRESCOTT.COM",
+                        }),
+                      }),
+                    ],
+                  }),
+                  (0, i.jsx)("div", {
+                    className: c().colWrapper,
+                    children: (0, i.jsx)("div", {
+                      className: c().imageWrapper,
+                      ref: t,
+                      children: (0, i.jsx)(l.default, {
+                        src: ""
+                          .concat(s.AC)
+                          .concat(N.Image.data.attributes.url),
+                        width: 148,
+                        height: 200,
+                        alt: "Richard Prescott - Contact",
+                      }),
+                    }),
+                  }),
+                ],
+              }),
+              (0, i.jsxs)("div", {
+                className: c().footer,
+                children: [
+                  (0, i.jsxs)("div", {
+                    className: c().copyright,
+                    children: [
+                      (0, i.jsx)("span", {
+                        split: "",
+                        children: "ALL RIGHTS RESERVED",
+                      }),
+                      (0, i.jsx)("span", {
+                        split: "",
+                        children: "RICHARD PRESCOTT \xa92024",
+                      }),
+                    ],
+                  }),
+                  (0, i.jsxs)("div", {
+                    className: c().info,
+                    children: [
+                      (0, i.jsx)("span", {
+                        split: "",
+                        children: "ADVERTISING",
+                      }),
+                      (0, i.jsx)("span", { split: "", children: "COMMERCIAL" }),
+                      (0, i.jsx)("span", {
+                        split: "",
+                        children: "EDITORIAL PHOTOGRAPHY",
+                      }),
+                    ],
+                  }),
+                  (0, i.jsxs)("div", {
+                    className: c().privacy,
+                    children: [
+                      (0, i.jsx)("a", {
+                        href: "/privacy-policy",
+                        target: "_blank",
+                        split: "",
+                        className: "link",
+                        ref: n,
+                        onMouseEnter: () => A(n),
+                        children: "PRIVACY POLICY",
+                      }),
+                      (0, i.jsx)("a", {
+                        className: "cookie-toggle link",
+                        split: "",
+                        ref: m,
+                        onClick: () =>
+                          document
+                            .querySelector(".iubenda-cs-preferences-link")
+                            .click(),
+                        onMouseEnter: () => A(m),
+                        children: "COOKIE POLICY",
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+              (0, i.jsx)("div", { className: "noise" }),
+            ],
+          })
+        );
+      }
+      a(1877);
+    },
+    5506: function (e, t, a) {
+      "use strict";
+      a.d(t, {
+        Z: function () {
+          return l;
+        },
+      });
+      var i = a(7437),
+        s = a(3523),
+        n = a(6463),
+        c = a(2265),
+        r = a(7048);
+      function l(e) {
+        let { to: t = !1, children: a, callback: l = !1 } = e,
+          o = (0, c.useRef)(),
+          p = (0, n.useRouter)(),
+          d = (0, n.usePathname)(),
+          { view: u } = (0, r.P)();
+        return (0, i.jsx)("span", {
+          onClick: () => {
+            document.getElementById("filters");
+            let e = document.getElementById("mobileLogo"),
+              a = document.getElementById("mobileProjectsWrapper"),
+              i = document.getElementById("contactPage"),
+              n = document.querySelector(".webglWrapper");
+            if (t !== d) {
+              if (i) {
+                let c = s.p8.timeline();
+                "/contact" == d
+                  ? c.to(i, {
+                      opacity: 0,
+                      duration: window.innerWidth >= 800 ? 1 : 0.5,
+                      ease: "power4.out",
+                      overwrite: !0,
+                      onComplete: () => {
+                        (window.innerWidth <= 600 &&
+                          s.p8.set([e, a], { display: "flex" }),
+                          t && p.push(t));
+                      },
+                    })
+                  : c
+                      .to(n, {
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: "power4.in",
+                        overwrite: !0,
+                        onComplete: () => {
+                          (t && p.push(t), l && l());
+                        },
+                      })
+                      .to(i, {
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: "power4.in",
+                        overwrite: !0,
+                      });
+              } else t ? t && p.push(t) : l && l();
+            }
+          },
+          split: "",
+          className: "link",
+          ref: o,
+          onMouseEnter: (e) => {
+            let t = s.p8.timeline({ paused: !0 }),
+              a = o.current.querySelectorAll(".char");
+            (t.to(a, {
+              duration: 1.2,
+              stagger: 0.04,
+              scrambleText: {
+                text: "{original}",
+                chars: "upperCase",
+                speed: 0.1,
+              },
+            }),
+              t.play());
+          },
+          children: a,
+        });
+      }
+    },
+    587: function (e) {
+      e.exports = {
+        contactWrapper: "contact_contactWrapper__xuMnp",
+        navigation: "contact_navigation__f3WmI",
+        timezone: "contact_timezone__KTVws",
+        navContact: "contact_navContact__VZbSj",
+        navAvailability: "contact_navAvailability__9oJ1D",
+        closeWrapper: "contact_closeWrapper__gpo2P",
+        content: "contact_content__ZTcKM",
+        colWrapper: "contact_colWrapper__GUXqG",
+        availability: "contact_availability__6dbaF",
+        action: "contact_action__WegT5",
+        awards: "contact_awards__QfI30",
+        imageWrapper: "contact_imageWrapper__O8_ef",
+        footer: "contact_footer__NBuJm",
+        copyright: "contact_copyright__MWbOp",
+        info: "contact_info__eHMyf",
+        privacy: "contact_privacy__JIMQy",
+      };
+    },
+  },
+  function (e) {
+    (e.O(0, [162, 922, 661, 138, 819, 877, 716, 971, 23, 744], function () {
+      return e((e.s = 3308));
+    }),
+      (_N_E = e.O()));
+  },
+]);

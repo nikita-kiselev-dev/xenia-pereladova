@@ -1,0 +1,29 @@
+{
+  "note": "Browser screenshot exports; original raster dimensions retained. Overview states are not synchronized by position or time.",
+  "images": [
+    {
+      "file": "current-info-1440.png",
+      "rasterWidth": 1440,
+      "rasterHeight": 900,
+      "format": "PNG"
+    },
+    {
+      "file": "current-overview-1440.png",
+      "rasterWidth": 1430,
+      "rasterHeight": 894,
+      "format": "PNG"
+    },
+    {
+      "file": "reference-info-1440.png",
+      "rasterWidth": 1440,
+      "rasterHeight": 900,
+      "format": "PNG"
+    },
+    {
+      "file": "reference-overview-1440.png",
+      "rasterWidth": 1440,
+      "rasterHeight": 900,
+      "format": "PNG"
+    }
+  ]
+}

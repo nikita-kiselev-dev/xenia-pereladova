@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --experimental-strip-types --test tests/navigation.test.ts tests/assets.test.mjs",
+    "test": "node --experimental-strip-types --test tests/navigation.test.ts tests/gallery-layout.test.ts tests/assets.test.mjs",
     "build:qa": "vite build --mode qa",
     "test:unit": "node --experimental-strip-types --test tests/navigation.test.ts"
   },

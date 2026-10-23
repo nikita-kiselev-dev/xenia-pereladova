@@ -1,0 +1,634 @@
+{
+  "base": "http://127.0.0.1:4173/",
+  "chrome": "headless, SwiftShader WebGL",
+  "captured": "2026-10-23T17:53:27.815Z",
+  "results": [
+    {
+      "name": "v01-cold-entry",
+      "viewport": "1440x900",
+      "frames": 105,
+      "seconds": 7.01,
+      "averageFps": 15,
+      "marks": [
+        {
+          "at": 9,
+          "action": "wait",
+          "args": [
+            7500
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "BODY"
+      },
+      "errors": []
+    },
+    {
+      "name": "v01-warm-entry",
+      "viewport": "1440x900",
+      "frames": 35,
+      "seconds": 3.38,
+      "averageFps": 10.4,
+      "marks": [
+        {
+          "at": 10,
+          "action": "wait",
+          "args": [
+            3500
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "BODY"
+      },
+      "errors": []
+    },
+    {
+      "name": "v01-skip",
+      "viewport": "1440x900",
+      "frames": 85,
+      "seconds": 4.49,
+      "averageFps": 18.9,
+      "marks": [
+        {
+          "at": 8,
+          "action": "wait",
+          "args": [
+            1200
+          ]
+        },
+        {
+          "at": 1219,
+          "action": "click",
+          "args": [
+            ".intro-skip"
+          ]
+        },
+        {
+          "at": 1538,
+          "action": "wait",
+          "args": [
+            3000
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "transition",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "BODY"
+      },
+      "errors": []
+    },
+    {
+      "name": "v03-hover",
+      "viewport": "1440x900",
+      "frames": 129,
+      "seconds": 11.83,
+      "averageFps": 10.9,
+      "marks": [
+        {
+          "at": 8,
+          "action": "wait",
+          "args": [
+            3000
+          ]
+        },
+        {
+          "at": 3012,
+          "action": "move",
+          "args": [
+            ".photo-link[data-tile=\"vyhodnoy-na-dache-0\"] .photo-frame",
+            12
+          ]
+        },
+        {
+          "at": 4171,
+          "action": "wait",
+          "args": [
+            1600
+          ]
+        },
+        {
+          "at": 5782,
+          "action": "move",
+          "args": [
+            [
+              700,
+              470
+            ],
+            8
+          ]
+        },
+        {
+          "at": 6414,
+          "action": "wait",
+          "args": [
+            1400
+          ]
+        },
+        {
+          "at": 7817,
+          "action": "move",
+          "args": [
+            ".photo-link[data-tile=\"fashion-0\"] .photo-frame",
+            6
+          ]
+        },
+        {
+          "at": 8350,
+          "action": "move",
+          "args": [
+            ".photo-link[data-tile=\"varvare-5-let-0\"] .photo-frame",
+            6
+          ]
+        },
+        {
+          "at": 8893,
+          "action": "move",
+          "args": [
+            ".photo-link[data-tile=\"sasha-s-synom-v-otele-0\"] .photo-frame",
+            6
+          ]
+        },
+        {
+          "at": 9438,
+          "action": "move",
+          "args": [
+            ".photo-link[data-tile=\"mama-s-dochkoy-0\"] .photo-frame",
+            6
+          ]
+        },
+        {
+          "at": 9965,
+          "action": "move",
+          "args": [
+            ".photo-link[data-tile=\"loft-yula-0\"] .photo-frame",
+            6
+          ]
+        },
+        {
+          "at": 10538,
+          "action": "wait",
+          "args": [
+            1500
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "BODY"
+      },
+      "errors": []
+    },
+    {
+      "name": "v04-scroll",
+      "viewport": "1440x900",
+      "frames": 235,
+      "seconds": 20.68,
+      "averageFps": 11.4,
+      "marks": [
+        {
+          "at": 7,
+          "action": "wait",
+          "args": [
+            3000
+          ]
+        },
+        {
+          "at": 3008,
+          "action": "wheel",
+          "args": [
+            120,
+            8,
+            25
+          ]
+        },
+        {
+          "at": 5094,
+          "action": "wait",
+          "args": [
+            900
+          ]
+        },
+        {
+          "at": 6010,
+          "action": "wheel",
+          "args": [
+            400,
+            6,
+            16
+          ]
+        },
+        {
+          "at": 7591,
+          "action": "wait",
+          "args": [
+            300
+          ]
+        },
+        {
+          "at": 7900,
+          "action": "wheel",
+          "args": [
+            -400,
+            6,
+            16
+          ]
+        },
+        {
+          "at": 9581,
+          "action": "wait",
+          "args": [
+            1500
+          ]
+        },
+        {
+          "at": 11097,
+          "action": "wheel",
+          "args": [
+            300,
+            30,
+            16
+          ]
+        },
+        {
+          "at": 19031,
+          "action": "wait",
+          "args": [
+            1800
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "BODY"
+      },
+      "errors": []
+    },
+    {
+      "name": "v05-sections",
+      "viewport": "1440x900",
+      "frames": 401,
+      "seconds": 23.3,
+      "averageFps": 17.2,
+      "marks": [
+        {
+          "at": 11,
+          "action": "wait",
+          "args": [
+            3000
+          ]
+        },
+        {
+          "at": 3023,
+          "action": "click",
+          "args": [
+            "[data-nav=\"list\"]"
+          ]
+        },
+        {
+          "at": 3585,
+          "action": "wait",
+          "args": [
+            2600
+          ]
+        },
+        {
+          "at": 6197,
+          "action": "wheel",
+          "args": [
+            200,
+            8,
+            20
+          ]
+        },
+        {
+          "at": 8558,
+          "action": "wait",
+          "args": [
+            1200
+          ]
+        },
+        {
+          "at": 9765,
+          "action": "click",
+          "args": [
+            "[data-filter=\"family\"]"
+          ]
+        },
+        {
+          "at": 10394,
+          "action": "wait",
+          "args": [
+            2400
+          ]
+        },
+        {
+          "at": 12803,
+          "action": "click",
+          "args": [
+            "[data-nav=\"info\"]"
+          ]
+        },
+        {
+          "at": 13408,
+          "action": "wait",
+          "args": [
+            3600
+          ]
+        },
+        {
+          "at": 17008,
+          "action": "click",
+          "args": [
+            "[data-close]"
+          ]
+        },
+        {
+          "at": 17266,
+          "action": "wait",
+          "args": [
+            3000
+          ]
+        },
+        {
+          "at": 20268,
+          "action": "click",
+          "args": [
+            "[data-nav=\"overview\"]"
+          ]
+        },
+        {
+          "at": 20877,
+          "action": "wait",
+          "args": [
+            2600
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview?filter=family",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "A"
+      },
+      "errors": []
+    },
+    {
+      "name": "v06-series",
+      "viewport": "1440x900",
+      "frames": 259,
+      "seconds": 14.9,
+      "averageFps": 17.4,
+      "marks": [
+        {
+          "at": 8,
+          "action": "wait",
+          "args": [
+            3000
+          ]
+        },
+        {
+          "at": 3014,
+          "action": "wheel",
+          "args": [
+            150,
+            6,
+            20
+          ]
+        },
+        {
+          "at": 4600,
+          "action": "wait",
+          "args": [
+            1200
+          ]
+        },
+        {
+          "at": 5800,
+          "action": "click",
+          "args": [
+            ".photo-link[data-tile=\"vyhodnoy-na-dache-0\"] .photo-frame"
+          ]
+        },
+        {
+          "at": 6336,
+          "action": "wait",
+          "args": [
+            3500
+          ]
+        },
+        {
+          "at": 9845,
+          "action": "wheel",
+          "args": [
+            200,
+            6,
+            20
+          ]
+        },
+        {
+          "at": 10322,
+          "action": "wait",
+          "args": [
+            1200
+          ]
+        },
+        {
+          "at": 11533,
+          "action": "key",
+          "args": [
+            "Escape"
+          ]
+        },
+        {
+          "at": 11558,
+          "action": "wait",
+          "args": [
+            3500
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "vyhodnoy-na-dache"
+      },
+      "errors": []
+    },
+    {
+      "name": "v08-reduced-motion",
+      "viewport": "1440x900",
+      "frames": 25,
+      "seconds": 4.44,
+      "averageFps": 5.6,
+      "marks": [
+        {
+          "at": 10,
+          "action": "wait",
+          "args": [
+            1500
+          ]
+        },
+        {
+          "at": 1516,
+          "action": "wheel",
+          "args": [
+            300,
+            3,
+            100
+          ]
+        },
+        {
+          "at": 1919,
+          "action": "wait",
+          "args": [
+            800
+          ]
+        },
+        {
+          "at": 2727,
+          "action": "click",
+          "args": [
+            ".photo-link[data-tile=\"fashion-0\"] .photo-frame"
+          ]
+        },
+        {
+          "at": 2928,
+          "action": "wait",
+          "args": [
+            1200
+          ]
+        },
+        {
+          "at": 4134,
+          "action": "key",
+          "args": [
+            "Escape"
+          ]
+        },
+        {
+          "at": 4145,
+          "action": "wait",
+          "args": [
+            1200
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 0,
+        "intro": false,
+        "grain": "none",
+        "focus": "fashion"
+      },
+      "errors": []
+    },
+    {
+      "name": "v04-phone-strip",
+      "viewport": "390x844",
+      "frames": 236,
+      "seconds": 7.77,
+      "averageFps": 30.4,
+      "marks": [
+        {
+          "at": 17,
+          "action": "wait",
+          "args": [
+            3000
+          ]
+        },
+        {
+          "at": 3026,
+          "action": "swipe",
+          "args": [
+            [
+              330,
+              650
+            ],
+            [
+              40,
+              650
+            ],
+            14
+          ]
+        },
+        {
+          "at": 4149,
+          "action": "wait",
+          "args": [
+            1500
+          ]
+        },
+        {
+          "at": 5654,
+          "action": "swipe",
+          "args": [
+            [
+              60,
+              650
+            ],
+            [
+              350,
+              650
+            ],
+            8
+          ]
+        },
+        {
+          "at": 6415,
+          "action": "wait",
+          "args": [
+            1500
+          ]
+        }
+      ],
+      "final": {
+        "hash": "#/overview",
+        "page": "overview",
+        "phase": "ready",
+        "canvas": 1,
+        "intro": false,
+        "grain": "grain",
+        "focus": "BODY"
+      },
+      "errors": [],
+      "note": "recaptured after overscroll-behavior fix"
+    }
+  ]
+}

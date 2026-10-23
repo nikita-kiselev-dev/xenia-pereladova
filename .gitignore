@@ -7,3 +7,6 @@ playwright-report/
 .asset-cache/
 .qa-dist/
 .prefix-dist/
+
+# Motion clips are large (grain); regenerate with tests/motion-capture.mjs
+docs/qa/motion/*.mp4

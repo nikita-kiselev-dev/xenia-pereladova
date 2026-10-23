@@ -1,76 +1,97 @@
 import { gsap } from 'gsap';
 import Lenis from 'lenis';
 import { categories, profile, projects } from './data/projects';
+import { GalleryScene } from './gallery-scene';
+import type { Box, Mode } from './gallery-layout';
+import { Counter, hideChars, maskIn, maskOut, reducedMotion, revealChars, scramble } from './motion';
 import { galleryHash, parseRoute, type Route } from './navigation';
-import { galleryMarkup } from './views/gallery';
+import { categoryName, escapeHtml, galleryMarkup, projectNumber } from './views/gallery';
 import { projectMarkup } from './views/project';
 import { infoMarkup } from './views/info';
 import type { GalleryRenderer } from './webgl/gallery-renderer';
 
+type GalleryRoute = Extract<Route, { page: 'overview' | 'list' }>;
 type Position = { y: number; slug?: string };
-const isGallery = (route: Route): route is Extract<Route, { page: 'overview' | 'list' }> => route.page === 'overview' || route.page === 'list';
+const isGallery = (route: Route): route is GalleryRoute => route.page === 'overview' || route.page === 'list';
+const pad = (value: number) => String(value).padStart(2, '0');
 
 export class App {
   private route = parseRoute(location.hash);
+  private shownRoute?: Route;
   private renderedHash = location.hash || '#/overview';
   private main: HTMLElement;
   private footer: HTMLElement;
   private header: HTMLElement;
-  private progress: HTMLElement;
   private lenis?: Lenis;
   private renderer?: GalleryRenderer;
-  private timeline?: gsap.core.Timeline;
+  private scene: GalleryScene;
+  private transition?: gsap.core.Timeline;
   private revision = 0;
   private lastGallery = '#/overview';
   private positions = new Map<string, Position>();
-  private reduced = matchMedia('(prefers-reduced-motion: reduce)');
   private compact = matchMedia('(max-width: 1023px)');
-  private previousScroll = 0;
   private photoObserver?: IntersectionObserver;
-  private resizeObserver: ResizeObserver;
-  private listTrack?: HTMLElement;
-  private listDistance = 0;
-  private activeSlug?: string;
-  private mobileActiveSlug?: string;
+  private opening?: string;
+  private lastOpened?: string;
+  private openedKey?: string;
+  private returnRect?: Box;
+  private cursorEl: HTMLElement;
+  private hovered?: GalleryScene['tiles'][number];
+  private mobileSlug?: string;
+  private pointer = { x: -100, y: -100, inside: false, mouse: false };
+  private cursor = { x: -100, y: -100 };
+  private progress: Counter;
+  private hoverIndex: Counter;
+  private mobileIndex: Counter;
+  private photoCounter?: Counter;
+  private intro?: { timeline: gsap.core.Timeline; skip: () => void; element: HTMLElement };
 
   constructor(private root: HTMLElement) {
     history.scrollRestoration = 'manual';
-    root.innerHTML = `<header class="site-header">
-      <a class="site-name" href="#/overview">${profile.name}</a>
-      <p class="site-bio">Фотограф<br>${profile.location}</p>
+    root.innerHTML = `<header class="site-header"><div class="edge-blur" aria-hidden="true"><i></i><i></i><i></i></div>
+      <a class="site-name" href="#/overview" data-reveal data-scramble>${profile.name}</a>
+      <p class="site-bio" data-reveal>Фотограф<br>${profile.location}</p>
       <nav class="site-nav" aria-label="Основная навигация">
-        <a data-nav="overview" href="#/overview">Обзор</a><span class="nav-slash" aria-hidden="true">/</span><a data-nav="list" href="#/list">Список</a>
-        <a data-nav="info" class="info-nav" href="#/info">/ Обо мне</a>
-      </nav><a class="site-contact text-link" href="${profile.telegram}" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+        <a data-nav="overview" href="#/overview" data-reveal data-scramble>Обзор</a><span class="nav-slash" aria-hidden="true">/</span><a data-nav="list" href="#/list" data-reveal data-scramble>Список</a>
+        <a data-nav="info" class="info-nav" href="#/info" data-reveal data-scramble>/ Обо мне</a>
+      </nav><a class="site-contact text-link" href="${profile.telegram}" target="_blank" rel="noopener noreferrer" data-reveal data-scramble>Написать в Telegram</a>
     </header><main id="main" tabindex="-1"></main>
-    <footer class="site-footer"><a class="copyright" href="#/info">© ${new Date().getFullYear()}</a>
-      <div class="filters" aria-label="Категории фотографий">${categories.map(category => `<button data-filter="${category.id}" aria-pressed="false">${category.title}</button>`).join('')}</div>
-      <div class="overview-focus" aria-hidden="true"><span data-hover-index>00</span><p data-hover-caption></p></div>
-      <span class="progress" aria-label="Просмотрено">[000%]</span>
+    <footer class="site-footer"><div class="edge-blur" aria-hidden="true"><i></i><i></i><i></i></div><a class="copyright" href="#/info" data-reveal data-scramble>© ${new Date().getFullYear()}</a>
+      <div class="filters" aria-label="Категории фотографий">${categories.map((category, index) => `<button data-filter="${category.id}" aria-pressed="false" aria-label="${category.title}">${category.title}${index < categories.length - 1 ? ',' : ''}</button>`).join('')}</div>
+      <div class="overview-focus" aria-hidden="true"><span class="hover-index" data-hover-index></span><p data-hover-caption></p></div>
+      <span class="progress" aria-label="Просмотрено"><span aria-hidden="true">[</span><span data-progress></span><span aria-hidden="true">%]</span></span>
     </footer><div class="noise" aria-hidden="true"></div><div class="cursor" aria-hidden="true"></div>
     <p class="sr-only" role="status" aria-live="polite" data-status></p>`;
     this.main = root.querySelector('main')!;
     this.footer = root.querySelector('.site-footer')!;
     this.header = root.querySelector('.site-header')!;
-    this.progress = root.querySelector('.progress')!;
+    this.cursorEl = root.querySelector('.cursor')!;
+    this.progress = new Counter(root.querySelector('[data-progress]')!, 3, value => `${Number(value)}%`);
+    this.hoverIndex = new Counter(root.querySelector('[data-hover-index]')!, 2);
+    const holder = document.createElement('div');
+    holder.innerHTML = galleryMarkup();
+    this.scene = new GalleryScene(holder.firstElementChild as HTMLElement);
+    this.mobileIndex = new Counter(this.scene.root.querySelector('[data-mobile-index]')!, 2);
     try { this.lastGallery = sessionStorage.getItem('xenia:gallery') || this.lastGallery; } catch { /* Storage may be disabled. */ }
     if (!isGallery(parseRoute(this.lastGallery))) this.lastGallery = '#/overview';
     root.addEventListener('click', this.onClick);
     root.addEventListener('focusin', this.onFocusIn);
+    root.addEventListener('focusout', this.onFocusOut);
+    root.addEventListener('pointerover', this.onPointerOver);
     root.addEventListener('error', this.onImageError, true);
     window.addEventListener('hashchange', this.onHashChange);
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('resize', this.onResize);
-    document.addEventListener('visibilitychange', this.onVisibilityChange);
-    this.reduced.addEventListener('change', this.onMotionChange);
+    window.addEventListener('pointermove', this.onPointerMove);
+    window.addEventListener('blur', this.onPointerLeave);
+    document.documentElement.addEventListener('pointerleave', this.onPointerLeave);
+    reducedMotion.addEventListener('change', this.onMotionChange);
     this.compact.addEventListener('change', this.onLayoutChange);
     document.querySelector('.skip-link')?.addEventListener('click', this.onSkip);
-    this.resizeObserver = new ResizeObserver(() => this.measureList());
-    this.configureScroll();
-    this.render(true);
+    if (!reducedMotion.matches) this.lenis = new Lenis({ lerp: .085, smoothWheel: true, syncTouch: false });
+    this.go(true);
     gsap.ticker.add(this.tick);
-    this.setupCursor();
-    void this.showIntro();
+    if (!reducedMotion.matches) void this.mountRenderer();
     if (import.meta.hot) import.meta.hot.dispose(() => this.dispose());
   }
 
@@ -83,9 +104,9 @@ export class App {
   };
 
   private rememberPosition() {
-    if (!isGallery(this.route)) return;
+    if (!this.shownRoute || !isGallery(this.shownRoute)) return;
     const focused = document.activeElement instanceof HTMLElement ? document.activeElement.closest<HTMLElement>('[data-project]')?.dataset.project : undefined;
-    this.positions.set(this.renderedHash, { y: window.scrollY, slug: focused });
+    this.positions.set(this.renderedHash, { y: window.scrollY, slug: focused || this.positions.get(this.renderedHash)?.slug });
   }
 
   private onClick = (event: MouseEvent) => {
@@ -94,22 +115,22 @@ export class App {
     if (target.closest('[data-close]')) { this.close(); return; }
     const filter = target.closest<HTMLButtonElement>('[data-filter]');
     if (filter && isGallery(this.route)) {
-      this.rememberPosition();
-      location.hash = galleryHash(this.route.page, filter.dataset.filter as typeof this.route.filter);
+      location.hash = galleryHash(this.route.page, filter.dataset.filter as GalleryRoute['filter']);
       return;
     }
     const link = target.closest<HTMLAnchorElement>('a[href^="#/"]');
     if (link && !event.ctrlKey && !event.metaKey && !event.shiftKey && event.button === 0) {
       event.preventDefault();
-      this.rememberPosition();
+      this.opening = link.dataset.tile;
+      if (link.dataset.project) this.positions.set(this.renderedHash, { y: window.scrollY, slug: link.dataset.project });
       if (link.hash !== location.hash) location.hash = link.hash;
     }
   };
 
   private onHashChange = () => {
     this.rememberPosition();
-    const next = parseRoute(location.hash);
     const previous = this.route;
+    const next = parseRoute(location.hash);
     if (isGallery(previous)) {
       this.lastGallery = this.renderedHash;
       try { sessionStorage.setItem('xenia:gallery', this.lastGallery); } catch { /* Optional persistence. */ }
@@ -117,7 +138,7 @@ export class App {
     }
     this.route = next;
     this.renderedHash = location.hash;
-    this.render(false, previous);
+    this.go(false);
   };
 
   private close() {
@@ -126,7 +147,13 @@ export class App {
   }
 
   private onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && !isGallery(this.route)) this.close();
+    if (event.key === 'Escape' && !isGallery(this.route)) { this.close(); return; }
+    if (!this.scene.enabled || event.altKey || event.ctrlKey || event.metaKey) return;
+    const steps: Record<string, number> = { ArrowDown: .35, ArrowRight: .35, PageDown: .8, ArrowUp: -.35, ArrowLeft: -.35, PageUp: -.8 };
+    if (event.key in steps) {
+      event.preventDefault();
+      this.scene.nudge(steps[event.key] * (this.scene.mode === 'overview' ? innerHeight : innerWidth));
+    }
   };
 
   private onSkip = (event: Event) => { event.preventDefault(); this.main.focus({ preventScroll: true }); };
@@ -134,122 +161,263 @@ export class App {
   private onFocusIn = (event: FocusEvent) => {
     if (!(event.target instanceof HTMLElement)) return;
     const link = event.target.closest<HTMLElement>('.photo-link');
-    if (this.route.page === 'overview') this.setActiveProject(link?.dataset.project);
-    if (!this.listTrack || !link) return;
-    const rect = link.getBoundingClientRect();
-    if (rect.left < 20 || rect.right > innerWidth - 20) this.setScroll(Math.max(0, Math.min(this.listDistance, window.scrollY + rect.left - (innerWidth - rect.width) / 2)));
+    if (link && this.scene.enabled) this.scene.bringIntoView(link);
+    if (link && !this.pointer.mouse) this.setHover(this.scene.tiles.find(tile => tile.el === link));
   };
 
-  private configureScroll() {
-    this.lenis?.destroy();
-    this.lenis = undefined;
-    if (!this.reduced.matches) this.lenis = new Lenis({ lerp: .085, smoothWheel: true, syncTouch: false });
-  }
+  private onFocusOut = () => { if (!this.pointer.mouse) this.setHover(undefined); };
+
+  private onPointerOver = (event: PointerEvent) => {
+    const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-scramble]') : null;
+    if (target && event.pointerType === 'mouse' && !target.contains(event.relatedTarget as Node | null)) scramble(target);
+  };
 
   private onMotionChange = () => {
-    const revision = ++this.revision;
-    this.timeline?.progress(1).kill();
-    this.root.dataset.phase = 'ready';
-    this.configureScroll();
-    this.renderer?.dispose();
-    this.renderer = undefined;
-    if (this.reduced.matches) this.root.querySelector('.intro')?.remove();
-    else if (isGallery(this.route)) void this.mountRenderer(revision);
+    // ponytail: reload instead of re-plumbing every running scene; the OS setting rarely flips mid-visit.
+    location.reload();
   };
 
-  private onLayoutChange = () => { if (isGallery(this.route)) { this.rememberPosition(); this.render(true); } };
-  private onResize = () => { this.measureList(); this.lenis?.resize(); };
-  private onVisibilityChange = () => { this.previousScroll = window.scrollY; };
+  private onLayoutChange = () => {
+    if (!isGallery(this.route) || !this.shownRoute || !isGallery(this.shownRoute)) return;
+    this.transition?.progress(1).kill();
+    this.showGallery(this.route, 'instant');
+  };
 
-  private render(initial: boolean, previous?: Route) {
+  private onResize = () => {
+    this.lenis?.resize();
+    if (this.scene.enabled && !this.scene.busy) this.scene.relayout();
+  };
+
+  /** Each navigation: exit what is on screen, then enter the requested route. The newest request wins. */
+  private go(initial: boolean) {
     const revision = ++this.revision;
-    const savedRects = new Map<string, DOMRect>();
-    if (previous && isGallery(previous) && isGallery(this.route)) {
-      this.main.querySelectorAll<HTMLElement>('[data-tile]').forEach(element => savedRects.set(element.dataset.tile!, element.getBoundingClientRect()));
+    const from = this.shownRoute;
+    const to = this.route;
+    this.transition?.kill();
+    this.transition = undefined;
+    if (this.intro && !initial) this.endIntro();
+    this.root.dataset.phase = 'transition';
+    this.setHover(undefined);
+    const enter = () => { if (revision === this.revision) this.enter(from, revision); };
+    if (initial || !from || reducedMotion.matches || (isGallery(from) && isGallery(to))) { enter(); return; }
+
+    let exit: gsap.core.Timeline;
+    const tile = this.opening && this.scene.tiles.find(item => item.key === this.opening && item.shown);
+    this.opening = undefined;
+    this.openedKey = undefined;
+    if (from.page === 'project' && isGallery(to)) {
+      // Close: the series' cover returns from where its first frame was (or the centre) to its gallery place.
+      const frame = this.main.querySelector('.project-photo-frame')?.getBoundingClientRect();
+      this.returnRect = frame && frame.bottom > 0 && frame.top < innerHeight ? { x: frame.left, y: frame.top, w: frame.width, h: frame.height } : this.firstFrameRect(from.slug);
+      this.openedKey = this.lastOpened?.startsWith(`${from.slug}-`) ? this.lastOpened : `${from.slug}-0`;
     }
-    this.timeline?.kill();
-    this.renderer?.dispose();
-    this.renderer = undefined;
+    if (isGallery(from) && to.page === 'project' && tile && this.scene.enabled) {
+      this.lastOpened = tile.key;
+      exit = this.scene.open(tile.key, this.firstFrameRect(to.slug));
+      exit.add(this.chrome(false), 0);
+    } else if (isGallery(from)) {
+      exit = this.scene.enabled ? this.scene.leave() : gsap.timeline().to(this.main, { autoAlpha: 0, duration: .4 });
+      exit.add(this.chrome(false), 0);
+    } else {
+      exit = gsap.timeline();
+      const heading = this.main.querySelector<HTMLElement>('[data-mask]');
+      if (heading) exit.add(maskOut(heading), 0);
+      exit.add(hideChars(this.main.querySelectorAll<HTMLElement>('[data-reveal]')), 0)
+        .to(this.main, { autoAlpha: 0, duration: .45, ease: 'power2.out' }, .1);
+    }
+    exit.call(enter);
+    this.transition = exit;
+  }
+
+  private enter(from: Route | undefined, revision: number) {
+    const route = this.route;
+    this.shownRoute = route;
     this.photoObserver?.disconnect();
-    this.resizeObserver.disconnect();
-    this.listTrack = undefined;
-    this.mobileActiveSlug = undefined;
-    this.listDistance = 0;
-    const gallery = isGallery(this.route);
-    this.root.dataset.page = this.route.page;
-    this.root.dataset.phase = 'ready';
-    this.header.hidden = !gallery;
-    this.footer.hidden = !gallery;
-    this.footer.dataset.view = this.route.page;
-    this.setActiveProject(undefined);
-    this.main.className = gallery ? `gallery-main view-${this.route.page}` : `${this.route.page}-main`;
-    this.main.style.minHeight = '';
-    if (gallery) {
-      const route = this.route as Extract<Route, { page: 'overview' | 'list' }>;
-      this.main.innerHTML = galleryMarkup(route.page, route.filter);
-      this.root.querySelectorAll<HTMLAnchorElement>('[data-nav]').forEach(link => {
-        const page = link.dataset.nav!;
-        link.setAttribute('aria-current', page === route.page ? 'page' : 'false');
-        link.href = page === 'info' ? '#/info' : galleryHash(page as 'overview' | 'list', route.filter);
-      });
-      this.root.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === route.filter)));
-      this.lastGallery = galleryHash(route.page, route.filter);
-      if ((route.page === 'list' && !this.compact.matches) || (route.page === 'overview' && this.compact.matches)) this.listTrack = this.main.querySelector('.gallery-track')!;
-      if (this.listTrack) this.resizeObserver.observe(this.listTrack);
-      this.measureList();
-      const position = this.positions.get(this.renderedHash);
-      this.setScroll(position?.y || 0);
-      if (!initial && previous && !isGallery(previous)) {
+    gsap.set(this.main, { clearProps: 'opacity,visibility' });
+    this.root.dataset.page = route.page;
+    this.header.hidden = this.footer.hidden = !isGallery(route);
+    let timeline: gsap.core.Timeline;
+    if (isGallery(route)) {
+      timeline = this.showGallery(route, !from ? 'intro' : isGallery(from) ? 'morph' : from.page === 'project' ? 'return' : 'sides');
+      if (from && !isGallery(from)) {
+        const slug = this.positions.get(this.renderedHash)?.slug;
         const visibleList = route.page === 'list' && this.compact.matches;
-        const link = position?.slug ? this.main.querySelector<HTMLAnchorElement>(`${visibleList ? '.text-list' : '.gallery-track'} [data-project="${position.slug}"]`) : undefined;
+        const link = slug ? this.scene.root.querySelector<HTMLElement>(`${visibleList ? '.text-list' : '.gallery-track'} [data-project="${slug}"]:not([hidden])`) : undefined;
         (link || this.main).focus({ preventScroll: true });
       }
-      document.title = `${route.page === 'list' ? 'Серии' : 'Фотографии'} — ${profile.name}`;
-      if (!this.reduced.matches) void this.mountRenderer(revision);
-    } else if (this.route.page === 'project') {
-      this.main.innerHTML = projectMarkup(this.route.slug);
-      document.title = `${projects.find(item => this.route.page === 'project' && item.slug === this.route.slug)?.title || 'Серия не найдена'} — ${profile.name}`;
+    } else {
+      timeline = this.showPage(route, from);
+    }
+    this.root.querySelector<HTMLElement>('[data-status]')!.textContent = isGallery(route)
+      ? `${categories.find(category => category.id === route.filter)?.title}. ${this.scene.tiles.filter(tile => tile.shown && tile.key.endsWith('-0')).length} серий.`
+      : document.title;
+    this.transition = timeline;
+    timeline.call(() => { if (revision === this.revision) this.root.dataset.phase = 'ready'; });
+    if (reducedMotion.matches) timeline.progress(1);
+    this.root.dataset.ready = 'true';
+  }
+
+  private sceneMode(route: GalleryRoute): Mode | undefined {
+    if (route.page === 'overview') return this.compact.matches ? 'strip' : 'overview';
+    return this.compact.matches ? undefined : 'list';
+  }
+
+  private showGallery(route: GalleryRoute, how: 'intro' | 'morph' | 'return' | 'sides' | 'instant'): gsap.core.Timeline {
+    const mode = this.sceneMode(route);
+    const previousView = this.main.dataset.view;
+    if (this.scene.root.parentElement !== this.main) this.main.replaceChildren(this.scene.root);
+    this.main.className = `gallery-main view-${route.page}`;
+    this.main.dataset.view = route.page;
+    this.footer.dataset.view = route.page;
+    this.root.querySelectorAll<HTMLAnchorElement>('[data-nav]').forEach(link => {
+      const page = link.dataset.nav!;
+      link.setAttribute('aria-current', page === route.page ? 'page' : 'false');
+      link.href = page === 'info' ? '#/info' : galleryHash(page as GalleryRoute['page'], route.filter);
+    });
+    this.root.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === route.filter)));
+    this.lastGallery = galleryHash(route.page, route.filter);
+    document.title = `${route.page === 'list' ? 'Серии' : 'Фотографии'} — ${profile.name}`;
+    this.renderer?.setActive(Boolean(mode));
+    this.scene.enabled = Boolean(mode);
+    this.mobileSlug = undefined;
+
+    const timeline = gsap.timeline();
+    if (mode) {
+      this.lenis?.stop();
+      window.scrollTo(0, 0);
+      if (how === 'morph' && previousView) timeline.add(this.scene.morph(mode, route.filter), 0);
+      else {
+        this.scene.relayout(mode, route.filter);
+        if (how === 'return') timeline.add(this.scene.enter('sides', { key: this.openedKey || '', rect: this.returnRect }), 0);
+        else if (how === 'intro') timeline.add(this.scene.enter('stack'), 0);
+        else if (how === 'sides') timeline.add(this.scene.enter('sides'), 0);
+      }
+    } else {
+      this.scene.relayout('list', route.filter);
+      this.lenis?.start();
+      this.setScroll(this.positions.get(this.renderedHash)?.y || 0);
+      const rows = [...this.scene.root.querySelectorAll<HTMLElement>('.text-list>a:not([hidden])')];
+      if (how !== 'instant') timeline.fromTo(rows, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, stagger: .045, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, .1);
+    }
+    this.openedKey = undefined;
+    this.returnRect = undefined;
+    this.scene.root.inert = false;
+    if (how === 'instant') { timeline.progress(1); return timeline; }
+    if (how !== 'morph') timeline.add(this.chrome(true), how === 'intro' ? .2 : .3);
+    else {
+      // An interrupted entry/exit may have left chrome text hidden: bring back whatever is not visible yet.
+      const chars = this.root.querySelectorAll('.site-header .char, .site-footer [data-reveal] .char');
+      timeline.to(chars, { autoAlpha: 1, duration: .01, stagger: .005 }, 0).to(this.footer.querySelectorAll('.progress, .overview-focus'), { autoAlpha: 1, duration: .4 }, 0);
+      if (previousView !== route.page) timeline.add(this.footerSwap(route.page), 0);
+      else if (route.page === 'list') timeline.to(this.footer.querySelectorAll('[data-filter] .char'), { yPercent: 0, rotate: 0, autoAlpha: 1, duration: .6, ease: 'power2.out' }, 0);
+    }
+    if (how === 'intro' && this.startIntro(timeline)) timeline.pause();
+    return timeline;
+  }
+
+  /** Header and footer text in/out for gallery entry/exit. */
+  private chrome(show: boolean): gsap.core.Timeline {
+    const timeline = gsap.timeline();
+    const reveal = [...this.root.querySelectorAll<HTMLElement>('.site-header [data-reveal], .site-footer [data-reveal]')];
+    const filters = [...this.footer.querySelectorAll<HTMLElement>('[data-filter]')];
+    const counters = this.footer.querySelectorAll('.progress, .overview-focus');
+    if (show) {
+      timeline.add(revealChars(reveal, 0, .03), 0).fromTo(counters, { autoAlpha: 0 }, { autoAlpha: 1, duration: .6 }, .3);
+      if (this.footer.dataset.view === 'list') filters.forEach((filter, index) => timeline.add(maskIn(filter), index * .08));
+    } else {
+      timeline.add(hideChars(reveal), 0).to(counters, { autoAlpha: 0, duration: .4 }, 0);
+      if (this.footer.dataset.view === 'list') filters.forEach(filter => timeline.add(maskOut(filter), 0));
+    }
+    return timeline;
+  }
+
+  private footerSwap(view: string): gsap.core.Timeline {
+    const timeline = gsap.timeline();
+    const filters = [...this.footer.querySelectorAll<HTMLElement>('[data-filter]')];
+    if (view === 'list') {
+      this.hoverIndex.set(0, true);
+      filters.forEach((filter, index) => timeline.add(maskIn(filter), .3 + index * .08));
+    } else {
+      timeline.fromTo(this.footer.querySelector('.hover-index .reels'), { yPercent: 110, rotate: 6 }, { yPercent: 0, rotate: 0, duration: .88, ease: 'power2.inOut' }, .3);
+    }
+    return timeline;
+  }
+
+  private showPage(route: Route, from?: Route): gsap.core.Timeline {
+    this.renderer?.setActive(false);
+    this.scene.enabled = false;
+    this.lenis?.start();
+    const timeline = gsap.timeline();
+    const keepGallery = Boolean(from && isGallery(from) && route.page === 'project' && this.lastOpened && this.renderer && this.scene.root.isConnected);
+    if (route.page === 'project') {
+      this.main.className = 'project-main';
+      const project = projects.find(item => item.slug === route.slug);
+      document.title = `${project?.title || 'Серия не найдена'} — ${profile.name}`;
+      this.main.innerHTML = projectMarkup(route.slug);
+      const counter = this.main.querySelector<HTMLElement>('[data-current-photo]');
+      if (counter) { this.photoCounter = new Counter(counter, 2, value => `Фотография ${Number(value)}`); this.photoCounter.set(1, true); }
       this.setScroll(0);
       this.observePhotos();
-      if (!initial) (this.main.querySelector<HTMLElement>('h1') || this.main).focus({ preventScroll: true });
+      const first = this.main.querySelector<HTMLImageElement>('.project-photo img');
+      if (first && keepGallery) {
+        // The open transition left the cover where this frame appears: keep it under the frame until the frame has decoded.
+        this.renderer!.setActive(true);
+        this.scene.root.inert = true;
+        this.main.append(this.scene.root);
+        first.style.opacity = '0';
+        const ready = Promise.race([first.decode().catch(() => undefined), new Promise(resolve => setTimeout(resolve, 1500))]);
+        void ready.then(() => {
+          if (this.shownRoute !== route) return;
+          gsap.to(first, { opacity: 1, duration: .5, ease: 'power2.out', onComplete: () => {
+            first.style.removeProperty('opacity');
+            if (this.shownRoute === route) { this.scene.root.remove(); this.renderer?.setActive(false); }
+          } });
+        });
+      } else if (first) {
+        timeline.fromTo(first.parentElement, { scale: .92, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 1.2, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0);
+      }
+      timeline.add(revealChars(this.main.querySelectorAll<HTMLElement>('.project-heading [data-reveal], .project-counter [data-reveal]'), .4, .02), 0)
+        .fromTo(this.main.querySelector('.project-counter'), { autoAlpha: 0 }, { autoAlpha: 1, duration: .6 }, .4);
+      const heading = this.main.querySelector<HTMLElement>('[data-mask]');
+      if (heading) timeline.add(maskIn(heading), .2).add(revealChars(this.main.querySelectorAll<HTMLElement>('.not-found [data-reveal]'), .3), .2);
+      (this.main.querySelector<HTMLElement>('h1') || this.main).focus({ preventScroll: true });
     } else {
+      this.main.className = 'info-main';
       this.main.innerHTML = infoMarkup();
       document.title = `Обо мне — ${profile.name}`;
       this.setScroll(0);
       this.updateClock();
-      if (!initial) this.main.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
+      const narrow = innerWidth <= 600;
+      timeline.fromTo(this.main, { autoAlpha: 0 }, { autoAlpha: 1, duration: narrow ? .5 : 1, ease: 'power2.out', clearProps: 'opacity,visibility' }, 0)
+        .add(maskIn(this.main.querySelector('h1')!, { duration: 1, stagger: .07 }), .55)
+        .add(revealChars(this.main.querySelectorAll<HTMLElement>('.info-heading [data-reveal]'), 0, .02), .6)
+        .fromTo(this.main.querySelectorAll('.info-copy>p, .info-section'), { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .8, stagger: .08, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, .7)
+        .fromTo(this.main.querySelector('.info-portrait'), { scale: 1.12, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 1.2, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, .86)
+        .add(revealChars(this.main.querySelectorAll<HTMLElement>('.info-footer [data-reveal]'), 0, .02), 1);
+      this.main.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
     }
-    this.main.querySelectorAll<HTMLImageElement>('img').forEach(image => {
-      if (image.complete && image.naturalWidth === 0) image.dispatchEvent(new Event('error'));
-    });
-    this.lenis?.resize();
-    if (!initial && !this.reduced.matches) {
-      this.root.dataset.phase = 'transition';
-      this.timeline = gsap.timeline({ onComplete: () => { if (revision === this.revision) this.root.dataset.phase = 'ready'; } });
-      if (savedRects.size && gallery) {
-        this.main.querySelectorAll<HTMLElement>('[data-tile]').forEach(element => {
-          const old = savedRects.get(element.dataset.tile!);
-          const rect = element.getBoundingClientRect();
-          if (!old?.width || !old.height || !rect.width || !rect.height) return;
-          this.timeline!.from(element, { x: old.x - rect.x, y: old.y - rect.y, scaleX: old.width / rect.width, scaleY: old.height / rect.height, transformOrigin: '0 0', duration: .7, ease: 'power3.inOut', clearProps: 'transform' }, 0);
-        });
-      }
-      if (!this.timeline.getChildren().length) {
-        const targets = this.main.querySelectorAll('.photo-link,.text-list>a,.project-photo,.info-copy,.info-portrait,.not-found');
-        if (targets.length) this.timeline.from(targets, { y: 18, duration: .48, ease: 'power3.out', clearProps: 'transform' });
-        else this.root.dataset.phase = 'ready';
-      }
-    }
-    this.root.querySelector<HTMLElement>('[data-status]')!.textContent = gallery ? `${categories.find(category => isGallery(this.route) && category.id === this.route.filter)?.title}. ${this.main.querySelectorAll('.text-list>a').length} серий.` : document.title;
-    this.root.dataset.ready = 'true';
+    return timeline;
   }
 
-  private async mountRenderer(revision: number) {
+  /** Box of a series' first frame at the top of its page (same rule as .project-photo-frame CSS). */
+  private firstFrameRect(slug: string): Box {
+    const photo = projects.find(project => project.slug === slug)?.photos[0];
+    const ratio = photo ? photo.width / photo.height : .8;
+    const narrow = innerWidth <= 600;
+    const w = Math.min(innerHeight * (narrow ? .66 : .7) * ratio, innerWidth * (narrow ? .92 : .8));
+    const h = w / ratio;
+    return { x: (innerWidth - w) / 2, y: (innerHeight - h) / 2, w, h };
+  }
+
+  private async mountRenderer() {
     try {
       const { GalleryRenderer } = await import('./webgl/gallery-renderer');
-      if (revision !== this.revision || this.reduced.matches || !isGallery(this.route)) return;
-      if (this.route.page === 'list' && this.compact.matches) return;
-      this.renderer = new GalleryRenderer(this.main);
+      if (reducedMotion.matches) return;
+      const renderer = new GalleryRenderer();
+      if (renderer.disposed) { this.main.dataset.renderer = 'unavailable'; return; }
+      this.renderer = renderer;
+      this.scene.attach(renderer);
+      renderer.setActive(this.scene.enabled);
     } catch {
       this.main.dataset.renderer = 'unavailable';
     }
@@ -259,43 +427,13 @@ export class App {
     this.lenis?.resize();
     if (this.lenis) this.lenis.scrollTo(y, { immediate: true, force: true });
     else window.scrollTo(0, y);
-    this.previousScroll = y;
-    this.updateList();
-  }
-
-  private measureList() {
-    if (!this.listTrack) return;
-    this.listDistance = Math.max(0, this.listTrack.scrollWidth - window.innerWidth);
-    this.main.style.minHeight = `${window.innerHeight + this.listDistance}px`;
-    this.updateList();
-    this.lenis?.resize();
-  }
-
-  private updateList() {
-    if (!this.listTrack) return;
-    this.listTrack.style.transform = `translate3d(${-Math.min(window.scrollY, this.listDistance)}px,0,0)`;
-    if (this.route.page !== 'overview' || !this.compact.matches) return;
-    let nearest: HTMLElement | undefined;
-    let distance = Infinity;
-    for (const element of this.listTrack.querySelectorAll<HTMLElement>('.photo-link')) {
-      const delta = Math.abs(element.offsetLeft + element.offsetWidth / 2 - window.scrollY - innerWidth / 2);
-      if (delta < distance) { distance = delta; nearest = element; }
-    }
-    const slug = nearest?.dataset.project;
-    if (slug === this.mobileActiveSlug) return;
-    this.mobileActiveSlug = slug;
-    const project = projects.find(project => project.slug === slug);
-    if (!project) return;
-    this.main.querySelector<HTMLElement>('[data-mobile-index]')!.textContent = `[${String(projects.indexOf(project) + 1).padStart(2, '0')}]`;
-    this.main.querySelector<HTMLElement>('[data-mobile-title]')!.textContent = project.title;
-    this.main.querySelector<HTMLElement>('[data-mobile-category]')!.textContent = categories.find(category => category.id === project.category)!.title;
   }
 
   private observePhotos() {
     this.photoObserver = new IntersectionObserver(entries => {
       const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       const index = visible?.target.getAttribute('data-photo-index');
-      if (index) this.main.querySelector<HTMLElement>('[data-current-photo]')!.textContent = index.padStart(2, '0');
+      if (index) this.photoCounter?.set(Number(index));
     }, { threshold: [.25, .5, .75] });
     this.main.querySelectorAll('[data-photo-index]').forEach(photo => this.photoObserver!.observe(photo));
   }
@@ -305,89 +443,176 @@ export class App {
     if (clock) { clock.textContent = new Intl.DateTimeFormat('ru', { timeZone: 'Asia/Novosibirsk', hour: '2-digit', minute: '2-digit' }).format(new Date()); clock.dateTime = new Date().toISOString(); }
   }
 
-  private tick = (time: number) => {
+  private tick = (time: number, deltaMs: number) => {
     if (document.hidden) return;
+    const dt = Math.min(deltaMs, 100) / 1000;
     this.lenis?.raf(time * 1000);
-    this.updateList();
-    const velocity = window.scrollY - this.previousScroll;
-    this.previousScroll = window.scrollY;
-    this.renderer?.update(velocity);
-    const height = document.documentElement.scrollHeight - window.innerHeight;
-    const percent = height > 0 ? Math.round(window.scrollY / height * 100) : 0;
-    this.progress.textContent = `[${String(Math.max(0, Math.min(100, percent))).padStart(3, '0')}%]`;
+    if (this.renderer?.disposed) { this.renderer = undefined; this.scene.attach(undefined); this.main.dataset.renderer = 'unavailable'; }
+    this.scene.tick(dt, time);
+    if (this.scene.enabled) {
+      if (this.pointer.mouse && !this.compact.matches) this.setHover(this.pointer.inside && !this.scene.busy ? this.scene.pick(this.pointer.x, this.pointer.y) : undefined);
+      if (this.scene.mode === 'strip') this.updateMobileCaption();
+      this.progress.set(this.scene.phase());
+    } else if (isGallery(this.route)) {
+      const height = document.documentElement.scrollHeight - innerHeight;
+      this.progress.set(height > 0 ? Math.min(100, Math.max(0, scrollY / height * 100)) : 0);
+    }
+    if (this.pointer.mouse && !reducedMotion.matches) {
+      // Original lerp 0.075 per 60 Hz frame, made frame-rate independent.
+      const k = 1 - Math.pow(1 - .075, dt * 60);
+      this.cursor.x += (this.pointer.x - this.cursor.x) * k;
+      this.cursor.y += (this.pointer.y - this.cursor.y) * k;
+      gsap.set(this.cursorEl, { x: this.cursor.x, y: this.cursor.y, xPercent: -50, yPercent: -50, opacity: this.pointer.inside ? .85 : 0, scale: this.hovered ? 2.4 : 1 });
+    }
   };
 
-  private pointerMove = (event: PointerEvent) => {
-    const cursor = this.root.querySelector<HTMLElement>('.cursor')!;
-    if (event.pointerType === 'touch' || this.reduced.matches) return;
-    if (this.route.page === 'overview') this.setActiveProject(event.target instanceof Element ? event.target.closest<HTMLElement>('[data-project]')?.dataset.project : undefined);
-    cursor.style.opacity = '.8';
-    cursor.style.left = `${event.clientX}px`;
-    cursor.style.top = `${event.clientY}px`;
+  private setHover(tile?: GalleryScene['tiles'][number]) {
+    if (tile === this.hovered) return;
+    const previous = this.hovered;
+    this.hovered = tile;
+    if (previous) {
+      gsap.to(previous.state, { hover: 0, duration: 1.2, ease: 'expo.out', overwrite: 'auto' });
+      if (this.scene.mode === 'list') hideChars(previous.el.querySelectorAll<HTMLElement>('figcaption span'));
+      previous.el.removeAttribute('data-hover');
+    }
+    const caption = this.root.querySelector<HTMLElement>('[data-hover-caption]')!;
+    gsap.killTweensOf(caption);
+    if (!tile) {
+      if (this.scene.mode === 'overview') { caption.replaceChildren(); this.hoverIndex.set(0, false, { delay: .1 }); }
+      return;
+    }
+    gsap.to(tile.state, { hover: 1, duration: 1.2, ease: 'expo.out', overwrite: 'auto' });
+    tile.el.setAttribute('data-hover', '');
+    const project = projects.find(item => item.slug === tile.slug)!;
+    if (this.scene.mode === 'list') {
+      revealChars(tile.el.querySelectorAll<HTMLElement>('figcaption span'), .08, .03);
+    } else {
+      this.hoverIndex.set(projectNumber(project), false, { delay: .2 });
+      caption.replaceChildren();
+      // Short pause, so passing over several photos does not flicker the caption.
+      gsap.delayedCall(.08, () => {
+        if (this.hovered !== tile) return;
+        caption.innerHTML = `<span>${escapeHtml(project.title)}</span><span>${categoryName(project)}</span>`;
+        revealChars(caption.querySelectorAll<HTMLElement>('span'), 0, .03);
+      });
+    }
+  }
+
+  private updateMobileCaption() {
+    const tile = this.scene.current();
+    if (!tile || tile.slug === this.mobileSlug) return;
+    this.mobileSlug = tile.slug;
+    const project = projects.find(item => item.slug === tile.slug)!;
+    this.mobileIndex.set(projectNumber(project));
+    const title = this.scene.root.querySelector<HTMLElement>('[data-mobile-title]')!;
+    const category = this.scene.root.querySelector<HTMLElement>('[data-mobile-category]')!;
+    title.innerHTML = `<span>${escapeHtml(project.title)}</span>`;
+    category.innerHTML = `<span>${categoryName(project)}</span>`;
+    revealChars([title.firstElementChild as HTMLElement, category.firstElementChild as HTMLElement], .05, .02);
+  }
+
+  private onPointerMove = (event: PointerEvent) => {
+    this.pointer.mouse = event.pointerType === 'mouse';
+    this.pointer.inside = true;
+    this.pointer.x = event.clientX;
+    this.pointer.y = event.clientY;
   };
 
-  private setActiveProject(slug?: string) {
-    if (this.activeSlug === slug) return;
-    this.activeSlug = slug;
-    const project = projects.find(project => project.slug === slug);
-    this.root.querySelector<HTMLElement>('[data-hover-index]')!.textContent = project ? String(projects.indexOf(project) + 1).padStart(2, '0') : '00';
-    this.root.querySelector<HTMLElement>('[data-hover-caption]')!.textContent = project ? project.title : '';
-  }
+  private onPointerLeave = () => { this.pointer.inside = false; if (this.pointer.mouse) this.setHover(undefined); };
 
-  private pointerLeave = () => { this.root.querySelector<HTMLElement>('.cursor')!.style.opacity = '0'; this.setActiveProject(undefined); };
-  private setupCursor() {
-    window.addEventListener('pointermove', this.pointerMove);
-    document.addEventListener('pointerleave', this.pointerLeave);
-  }
-
-  private async showIntro() {
-    if (this.reduced.matches) return;
-    try { if (sessionStorage.getItem('xenia:visited')) return; } catch { /* Intro still has timeout. */ }
-    const intro = document.createElement('div');
-    intro.className = 'intro';
-    intro.setAttribute('role', 'status');
-    intro.setAttribute('aria-label', 'Загрузка портфолио');
-    intro.innerHTML = `<div class="intro-top"><span>Xenia / ${profile.name}</span><span>Фотография<br>${profile.location}</span></div><div class="intro-name" aria-hidden="true">XP</div><div class="intro-bottom"><button>Открыть портфолио</button><span class="intro-progress" aria-hidden="true">000</span></div>`;
-    this.root.append(intro);
-    const critical = [...this.main.querySelectorAll<HTMLImageElement>('img[loading="eager"]')].slice(0, 5);
-    let complete = 0;
-    let finished = false;
-    const finish = () => {
-      if (finished) return;
-      finished = true;
-      const active = intro.contains(document.activeElement);
-      gsap.to(intro, { yPercent: -102, duration: .6, ease: 'power3.inOut', onComplete: () => { intro.remove(); if (active) this.main.focus({ preventScroll: true }); } });
-      try { sessionStorage.setItem('xenia:visited', 'true'); } catch { /* No persistent requirement. */ }
+  /**
+   * Staged entry: grain → masked name/initials → selected cover develops → small text and reels →
+   * cover shrinks to its gallery size → the gallery unfolds from it. Returns false when skipped (repeat visit).
+   */
+  private startIntro(gallery: gsap.core.Timeline): boolean {
+    let visited = false;
+    try { visited = Boolean(sessionStorage.getItem('xenia:visited')); sessionStorage.setItem('xenia:visited', 'true'); } catch { /* Full intro then. */ }
+    if (visited || reducedMotion.matches) return false;
+    const hero = this.scene.tiles.find(tile => tile.shown)!;
+    const element = document.createElement('div');
+    element.className = 'intro';
+    element.innerHTML = `<div class="intro-top"><span data-reveal>Xenia / ${profile.name}</span><span data-reveal>Фотография<br>${profile.location}</span></div>
+      <div class="intro-initials" aria-hidden="true">XP</div>
+      <div class="intro-photo"><img src="${hero.img.currentSrc || hero.img.src}" alt="" /></div>
+      <div class="intro-bottom"><p class="intro-name" aria-hidden="true">${profile.name}</p>
+        <div class="intro-side"><button type="button" class="intro-skip" data-scramble>Пропустить</button><span class="intro-status" role="status">Загрузка фотографий</span><span class="intro-count" aria-hidden="true"></span></div></div>`;
+    this.root.append(element);
+    const count = new Counter(element.querySelector('.intro-count')!, 3);
+    const photo = element.querySelector<HTMLElement>('.intro-photo')!;
+    const status = element.querySelector<HTMLElement>('.intro-status')!;
+    const progress = { value: 0 };
+    const timeline = gsap.timeline();
+    timeline.add(maskIn(element.querySelector('.intro-initials')!), .1)
+      .add(maskIn(element.querySelector('.intro-name')!), .2)
+      .fromTo(photo, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.6, ease: 'power2.inOut' }, .1)
+      .fromTo(photo.firstElementChild, { scale: 1.5 }, { scale: 1.001, duration: 1.6, ease: 'power2.inOut' }, .1)
+      .add(revealChars(element.querySelectorAll<HTMLElement>('[data-reveal]'), 0), .6)
+      // The reels show the progress of the staged entry, not downloaded bytes; real loading has its own status line.
+      .to(progress, { value: 100, duration: 2.4, ease: 'power2.inOut', onUpdate: () => count.set(progress.value, false, { duration: .3 }) }, .2)
+      .addLabel('hold', 2.4);
+    // Real readiness: the hero photo and fonts. A slow network extends the hold, capped at 6 s.
+    const ready = Promise.race([Promise.allSettled([hero.img.decode(), document.fonts.ready]), new Promise(resolve => setTimeout(resolve, 6000))]);
+    let released = false;
+    const release = () => {
+      if (released || this.intro?.element !== element) return;
+      released = true;
+      timeline.kill();
+      status.textContent = 'Готово';
+      const target = hero.el.querySelector('.photo-frame')!.getBoundingClientRect();
+      const box = photo.getBoundingClientRect();
+      gsap.timeline()
+        .add(maskOut(element.querySelector('.intro-initials')!, { duration: .5 }), 0)
+        .add(maskOut(element.querySelector('.intro-name')!, { duration: .5 }), 0)
+        .to(element.querySelectorAll('.intro-top, .intro-side'), { autoAlpha: 0, duration: .5, ease: 'power2.out' }, 0)
+        .to(photo, { x: target.left - box.left + (target.width - box.width) / 2, y: target.top - box.top + (target.height - box.height) / 2, width: target.width, height: target.height, duration: .7, ease: 'power2.out' }, .15)
+        .to(element, { backgroundColor: 'rgba(254,254,254,0)', duration: .25 }, .6)
+        .call(() => {
+          // The gallery stack below now shows the same photo at the same box: drop the DOM copy, unfold the gallery.
+          this.endIntro();
+          gallery.play();
+        });
     };
-    intro.querySelector('button')!.addEventListener('click', finish, { once: true });
-    const loaded = critical.map(image => image.decode().catch(() => undefined).then(() => {
-      complete++;
-      intro.querySelector<HTMLElement>('.intro-progress')!.textContent = String(Math.round(complete / Math.max(1, critical.length) * 100)).padStart(3, '0');
-    }));
-    const timeout = window.setTimeout(finish, 3500);
-    await Promise.allSettled([...loaded, document.fonts.ready]);
-    clearTimeout(timeout);
-    finish();
+    const skip = () => { timeline.progress(1); release(); };
+    element.querySelector('.intro-skip')!.addEventListener('click', skip);
+    timeline.call(() => { void ready.then(release); }, [], 'hold');
+    void ready.then(() => { if (!released) status.textContent = 'Фотографии загружены'; });
+    this.intro = { timeline, skip, element };
+    return true;
+  }
+
+  private endIntro() {
+    if (!this.intro) return;
+    const { element, timeline } = this.intro;
+    timeline.kill();
+    const focused = element.contains(document.activeElement);
+    element.remove();
+    this.intro = undefined;
+    if (focused) this.main.focus({ preventScroll: true });
+    const gallery = this.transition;
+    if (gallery?.paused()) gallery.play();
   }
 
   private dispose() {
     this.revision++;
-    this.timeline?.kill();
+    this.transition?.kill();
+    this.endIntro();
+    this.scene.dispose();
     this.renderer?.dispose();
     this.lenis?.destroy();
     this.photoObserver?.disconnect();
-    this.resizeObserver.disconnect();
     gsap.ticker.remove(this.tick);
     this.root.removeEventListener('click', this.onClick);
     this.root.removeEventListener('focusin', this.onFocusIn);
+    this.root.removeEventListener('focusout', this.onFocusOut);
+    this.root.removeEventListener('pointerover', this.onPointerOver);
     this.root.removeEventListener('error', this.onImageError, true);
     window.removeEventListener('hashchange', this.onHashChange);
     window.removeEventListener('keydown', this.onKeyDown);
     window.removeEventListener('resize', this.onResize);
-    window.removeEventListener('pointermove', this.pointerMove);
-    document.removeEventListener('pointerleave', this.pointerLeave);
-    document.removeEventListener('visibilitychange', this.onVisibilityChange);
-    this.reduced.removeEventListener('change', this.onMotionChange);
+    window.removeEventListener('pointermove', this.onPointerMove);
+    window.removeEventListener('blur', this.onPointerLeave);
+    document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
+    reducedMotion.removeEventListener('change', this.onMotionChange);
     this.compact.removeEventListener('change', this.onLayoutChange);
     document.querySelector('.skip-link')?.removeEventListener('click', this.onSkip);
   }

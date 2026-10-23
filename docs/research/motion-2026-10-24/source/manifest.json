@@ -1,0 +1,164 @@
+[
+  {
+    "url": "https://www.richardprescott.com/_next/static/css/1319c7fb7eaf91c4.css",
+    "file": "1319c7fb7eaf91c4.css",
+    "bytes": 25894,
+    "sha256": "ae77c345df0d1a4a3f9a9c31d9eb79eb6fd171a67102de1c90d44b09cf322350"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/webpack-1b44850d5034d9ce.js",
+    "file": "webpack-1b44850d5034d9ce.js",
+    "bytes": 5418,
+    "sha256": "10f95874bb06941e5f2cec46c97ee49b20ea1afdad54ee6016faf667bfd5314e"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/fd9d1056-6d017998b327d353.js",
+    "file": "fd9d1056-6d017998b327d353.js",
+    "bytes": 172831,
+    "sha256": "71ed963804cbd4b773b16a2e290fb534288140999cca4833a8ff300a9d72a9b1"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/23-30c7f9d107a85b98.js",
+    "file": "23-30c7f9d107a85b98.js",
+    "bytes": 123171,
+    "sha256": "433d1cc1d2d3382200a71f771aa921cc4a3e90294e56cdeda72776a023fc013d"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/main-app-f73cdb3bce740b12.js",
+    "file": "main-app-f73cdb3bce740b12.js",
+    "bytes": 462,
+    "sha256": "e70d963e7f59350b16dcba9796ad8aec2001738b6756509c4ea77e2bfb0921f0"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/c15bf2b0-03795515e990ec56.js",
+    "file": "c15bf2b0-03795515e990ec56.js",
+    "bytes": 52263,
+    "sha256": "21d23edc8197571f3445c947618ef397005f350782a82cfb23310d2466bdb6fb"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/661-b0f96a92d2376623.js",
+    "file": "661-b0f96a92d2376623.js",
+    "bytes": 91452,
+    "sha256": "260f8b85e52a9e25b4026935c6fcb6284ca653a142444f07b9a604977df4781b"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/716-c3767929ae7a7d99.js",
+    "file": "716-c3767929ae7a7d99.js",
+    "bytes": 4664,
+    "sha256": "172df5462c8a5a3f7a3d72ed52d7a9208eedd40211930666a9dde9a9a7beeca0"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/app/page-8545d93c0643b609.js",
+    "file": "page-8545d93c0643b609.js",
+    "bytes": 2647,
+    "sha256": "b22a53d17df72d76c37f620193f4404c713b8d9cf0b09115481d8f7838e6bd4e"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/138-c8f75ba2d865a37b.js",
+    "file": "138-c8f75ba2d865a37b.js",
+    "bytes": 20625,
+    "sha256": "1d9714469f10f1540dbdfc31d7e538d7604b9d53739bafd838c76afb1edd0104"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/819-2edd1599ac3f2db2.js",
+    "file": "819-2edd1599ac3f2db2.js",
+    "bytes": 15865,
+    "sha256": "b3e147b6e103a7f752f66b04ae3ca32bc481c14a1f09b0dba1a30080fd30a535"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/877-becc161af240693f.js",
+    "file": "877-becc161af240693f.js",
+    "bytes": 6271,
+    "sha256": "c6b9a2be13f5bb16ffa9e9ae67f6619f00ccaf996ab1f13f5bea3ec85356e63f"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/650-06197c7a59765b30.js",
+    "file": "650-06197c7a59765b30.js",
+    "bytes": 28535,
+    "sha256": "1846d2f2bd56fd56d0525b85299badce1b97ebf0368ac7be96b29b073a733950"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/app/layout-29141a38d3fdfea3.js",
+    "file": "layout-29141a38d3fdfea3.js",
+    "bytes": 31954,
+    "sha256": "2a5bfcd797eb00441baac08b9ea19f79b07b3704b20546ec7c76d8a168a85433"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/app/not-found-95faefca658f6a2e.js",
+    "file": "not-found-95faefca658f6a2e.js",
+    "bytes": 2176,
+    "sha256": "b3bf47c81f3f86042f1b7f501012be42f08cbfcccad41fd2d30d976c5913532e"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/polyfills-78c92fac7aa8fdd8.js",
+    "file": "polyfills-78c92fac7aa8fdd8.js",
+    "bytes": 91381,
+    "sha256": "e903cec1d59e0157bcc7e4ac883ae6f866babb60e4aa01b9485aa096b9722200"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/b536a0f1.262b41d69d5cf716.js",
+    "file": "b536a0f1.262b41d69d5cf716.js",
+    "bytes": 675408,
+    "sha256": "39ba40781b9a398eae95de645c9d346264aae1e9577334179122369fa4f710ed"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/784.7fe05a498e509a24.js",
+    "file": "784.7fe05a498e509a24.js",
+    "bytes": 243105,
+    "sha256": "0421db9beb4d5abf032d4b05899416514c9e72be0a65c622545a590ed96f0906"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/816.e85608c9eabd8436.js",
+    "file": "816.e85608c9eabd8436.js",
+    "bytes": 20259,
+    "sha256": "d7e4e128621027f1ff556e0b886ada01fc86d986f56eaf33b06bc2f07e9c5d85"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/css/38b7297ba45bfdba.css",
+    "file": "38b7297ba45bfdba.css",
+    "bytes": 757,
+    "sha256": "dd38eb6a7c47ba8ea4669bada9c51051634f6f947817b07153e2e1d14db4f43e"
+  },
+  {
+    "url": "https://www.richardprescott.com/noise2.png",
+    "file": "noise2.png",
+    "bytes": 24937,
+    "sha256": "df154c2b46a461001e28873b99c6fcf9c9220873fb89bf433d3c46c746fdc317"
+  },
+  {
+    "url": "https://www.richardprescott.com/contact",
+    "file": "contact.html",
+    "bytes": 12604,
+    "sha256": "dc4ab3772d786dd610ded3adea1fdf164f16ce047b91cd5ab3e3960ca5b2dd41"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/app/contact/page-e4196e86ec23ee7a.js",
+    "file": "page-e4196e86ec23ee7a.js",
+    "bytes": 6774,
+    "sha256": "26e7972ab9abc973b21429dd5ac212b8304c0c3469cafb98795749df786cedfc"
+  },
+  {
+    "url": "https://www.richardprescott.com/project/project-3",
+    "file": "project-3.html",
+    "bytes": 15115,
+    "sha256": "d356fcc6c4608f13bd81f602b4dee3d98e9eff6b553437b870b143f1b743daba"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/844-795183d5bbceaa9c.js",
+    "file": "844-795183d5bbceaa9c.js",
+    "bytes": 94394,
+    "sha256": "b9c68ad6aaeac38b12a209443777afd9852679aad94e5175f011fe8025b1070f"
+  },
+  {
+    "url": "https://www.richardprescott.com/_next/static/chunks/app/project/%5Bslug%5D/page-d7bfb7a670689d40.js",
+    "file": "page-d7bfb7a670689d40.js",
+    "bytes": 8023,
+    "sha256": "c4ff5348aae196a6d04be017b83784982c5076bb6a79c37d2ff2ca6fcada59d8"
+  },
+  {
+    "url": "https://www.richardprescott.com/disp88.jpeg",
+    "file": "disp88.jpeg",
+    "bytes": 488264,
+    "sha256": "0b746c36c68b2db1cc2b75b3479ce0ead551d0eb2d6f2c4e5d40752cf584438d"
+  }
+]

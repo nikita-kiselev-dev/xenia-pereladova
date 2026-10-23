@@ -1,0 +1,30 @@
+{
+  "reference": {
+    "noise": [
+      {
+        "animation": "2s steps(2) infinite noise",
+        "background": "url(\"https://www.richardprescott.com/noise2.png\")",
+        "opacity": "0.9"
+      }
+    ],
+    "url": "https://www.richardprescott.com/",
+    "viewport": {
+      "h": 900,
+      "w": 1440
+    }
+  },
+  "current": {
+    "noise": [
+      {
+        "animation": "none",
+        "background": "url(\"http://127.0.0.1:4173/noise.svg\")",
+        "opacity": "0.055"
+      }
+    ],
+    "url": "http://127.0.0.1:4173/#/info",
+    "viewport": {
+      "h": 900,
+      "w": 1440
+    }
+  }
+}

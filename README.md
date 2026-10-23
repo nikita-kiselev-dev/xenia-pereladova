@@ -45,8 +45,12 @@ python scripts/import-portfolio.py
 
 Маршруты: `#/overview`, `#/list`, `#/project/<slug>`, `#/info`.
 Категория хранится как `?filter=family` внутри hash. Close/Escape возвращают контекст галереи; Back/Forward и refresh поддержаны.
-Деформация скорости и тайминги — собственная аппроксимация наблюдаемого motion; точное совпадение не принято.
-Reduced motion отключает Lenis, переходы и WebGL. Ошибка GPU возвращает DOM-изображения.
+Motion по [WEBSITE_MOTION_PLAN.md](WEBSITE_MOTION_PLAN.md); что реализовано и проверено — [docs/qa/motion-report.md](docs/qa/motion-report.md).
+Галерея — одна постоянная DOM-сцена (`src/gallery-scene.ts`, геометрия в `src/gallery-layout.ts`) с циклическим scroll и WebGL-зеркалом (`src/webgl/gallery-renderer.ts`); тексты и барабаны — `src/motion.ts`.
+Зерно и displacement — собственные `public/grain.png`, `public/disp.jpg` (`python scripts/make-textures.py`).
+Reduced motion отключает intro, Lenis, инерцию и WebGL, зерно статично. Ошибка GPU возвращает DOM-изображения.
+
+Motion-клипы (нужны Chrome и ffmpeg): `node tests/motion-capture.mjs http://127.0.0.1:4173/ docs/qa/motion`.
 
 ## Browser QA
 
