@@ -13,10 +13,10 @@ export function parseRoute(hash: string): Route {
       return { page: 'project', slug: '' };
     }
   }
-  const requested = new URLSearchParams(query).get('filter');
+  const requested = path === 'list' ? new URLSearchParams(query).get('filter') : null;
   return { page: path === 'list' ? 'list' : 'overview', filter: filters.includes(requested as Filter) ? requested as Filter : 'all' };
 }
 
 export function galleryHash(view: View, filter: Filter = 'all'): string {
-  return `#/${view}${filter === 'all' ? '' : `?filter=${filter}`}`;
+  return `#/${view}${view === 'list' && filter !== 'all' ? `?filter=${filter}` : ''}`;
 }

@@ -4,12 +4,12 @@ export const escapeHtml = (value: string): string => value.replace(/[&<>"']/g, c
 export const categoryName = (project: Project) => categories.find(category => category.id === project.category)!.title;
 export const projectNumber = (project: Project) => projects.indexOf(project) + 1;
 
-export function photoMarkup(photo: Photo, options: { webgl?: boolean; eager?: boolean; sizes?: string } = {}): string {
+export function photoMarkup(photo: Photo, options: { webgl?: boolean; eager?: boolean; priority?: boolean; sizes?: string } = {}): string {
   return `<img ${options.webgl ? 'data-webgl draggable="false"' : ''} src="${asset(photo.thumbnail)}"
     srcset="${asset(photo.thumbnail)} 640w, ${asset(photo.src)} ${Math.max(photo.width, 641)}w"
     sizes="${options.sizes || '(max-width: 600px) 45vw, 22vw'}"
     width="${photo.width}" height="${photo.height}" alt="${escapeHtml(photo.alt)}"
-    loading="${options.eager ? 'eager' : 'lazy'}" decoding="async" />`;
+    loading="${options.eager ? 'eager' : 'lazy'}"${options.priority ? ' fetchpriority="high"' : ''} decoding="async" />`;
 }
 
 /** Built once with every series; filters and views only hide/move tiles, so photos stay continuous. */
@@ -24,7 +24,7 @@ export function galleryMarkup(): string {
       ${tiles.map(({ project, index }, tileIndex) => {
         const photo = index === 0 ? project.cover : project.photos[index];
         return `<a class="photo-link" draggable="false" data-tile="${project.slug}-${index}" data-project="${project.slug}" data-category="${project.category}" href="#/project/${project.slug}" aria-label="Открыть серию «${escapeHtml(project.title)}»">
-          <figure><div class="photo-frame">${photoMarkup(photo, { webgl: true, eager: tileIndex < 10, sizes: '(max-width: 1023px) 40vw, 12vw' })}</div>
+          <figure><div class="photo-frame">${photoMarkup(photo, { webgl: true, eager: tileIndex < 10, priority: tileIndex === 0, sizes: '(max-width: 1023px) 40vw, 12vw' })}</div>
           <figcaption aria-hidden="true"><span>${escapeHtml(project.title)}</span><span>${String(projectNumber(project)).padStart(2, '0')}</span></figcaption></figure>
         </a>`;
       }).join('')}

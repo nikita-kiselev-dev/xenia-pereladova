@@ -35,7 +35,9 @@ export function projectFrame(ratio: number, view: Viewport): Box {
   const bounds = frameBounds(view);
   const w = Math.min(bounds.width, bounds.height * ratio);
   const h = w / ratio;
-  return { x: view.left + (view.width - view.left - view.right - w) / 2, y: bounds.top + (view.height - bounds.top - bounds.bottom - h) / 2, w, h };
+  // Phones stack the series without full-screen slides, so the first frame sits right under the heading.
+  const y = view.width <= 600 ? bounds.top : bounds.top + (view.height - bounds.top - bounds.bottom - h) / 2;
+  return { x: view.left + (view.width - view.left - view.right - w) / 2, y, w, h };
 }
 
 export function readViewport(): Viewport {

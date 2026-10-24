@@ -48,6 +48,8 @@ export class GalleryScene {
   private velocity = 0;
   private saved = new Map<string, number>();
   private moving?: gsap.core.Timeline;
+  /** Tiles changed outside a running timeline or the scroll: the next frame must write them. */
+  private stale = true;
   private observer: Observer;
   private renderer?: GalleryRenderer;
 
@@ -123,6 +125,7 @@ export class GalleryScene {
     }
     this.target = this.last = this.offset;
     this.velocity = this.speed = 0;
+    this.stale = true;
   }
 
   nudge(delta: number): void {
@@ -265,8 +268,10 @@ export class GalleryScene {
   current(): Tile | undefined {
     let best: Tile | undefined;
     let distance = Infinity;
-    for (const tile of this.shown()) {
-      const box = this.screen(tile);
+    // Drawn boxes: called every frame on the phone strip, so no per-tile allocation.
+    for (const tile of this.tiles) {
+      if (!tile.shown) continue;
+      const box = tile.rect;
       const delta = Math.abs(box.x + box.w / 2 - innerWidth / 2);
       if (delta < distance) { distance = delta; best = tile; }
     }
@@ -290,12 +295,14 @@ export class GalleryScene {
       if (Math.abs(this.target - this.offset) < .05) this.offset = this.target;
       this.velocity = dt > 0 ? (this.offset - this.last) / dt : 0;
     } else this.velocity = 0;
+    const moved = this.offset !== this.last;
     this.last = this.offset;
     // Bend in px at screen centre: fast flicks give a clear curve, rest returns to a flat photo.
     const bend = reducedMotion.matches ? 0 : Math.max(-260, Math.min(260, this.velocity * (this.mode === 'strip' ? .025 : .06)));
     this.speed += (bend - this.speed) * (1 - Math.pow(1 - .1, dt * 60));
     if (Math.abs(this.speed) < .01) this.speed = 0;
-    this.write();
+    // A gallery at rest writes nothing: no per-tile boxes and strings every frame.
+    if (this.moving || moved || this.stale) this.write();
     this.renderer?.update(this.speed, time);
   }
 
@@ -332,6 +339,7 @@ export class GalleryScene {
           tile.free = false;
         }
         if (this.moving === timeline) this.moving = undefined;
+        this.stale = true;
       },
     });
     // Freeze each tile where it is drawn now: free boxes are screen coordinates, the scroll offset must not leak in.
@@ -362,6 +370,7 @@ export class GalleryScene {
   private screen(tile: Tile): Box { return tile.free ? { ...tile.box } : this.toScreen(tile.box); }
 
   private write(): void {
+    this.stale = false;
     for (const tile of this.tiles) {
       if (!tile.shown && !tile.free) continue;
       const box = tile.rect = this.screen(tile);

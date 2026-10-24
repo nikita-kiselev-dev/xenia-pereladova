@@ -117,25 +117,27 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .not-found { padding: 20vh var(--edge); min-height: 100svh; }
 .not-found h1 { font: 700 clamp(42px, 8vw, 110px)/.95 var(--display); letter-spacing: -.06em; margin: 30px 0; }
 
-/* Moving film grain: own 128px texture on an overscanned layer, jumping ten times a second. */
+/* Moving film grain: own 128px (8rem) texture on an overscanned layer, jumping ten times a second.
+   Offsets are the original jumps modulo one tile, so the layer needs one tile of overscan, not 10rem per side
+   (a full-screen layer of that size is ~12 MB less GPU memory on a 3x phone). */
 /* Texels stay crisp: whole device pixels per texel, so fractional scaling (125–175 %) does not smear the grain. */
 .noise { position: fixed; inset: 0; z-index: 60; pointer-events: none; overflow: hidden; opacity: .9; }
-.noise::after { content: ''; position: absolute; inset: -10rem; background: url('/grain.png') 0 0 / 128px; image-rendering: pixelated; animation: grain 2s steps(2) infinite; will-change: transform; }
+.noise::after { content: ''; position: absolute; inset: -8rem 0 0 -8rem; background: url('/grain.png') 0 0 / 128px; image-rendering: pixelated; animation: grain 2s steps(2) infinite; will-change: transform; }
 @media (min-resolution: 1.2dppx) and (max-resolution: 1.9dppx) { .noise::after { background-size: calc(128px / 1.25); } }
 @media (min-resolution: 1.4dppx) and (max-resolution: 1.9dppx) { .noise::after { background-size: calc(128px / 1.5); } }
 @media (min-resolution: 1.7dppx) and (max-resolution: 1.9dppx) { .noise::after { background-size: calc(128px / 1.75); } }
 @keyframes grain {
-  0% { transform: translate3d(0, 9rem, 0); }
-  10% { transform: translate3d(-1rem, -4rem, 0); }
-  20% { transform: translate3d(-8rem, 2rem, 0); }
-  30% { transform: translate3d(9rem, -9rem, 0); }
-  40% { transform: translate3d(-2rem, 7rem, 0); }
-  50% { transform: translate3d(-9rem, -4rem, 0); }
+  0% { transform: translate3d(0, 1rem, 0); }
+  10% { transform: translate3d(7rem, 4rem, 0); }
+  20% { transform: translate3d(0, 2rem, 0); }
+  30% { transform: translate3d(1rem, 7rem, 0); }
+  40% { transform: translate3d(6rem, 7rem, 0); }
+  50% { transform: translate3d(7rem, 4rem, 0); }
   60% { transform: translate3d(2rem, 6rem, 0); }
-  70% { transform: translate3d(7rem, -8rem, 0); }
-  80% { transform: translate3d(-9rem, 1rem, 0); }
-  90% { transform: translate3d(6rem, -5rem, 0); }
-  100% { transform: translate3d(-7rem, 0, 0); }
+  70% { transform: translate3d(7rem, 0, 0); }
+  80% { transform: translate3d(7rem, 1rem, 0); }
+  90% { transform: translate3d(6rem, 3rem, 0); }
+  100% { transform: translate3d(1rem, 0, 0); }
 }
 .cursor { position: fixed; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--ink); filter: blur(3px); pointer-events: none; z-index: 61; opacity: 0; }
 
@@ -168,7 +170,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   /* A kept gallery is only the flying cover, never a second page of fixed labels over the series. */
   .project-main>.gallery .mobile-wordmark, .project-main>.gallery .gallery-intro, .project-main>.gallery .text-list { display: none; }
   .site-footer[data-view='overview'] .overview-focus { display: none; }
-  .gallery-main.view-list { height: auto; overflow: visible; padding: calc(95px + var(--safe-top)) var(--edge-right) calc(190px + var(--safe-bottom)) var(--edge-left); }
+  .gallery-main.view-list { height: auto; overflow: visible; padding: var(--wm-top) var(--edge-right) calc(190px + var(--safe-bottom)) var(--edge-left); }
   .gallery-main.view-list>.gallery { height: auto; }
   .view-list .list-stage { display: none; }
   .view-list .text-list { display: flex; flex-direction: column; }
@@ -218,6 +220,8 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .text-list>a { font-size: 12px; line-height: 1.15; }
   .project-heading { padding-bottom: 25px; background: linear-gradient(to bottom, #fefefe 50%, #fefefe00); }
   .project-heading>div { max-width: 60%; font-size: 10px; }
+  .project-photos { padding: var(--project-top) 0 var(--project-bottom); }
+  .project-photo { min-height: 0; padding: 0 var(--safe-right) 12px var(--safe-left); }
   .project-heading h1:focus, .info-content h1:focus { outline: none; }
   .project-counter { left: 0; right: 0; bottom: 0; padding: 35px var(--edge) calc(12px + env(safe-area-inset-bottom)); justify-content: flex-end; font-size: 64px; background: linear-gradient(to top, #fefefe 60%, #fefefe00); }
   .project-counter .counter-total { display: none; }

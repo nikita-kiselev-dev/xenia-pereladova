@@ -1,7 +1,7 @@
 # Xenia Photo Website
 
 Статическое портфолио Ксении Переладовой: пространственный Обзор на desktop, горизонтальная галерея с fixed инициалами на узком экране, desktop-лента/мобильный Список, фотосерии и информация о фотографе.
-Vite + TypeScript, GSAP, Lenis, Three.js. [Опубликованный сайт](https://nikita-kiselev-dev.github.io/xenia-pereladova/); визуальная приёмка остаётся отдельным этапом.
+Vite + TypeScript, GSAP, Lenis, WebGL2 без движка (шейдер галереи — один небольшой модуль). [Опубликованный сайт](https://nikita-kiselev-dev.github.io/xenia-pereladova/); визуальная приёмка остаётся отдельным этапом.
 
 ## Запуск
 
@@ -44,7 +44,7 @@ python scripts/import-portfolio.py
 ## Навигация и эффекты
 
 Маршруты: `#/overview`, `#/list`, `#/project/<slug>`, `#/info`.
-Категория хранится как `?filter=family` внутри hash. Close/Escape возвращают контекст галереи; Back/Forward и refresh поддержаны.
+Категория Списка хранится как `?filter=family` внутри hash. Переход в Обзор сбрасывает фильтр и показывает все серии; параметры фильтра в прямых ссылках на Обзор игнорируются. Close/Escape возвращают контекст галереи; Back/Forward и refresh поддержаны.
 Motion по [WEBSITE_MOTION_PLAN.md](WEBSITE_MOTION_PLAN.md); что реализовано и проверено — [docs/qa/motion-report.md](docs/qa/motion-report.md).
 Портретная версия откалибрована отдельно по iPhone 13 mini (375×812 CSS px): [исследование оригинала](docs/research/portrait-2026-10-24.md), [исправления и browser QA](docs/qa/portrait/report.md).
 Адаптивный рефакторинг телефонов и планшетов: [изменения и актуальные проверки](docs/qa/portrait-refactor/report.md). Размеры XP, ленты и кадра серии рассчитываются в `src/viewport.ts`; portrait-композиция включается также на экранах шире 1023px, если высота больше ширины.

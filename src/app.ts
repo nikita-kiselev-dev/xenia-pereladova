@@ -33,7 +33,6 @@ export class App {
   private lastGallery = '#/overview';
   private positions = new Map<string, Position>();
   private compact = matchMedia(compactQuery);
-  private photoObserver?: IntersectionObserver;
   private opening?: string;
   private lastOpened?: string;
   private openedKey?: string;
@@ -55,9 +54,10 @@ export class App {
   private mobileIndex: Counter;
   private wordmark: HTMLElement;
   private photoCounter?: Counter;
-  private photoCounterCompact = false;
   private currentPhoto = 1;
   private intro?: { timeline: gsap.core.Timeline; skip: () => void; element: HTMLElement };
+  private scrollMax = 0;
+  private mainSize = new ResizeObserver(() => this.measureScroll());
 
   constructor(private root: HTMLElement) {
     applyViewport(this.viewport);
@@ -78,6 +78,7 @@ export class App {
     <p class="sr-only" role="status" aria-live="polite" data-status></p>`;
     this.main = root.querySelector('main')!;
     this.footer = root.querySelector('.site-footer')!;
+    this.mainSize.observe(this.main);
     this.header = root.querySelector('.site-header')!;
     this.cursorEl = root.querySelector('.cursor')!;
     this.progress = new Counter(root.querySelector('[data-progress]')!, 3, value => `${Number(value)}%`);
@@ -100,6 +101,7 @@ export class App {
     window.addEventListener('hashchange', this.onHashChange);
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
     window.visualViewport?.addEventListener('resize', this.onResize);
     window.addEventListener('pointermove', this.onPointerMove);
     window.addEventListener('blur', this.onPointerLeave);
@@ -221,14 +223,17 @@ export class App {
       this.resizeFrame = 0;
       const previous = this.viewport;
       const view = readViewport();
+      this.renderer?.resize(view);
+      this.measureScroll();
       if (Object.entries(view).every(([key, value]) => value === previous[key as keyof typeof view])) return;
-      const photoPosition = scrollY / previous.height;
+      // The photo being viewed stays in place when the layout changes under it.
+      const anchor = this.shownRoute?.page === 'project' ? this.main.querySelector(`[data-photo-index="${this.currentPhoto}"]`)?.getBoundingClientRect() : undefined;
       applyViewport(view);
       this.viewport = view;
       this.lenis?.resize();
       if (this.shownRoute?.page === 'project') {
-        if (this.photoCounterCompact !== (innerWidth <= 600)) this.setupPhotoCounter();
-        if (previous.height !== view.height && previous.width !== view.width && this.root.dataset.phase === 'ready' && photoPosition < this.main.querySelectorAll('.project-photo').length) this.setScroll(photoPosition * view.height);
+        const photo = this.main.querySelector(`[data-photo-index="${this.currentPhoto}"]`)?.getBoundingClientRect();
+        if (anchor && photo && previous.height !== view.height && previous.width !== view.width && this.root.dataset.phase === 'ready') this.setScroll(scrollY + photo.top - anchor.top / anchor.height * photo.height);
         if (this.scene.root.isConnected && this.lastOpened) this.scene.alignCover(this.lastOpened, this.firstFrameRect(this.shownRoute.slug));
       }
       if (this.root.dataset.phase === 'transition' || this.intro) this.resizePending = true;
@@ -311,7 +316,6 @@ export class App {
   private enter(from: Route | undefined, revision: number) {
     const route = this.route;
     this.shownRoute = route;
-    this.photoObserver?.disconnect();
     gsap.set(this.main, { clearProps: 'opacity,visibility' });
     this.root.dataset.page = route.page;
     this.header.hidden = this.footer.hidden = !isGallery(route);
@@ -469,7 +473,6 @@ export class App {
       this.currentPhoto = 1;
       this.setupPhotoCounter();
       this.setScroll(0);
-      this.observePhotos();
       const first = this.main.querySelector<HTMLImageElement>('.project-photo img');
       if (first && keepGallery) {
         this.scene.alignCover(this.lastOpened!, this.firstFrameRect(route.slug));
@@ -524,7 +527,7 @@ export class App {
     try {
       const { GalleryRenderer } = await import('./webgl/gallery-renderer');
       if (reducedMotion.matches) return;
-      const renderer = new GalleryRenderer();
+      const renderer = new GalleryRenderer(this.viewport);
       if (renderer.disposed) { this.main.dataset.renderer = 'unavailable'; return; }
       this.renderer = renderer;
       this.scene.attach(renderer);
@@ -540,24 +543,23 @@ export class App {
     else window.scrollTo(0, y);
   }
 
-  private observePhotos() {
-    this.photoObserver = new IntersectionObserver(entries => {
-      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      const index = visible?.target.getAttribute('data-photo-index');
-      if (index) {
-        this.currentPhoto = Number(index);
-        if (!this.photoCounterCompact) this.photoCounter?.set(this.currentPhoto);
-      }
-    }, { threshold: [.25, .5, .75] });
-    this.main.querySelectorAll('[data-photo-index]').forEach(photo => this.photoObserver!.observe(photo));
-  }
+  /** Current photo: the last one whose top passed the middle of the screen; at the very end, the last one. */
+  private onScroll = () => {
+    if (this.shownRoute?.page !== 'project') return;
+    const photos = this.main.querySelectorAll('[data-photo-index]');
+    let current = 1;
+    photos.forEach((photo, index) => { if (photo.getBoundingClientRect().top <= innerHeight / 2) current = index + 1; });
+    if (photos.length && scrollY + innerHeight >= document.documentElement.scrollHeight - 2) current = Math.max(current, photos.length);
+    if (current === this.currentPhoto) return;
+    this.currentPhoto = current;
+    this.photoCounter?.set(current);
+  };
 
   private setupPhotoCounter() {
     const counter = this.main.querySelector<HTMLElement>('[data-current-photo]');
     if (!counter) return;
-    this.photoCounterCompact = innerWidth <= 600;
-    this.photoCounter = new Counter(counter, this.photoCounterCompact ? 3 : 2, value => this.photoCounterCompact ? `Просмотрено ${Number(value)}%` : `Фотография ${Number(value)}`);
-    this.photoCounter.set(this.photoCounterCompact ? 0 : this.currentPhoto, true);
+    this.photoCounter = new Counter(counter, 2, value => `Фотография ${Number(value)}`);
+    this.photoCounter.set(this.currentPhoto, true);
   }
 
   private updateClock() {
@@ -577,11 +579,7 @@ export class App {
       if (this.scene.mode === 'strip' && isGallery(this.route) && this.route.page === 'overview' && this.shownRoute === this.route && !this.scene.busy) this.updateMobileCaption();
       this.progress.set(this.scene.phase());
     } else if (isGallery(this.route)) {
-      const height = document.documentElement.scrollHeight - innerHeight;
-      this.progress.set(height > 0 ? Math.min(100, Math.max(0, scrollY / height * 100)) : 0);
-    } else if (this.route.page === 'project' && this.photoCounterCompact) {
-      const height = document.documentElement.scrollHeight - innerHeight;
-      this.photoCounter?.set(height > 0 ? Math.floor(Math.min(100, Math.max(0, scrollY / height * 100))) : 0);
+      this.progress.set(this.scrollProgress());
     }
     if (this.pointer.mouse && !reducedMotion.matches) {
       // Original lerp 0.075 per 60 Hz frame, made frame-rate independent.
@@ -600,6 +598,13 @@ export class App {
       }
     }
   };
+
+  /** 0…100 of the page scroll. The height is measured on resize, never in the frame loop: there it forced a layout every frame. */
+  private scrollProgress(): number {
+    return this.scrollMax > 0 ? Math.min(100, Math.max(0, scrollY / this.scrollMax * 100)) : 0;
+  }
+
+  private measureScroll() { this.scrollMax = document.documentElement.scrollHeight - innerHeight; }
 
   private setHover(tile?: GalleryScene['tiles'][number]) {
     if (tile === this.hovered) return;
@@ -746,7 +751,7 @@ export class App {
     this.scene.dispose();
     this.renderer?.dispose();
     this.lenis?.destroy();
-    this.photoObserver?.disconnect();
+    this.mainSize.disconnect();
     gsap.ticker.remove(this.tick);
     this.root.removeEventListener('click', this.onClick);
     this.root.removeEventListener('pointerdown', this.onClosePress);
@@ -759,6 +764,7 @@ export class App {
     window.removeEventListener('hashchange', this.onHashChange);
     window.removeEventListener('keydown', this.onKeyDown);
     window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
     window.visualViewport?.removeEventListener('resize', this.onResize);
     window.removeEventListener('pointermove', this.onPointerMove);
     window.removeEventListener('blur', this.onPointerLeave);

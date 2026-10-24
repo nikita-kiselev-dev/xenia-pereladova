@@ -12,10 +12,24 @@ test('route defaults, malformed slugs and query values remain navigable', () => 
   assert.deepEqual(parseRoute('#/unknown'), { page: 'overview', filter: 'all' });
 });
 
-test('gallery links preserve the current view and filter through history', () => {
-  for (const view of ['overview', 'list'] as const) {
-    for (const filter of ['all', 'family', 'portrait', 'events'] as const) {
-      assert.deepEqual(parseRoute(galleryHash(view, filter)), { page: view, filter });
-    }
+test('list links preserve the category through history', () => {
+  for (const filter of ['all', 'family', 'portrait', 'events'] as const) {
+    assert.deepEqual(parseRoute(galleryHash('list', filter)), { page: 'list', filter });
+  }
+});
+
+test('switching from a filtered list to overview clears the category', () => {
+  for (const filter of ['all', 'family', 'portrait', 'events'] as const) {
+    const list = parseRoute(galleryHash('list', filter));
+    assert.equal(list.page, 'list');
+    if (list.page !== 'list') throw new Error('Expected list route');
+    assert.equal(galleryHash('overview', list.filter), '#/overview');
+    assert.deepEqual(parseRoute(galleryHash('overview', list.filter)), { page: 'overview', filter: 'all' });
+  }
+});
+
+test('overview ignores categories in old or direct URLs', () => {
+  for (const filter of ['family', 'portrait', 'events']) {
+    assert.deepEqual(parseRoute(`#/overview?filter=${filter}`), { page: 'overview', filter: 'all' });
   }
 });
