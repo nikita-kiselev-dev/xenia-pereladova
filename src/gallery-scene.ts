@@ -334,6 +334,8 @@ export class GalleryScene {
       onComplete: () => {
         for (const tile of this.tiles) {
           if (!tile.shown) { tile.el.hidden = true; continue; }
+          // alignCover may have already put the cover back into layout space: adding the offset twice threw it off screen.
+          if (!tile.free) continue;
           const axis = this.plan.axis;
           tile.box = { ...tile.box, [axis]: tile.box[axis] + this.offset };
           tile.free = false;
