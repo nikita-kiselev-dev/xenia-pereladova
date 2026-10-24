@@ -10,5 +10,5 @@ export function infoMarkup(): string {
       </div>
       <figure class="info-portrait"><img src="${asset(portrait.src)}" width="${portrait.width}" height="${portrait.height}" alt="Ксения Переладова" decoding="async"/><figcaption>${profile.name}<br>Фотограф / Новосибирск</figcaption></figure>
     </section>
-    <footer class="info-footer"><span data-reveal>${profile.name}<br>© ${new Date().getFullYear()}</span><span data-reveal>Фотографии о вас<br>и о тех, кто рядом</span><a href="${profile.instagram}" target="_blank" rel="noopener noreferrer" data-reveal data-scramble>Instagram</a></footer>`;
+    <footer class="info-footer"><a href="https://t.me/+79059394963" target="_blank" rel="noopener noreferrer" aria-label="Создание стильных веб-платформ: Triple Jump Development" data-reveal>Создание стильных веб-платформ:<br>Triple Jump Development<br>© ${new Date().getFullYear()}</a><span data-reveal>Фотографии о вас<br>и о тех, кто рядом</span><a href="${profile.instagram}" target="_blank" rel="noopener noreferrer" data-reveal data-scramble>Instagram</a></footer>`;
 }

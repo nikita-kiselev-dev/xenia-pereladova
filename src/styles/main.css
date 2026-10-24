@@ -127,7 +127,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .project-photo-frame img, .info-portrait img { outline: 1px solid rgb(0 0 0 / .08); outline-offset: -1px; }
 .info-portrait figcaption { font-size: 10px; line-height: 1.5; margin-top: 12px; }
 .info-footer { display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; padding: 30px var(--edge-right) calc(var(--edge) + var(--safe-bottom)) var(--edge-left); min-height: 100px; line-height: 1.5; }
-.info-footer>a { justify-self: end; }
+.info-footer>a:last-child { justify-self: end; }
 .not-found { padding: 20vh var(--edge); min-height: 100svh; }
 .not-found h1 { font: 700 clamp(42px, 8vw, 110px)/.95 var(--display); letter-spacing: -.06em; margin: 30px 0; }
 
