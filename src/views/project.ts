@@ -1,13 +1,21 @@
-import { projects } from '../data/projects';
+import { projects, type Photo, type Project } from '../data/projects';
 import { categoryName, escapeHtml, photoMarkup } from './gallery';
 
-export function projectMarkup(slug: string): string {
+/** Photo index of a gallery tile key (`<slug>-<index>`): 0 is the cover. */
+export const tilePhoto = (slug: string, key?: string): number => key?.startsWith(`${slug}-`) ? Number(key.slice(slug.length + 1)) || 0 : 0;
+
+/** The photo that flew in from the gallery is the first frame, not a different one: a second tile leads its series, the cover follows. */
+export function seriesFrames(project: Project, lead = 0): Photo[] {
+  const first = lead ? project.photos[lead] : undefined;
+  return first ? [first, project.cover, ...project.photos.filter(photo => photo !== first)] : [project.cover, ...project.photos];
+}
+
+export function projectMarkup(slug: string, lead = 0): string {
   const project = projects.find(item => item.slug === slug);
   if (!project) return `<section class="not-found"><p data-reveal>Серия не найдена</p><h1 tabindex="-1" data-mask>Вернёмся<br>к фотографиям.</h1><a href="#/overview" data-reveal data-scramble>Открыть портфолио</a></section>`;
   const index = projects.indexOf(project);
   const next = projects[(index + 1) % projects.length];
-  // The cover opens the series: the photo that flew in from the gallery is its first frame, not a different one.
-  const frames = [project.cover, ...project.photos];
+  const frames = seriesFrames(project, lead);
   return `<header class="project-heading"><div><span class="project-index" data-reveal>/${String(index + 1).padStart(2, '0')}</span>
     <h1 tabindex="-1" data-reveal>${escapeHtml(project.title)}</h1><p data-reveal>${categoryName(project)}</p>
     <p data-reveal>${frames.length} фотографий</p></div><button class="close-button" data-close data-reveal data-scramble aria-label="Закрыть серию">[Закрыть]</button></header>

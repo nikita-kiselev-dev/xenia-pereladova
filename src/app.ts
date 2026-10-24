@@ -6,7 +6,7 @@ import type { Box, Mode } from './gallery-layout';
 import { Counter, hideChars, maskIn, maskOut, reducedMotion, revealChars, scramble } from './motion';
 import { galleryHash, parseRoute, type Route } from './navigation';
 import { categoryName, escapeHtml, galleryMarkup, projectNumber } from './views/gallery';
-import { projectMarkup } from './views/project';
+import { projectMarkup, seriesFrames, tilePhoto } from './views/project';
 import { infoMarkup } from './views/info';
 import type { GalleryRenderer } from './webgl/gallery-renderer';
 import { applyViewport, compactQuery, projectFrame, readViewport } from './viewport';
@@ -469,7 +469,9 @@ export class App {
       this.main.className = 'project-main';
       const project = projects.find(item => item.slug === route.slug);
       document.title = `${project?.title || 'Серия не найдена'} — ${profile.name}`;
-      this.main.innerHTML = projectMarkup(route.slug);
+      // Without a cover flight the series starts with its cover, and closing returns that tile.
+      if (!keepGallery) this.lastOpened = undefined;
+      this.main.innerHTML = projectMarkup(route.slug, tilePhoto(route.slug, this.lastOpened));
       this.currentPhoto = 1;
       this.setupPhotoCounter();
       this.setScroll(0);
@@ -523,7 +525,8 @@ export class App {
 
   /** Box of a series' first frame at the top of its page (same rule as .project-photo-frame CSS). */
   private firstFrameRect(slug: string): Box {
-    const photo = projects.find(project => project.slug === slug)?.cover;
+    const project = projects.find(item => item.slug === slug);
+    const photo = project && seriesFrames(project, tilePhoto(slug, this.lastOpened))[0];
     const ratio = photo ? photo.width / photo.height : .8;
     return projectFrame(ratio, readViewport());
   }
