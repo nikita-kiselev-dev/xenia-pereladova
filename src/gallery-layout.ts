@@ -1,4 +1,5 @@
 // Pure geometry for the cyclic gallery: no DOM, so it can be checked with node --test.
+import { portraitLayout, type Insets } from './viewport.ts';
 export type Mode = 'overview' | 'list' | 'strip';
 export interface Box { x: number; y: number; w: number; h: number }
 export interface Layout { boxes: Box[]; axis: 'x' | 'y'; period: number; margin: number; cycling: boolean; max: number }
@@ -12,7 +13,7 @@ const rows: { a: number; n: number }[][] = [
   [{ a: .17, n: 1 }, { a: .5, n: 2 }, { a: .84, n: 1 }],
 ];
 
-export function layout(mode: Mode, ratios: number[], vw: number, vh: number): Layout {
+export function layout(mode: Mode, ratios: number[], vw: number, vh: number, insets?: Insets): Layout {
   const edge = vw <= 600 ? 15 : 20;
   if (mode === 'overview') {
     const h = Math.max(96, vh * .137);
@@ -32,8 +33,9 @@ export function layout(mode: Mode, ratios: number[], vw: number, vh: number): La
     return finish(boxes, 'y', row * pitch, h + 20, vh);
   }
   // Strip (every compact width, phone to tablet portrait): low band under the fixed initials and caption.
-  const h = mode === 'list' ? Math.max(130, vh * .18) : vh * .3;
-  const y = mode === 'strip' ? vh * .775 - h / 2 : (vh - h) / 2;
+  const portrait = portraitLayout(vw, vh, insets);
+  const h = mode === 'list' ? Math.max(130, vh * .18) : portrait.photoHeight;
+  const y = mode === 'strip' ? portrait.photoTop : (vh - h) / 2;
   let x = mode === 'list' ? vw * .08 : vw * .25;
   const boxes = ratios.map(ratio => { const w = h * Math.min(ratio, 2); const box = { x, y, w, h }; x += w + gap; return box; });
   const widest = Math.max(0, ...boxes.map(box => box.w));

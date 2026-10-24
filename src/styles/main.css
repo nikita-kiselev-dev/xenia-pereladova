@@ -29,7 +29,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* viewport-fit=cover: on iOS the page runs under the translucent Safari bar, so chrome is pushed below the safe area
    while the header box (and its blur) still starts at the very top of the screen. */
-.site-header { position: fixed; z-index: 10; inset: 0 0 auto; padding: var(--edge); padding-top: calc(var(--edge) + env(safe-area-inset-top)); min-height: calc(70px + env(safe-area-inset-top)); display: flex; justify-content: space-between; text-transform: uppercase; }
+.site-header { position: fixed; z-index: 10; inset: 0 0 auto; padding: var(--edge) var(--edge-right) var(--edge) var(--edge-left); padding-top: calc(var(--edge) + env(safe-area-inset-top)); min-height: calc(70px + env(safe-area-inset-top)); display: flex; justify-content: space-between; text-transform: uppercase; }
 /* Stepped blur: three masked layers grow stronger toward the screen edge instead of one flat blur. */
 .edge-blur { position: absolute; inset: 0 0 -30px; z-index: -1; pointer-events: none; background: linear-gradient(#fefefecc 35%, #fefefe00); }
 .edge-blur>i { position: absolute; inset: 0; }
@@ -48,7 +48,9 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .site-contact { margin-left: 90px; align-self: flex-start; }
 
 /* Gallery: one persistent fixed stage; JS places every photo (cyclic layout, transitions). */
-.gallery-main { height: 100svh; overflow: clip; }
+.gallery-main { height: var(--viewport-height); overflow: clip; }
+.gallery-main>.gallery { min-height: inherit; height: 100%; }
+.gallery-main.view-overview { touch-action: pinch-zoom; }
 html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .mobile-wordmark, .gallery-intro, .text-list { display: none; }
 .list-stage { position: fixed; z-index: 1; inset: 0; overflow: clip; pointer-events: none; }
@@ -67,7 +69,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .photo-frame[data-failed], .project-photo-frame[data-failed] { min-height: 130px; background: #ececea; }
 [data-failed]::after { content: 'Фото недоступно'; position: absolute; inset: 0; display: grid; place-items: center; color: #555; font: 500 11px var(--mono); }
 
-.site-footer { display: flex; align-items: flex-end; gap: 30px; position: fixed; z-index: 10; inset: auto 0 0; padding: var(--edge); padding-bottom: calc(var(--edge) + env(safe-area-inset-bottom)); pointer-events: none; min-height: calc(80px + env(safe-area-inset-bottom)); }
+.site-footer { display: flex; align-items: flex-end; gap: 30px; position: fixed; z-index: 10; inset: auto 0 0; padding: var(--edge) var(--edge-right) var(--edge) var(--edge-left); padding-bottom: calc(var(--edge) + env(safe-area-inset-bottom)); pointer-events: none; min-height: calc(80px + env(safe-area-inset-bottom)); }
 .site-footer a, .site-footer button { pointer-events: auto; }
 .copyright { flex: none; }
 .filters { display: flex; flex-wrap: nowrap; gap: 10px; margin-bottom: -12px; }
@@ -81,15 +83,15 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .site-footer[data-view='overview'] .overview-focus { display: flex; }
 .site-footer[data-view='overview'] .filters { display: none; }
 
-.project-heading { position: fixed; z-index: 10; inset: 0 0 auto; padding: var(--edge); padding-top: calc(var(--edge) + env(safe-area-inset-top)); display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; }
+.project-heading { position: fixed; z-index: 10; inset: 0 0 auto; padding: var(--edge) var(--edge-right) var(--edge) var(--edge-left); padding-top: calc(var(--edge) + env(safe-area-inset-top)); display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; }
 .project-heading>div { max-width: 230px; }
 .project-heading h1 { font: inherit; margin: 12px 0 4px; }
 .project-heading p { text-transform: lowercase; }
-.close-button { text-transform: uppercase; pointer-events: auto; }
+.close-button { text-transform: uppercase; pointer-events: auto; min-height: 44px; padding: 14px 0; margin: -14px 0; }
 /* Above the gallery canvas: the first frame fades in over the cover that travelled into its place. */
 .project-photos { position: relative; z-index: 3; }
-.project-photo { min-height: 100svh; display: flex; align-items: center; justify-content: center; }
-.project-photo-frame { position: relative; width: min(calc(70svh * var(--ratio)), 80vw); aspect-ratio: var(--ratio); background: #e7e7e4; }
+.project-photo { min-height: var(--viewport-height); padding: var(--project-top) var(--safe-right) var(--project-bottom) var(--safe-left); display: flex; align-items: center; justify-content: center; }
+.project-photo-frame { position: relative; flex: none; width: min(calc(var(--project-height) * var(--ratio)), var(--project-width)); aspect-ratio: var(--ratio); background: #e7e7e4; }
 .project-photo:first-child .project-photo-frame { background: none; }
 .project-counter { position: fixed; z-index: 10; bottom: calc(12px + env(safe-area-inset-bottom)); right: var(--edge); font: 700 clamp(64px, 7vw, 110px)/.9 var(--display); letter-spacing: -.07em; pointer-events: none; display: flex; align-items: baseline; }
 .counter-total { font: 500 12px var(--mono); letter-spacing: 0; margin-left: 12px; }
@@ -98,8 +100,8 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .next-project>a span { margin-left: .3em; }
 .next-project>button { margin-top: 20px; }
 
-.info-heading { display: grid; grid-template-columns: repeat(3, 1fr) auto; padding: var(--edge); padding-top: calc(var(--edge) + env(safe-area-inset-top)); gap: 15px; align-items: start; }
-.info-content { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding: 0 var(--edge); min-height: calc(100svh - 180px); }
+.info-heading { display: grid; grid-template-columns: repeat(3, 1fr) auto; padding: var(--edge) var(--edge-right) var(--edge) var(--edge-left); padding-top: calc(var(--edge) + env(safe-area-inset-top)); gap: 15px; align-items: start; }
+.info-content { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding: 0 var(--edge-right) 0 var(--edge-left); min-height: calc(100svh - 180px); }
 .info-content h1 { font: 700 clamp(80px, 11vw, 200px)/.9 var(--display); letter-spacing: -.075em; margin-top: 10px; max-width: 100%; }
 .info-copy { padding-top: 65px; max-width: 360px; line-height: 1.6; }
 .info-copy>p + p { margin-top: 20px; }
@@ -110,7 +112,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .info-portrait { width: 148px; align-self: center; justify-self: end; margin-top: 100px; }
 .info-portrait img { height: auto; }
 .info-portrait figcaption { font-size: 10px; line-height: 1.5; margin-top: 12px; }
-.info-footer { display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; padding: 30px var(--edge) var(--edge); min-height: 100px; line-height: 1.5; }
+.info-footer { display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; padding: 30px var(--edge-right) calc(var(--edge) + var(--safe-bottom)) var(--edge-left); min-height: 100px; line-height: 1.5; }
 .info-footer>a { justify-self: end; }
 .not-found { padding: 20vh var(--edge); min-height: 100svh; }
 .not-found h1 { font: 700 clamp(42px, 8vw, 110px)/.95 var(--display); letter-spacing: -.06em; margin: 30px 0; }
@@ -153,21 +155,21 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .filters { gap: 8px; }
   .filters button { font-size: clamp(40px, 5.7vw, 65px); }
 }
-@media (max-width: 1023px) {
-  /* Initials: as wide as the screen, but never taller than the room above the strip (tablet portrait, phone landscape).
-     Drawn glyph height ≈ .815 × font size; the caption sits 15px under it.
-     Ink of "XP" is ≈1.37 × font size wide (wider than its advance), so the width cap keeps 15px on both sides. */
-  .gallery-main { --wm: min(calc((100vw - 30px) / 1.37), calc(77svh - 190px - env(safe-area-inset-top))); --wm-top: calc(75px + env(safe-area-inset-top)); }
+@media (max-width: 1023px), (orientation: portrait) {
+  /* viewport.ts reserves room for the caption, strip, controls and safe areas before sizing XP. */
+  .site-bio { display: none; }
+  .site-contact { display: none; }
   .gallery-main .mobile-wordmark { display: block; font: 900 var(--wm)/.75 var(--display); letter-spacing: -.10em; margin-bottom: calc(var(--wm) * .1); transform: scaleY(1.115); pointer-events: none; }
-  .view-overview .mobile-wordmark { position: fixed; top: var(--wm-top); left: 15px; z-index: 4; margin: 0; pointer-events: none; }
-  .view-overview .gallery-intro--overview { display: flex; flex-direction: column; position: fixed; top: calc(var(--wm-top) + 15px + var(--wm) * .815); left: 15px; right: 15px; z-index: 4; margin: 0; text-transform: uppercase; pointer-events: none; }
+  .view-overview .mobile-wordmark { position: fixed; top: var(--wm-top); left: var(--edge-left); z-index: 4; margin: 0; pointer-events: none; }
+  .view-overview .gallery-intro--overview { display: flex; flex-direction: column; position: fixed; top: var(--gallery-caption-top); left: var(--edge-left); right: var(--edge-right); z-index: 4; margin: 0; text-transform: uppercase; pointer-events: none; }
   .view-overview [data-mobile-title] { margin-top: 8px; }
   .view-overview [data-mobile-category] { margin-top: 4px; }
   .view-list .text-list { margin-top: 25px; }
   /* A kept gallery is only the flying cover, never a second page of fixed labels over the series. */
   .project-main>.gallery .mobile-wordmark, .project-main>.gallery .gallery-intro, .project-main>.gallery .text-list { display: none; }
   .site-footer[data-view='overview'] .overview-focus { display: none; }
-  .gallery-main.view-list { height: auto; overflow: visible; padding: calc(95px + env(safe-area-inset-top)) var(--edge) 190px; }
+  .gallery-main.view-list { height: auto; overflow: visible; padding: calc(95px + var(--safe-top)) var(--edge-right) calc(190px + var(--safe-bottom)) var(--edge-left); }
+  .gallery-main.view-list>.gallery { height: auto; }
   .view-list .list-stage { display: none; }
   .view-list .text-list { display: flex; flex-direction: column; }
   .text-list>a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: end; margin-bottom: 25px; text-transform: uppercase; }
@@ -176,12 +178,28 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .text-list small { display: block; font: inherit; margin-top: 4px; }
   .text-list-open { grid-column: 2; grid-row: 2; align-self: start; }
   .text-list>a:hover .text-list-name { text-decoration: underline; }
+  .site-footer { flex-wrap: wrap; row-gap: 18px; }
+  .filters { order: -1; width: 100%; justify-content: space-between; gap: 5px; margin: 0; }
+  .filters button { font-size: clamp(22px, 4.2vw, 40px); }
+  .site-nav a { min-height: 44px; padding: 15px 0; margin: -15px 0; }
+  .info-section a { min-height: 44px; padding: 10px 0; }
   .info-content { grid-template-columns: 1fr 1fr; gap: 25px; align-content: start; }
   .info-content h1 { grid-column: 1/-1; font-size: 15vw; }
   .info-copy { padding-top: 25px; }
   .info-portrait { margin-top: 40px; }
   .info-heading { grid-template-columns: 1fr 1fr auto; }
   .info-heading>span:nth-child(3) { display: none; }
+  .intro-top, .intro-bottom { font-size: 10px; }
+  .intro--portrait .intro-initials { inset: var(--wm-top) auto auto var(--edge-left); display: block; font: 900 var(--wm)/.75 var(--display); letter-spacing: -.10em; transform: scaleY(1.115); }
+  .intro--portrait .intro-photo, .intro--portrait .intro-name { display: none; }
+  .intro--portrait .intro-top { position: absolute; top: calc(var(--gallery-caption-top) - 5px); left: var(--edge-left); right: var(--edge-right); flex-direction: column; align-items: flex-start; gap: 0; font-size: 12px; line-height: 1.3; }
+  .intro--portrait .intro-bottom { position: absolute; top: calc(var(--gallery-caption-top) - 5px); left: var(--edge-left); right: var(--edge-right); height: 46.8px; }
+  .intro--portrait .intro-side { flex-direction: row; align-items: baseline; width: 100%; justify-content: flex-end; }
+  .intro--portrait .intro-skip { position: fixed; bottom: calc(15px + var(--safe-bottom)); left: var(--edge-left); min-height: 44px; padding-block: 15px; margin-bottom: -15px; }
+  .intro--portrait .intro-status { display: none; }
+  .intro--portrait .intro-count { font: inherit; letter-spacing: 0; }
+  .intro--portrait .intro-count::before { content: '['; }
+  .intro--portrait .intro-count::after { content: '%]'; }
 }
 @media (max-width: 600px) {
   .site-header { min-height: calc(55px + env(safe-area-inset-top)); padding-top: calc(15px + env(safe-area-inset-top)); }
@@ -189,16 +207,11 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .cursor { display: none; }
   .site-name, .site-bio, .site-contact, .site-nav .nav-slash { display: none; }
   .site-nav { width: 100%; justify-content: space-between; flex-wrap: nowrap; margin: 0; }
-  .site-nav .info-nav { order: -1; flex-basis: auto; margin-top: 0; }
-  .site-nav a { padding: 0; opacity: .65; }
-  .gallery-main.view-list { padding: var(--wm-top) var(--edge) 70px; }
-  .gallery-main, .intro--portrait { --wm: min(70vw, calc(77svh - 190px - env(safe-area-inset-top))); --wm-top: calc(55px + env(safe-area-inset-top)); }
-  .gallery-main { height: 100dvh; }
-  .gallery-main.view-list { height: auto; }
+  .site-nav .info-nav { order: -1; flex-basis: auto; margin-top: -15px; }
+  .site-nav a { opacity: .65; }
+  .gallery-main.view-list { padding: var(--wm-top) var(--edge-right) calc(90px + var(--safe-bottom)) var(--edge-left); }
   .gallery-main .mobile-wordmark { margin-left: -7px; }
-  .view-overview .gallery-intro--overview { top: calc(var(--wm-top) + 20px + var(--wm) * .815); }
   .site-footer { flex-wrap: wrap; row-gap: 18px; padding-top: 24px; }
-  .filters { order: -1; width: 100%; justify-content: space-between; gap: 5px; margin: 0; }
   .site-footer .filters, .site-footer .edge-blur { display: none; }
   .filters button { font: 700 clamp(17px, 5.5vw, 27px)/1.1 var(--display); letter-spacing: -.04em; }
   .copyright, .progress { font-size: 12px; }
@@ -206,8 +219,6 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .project-heading { padding-bottom: 25px; background: linear-gradient(to bottom, #fefefe 50%, #fefefe00); }
   .project-heading>div { max-width: 60%; font-size: 10px; }
   .project-heading h1:focus, .info-content h1:focus { outline: none; }
-  .project-photo { min-height: 100dvh; }
-  .project-photo-frame { width: 90vw; }
   .project-counter { left: 0; right: 0; bottom: 0; padding: 35px var(--edge) calc(12px + env(safe-area-inset-bottom)); justify-content: flex-end; font-size: 64px; background: linear-gradient(to top, #fefefe 60%, #fefefe00); }
   .project-counter .counter-total { display: none; }
   .next-project { display: none; }
@@ -221,17 +232,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .info-portrait { display: none; }
   .info-footer { grid-template-columns: 1fr auto; font-size: 10px; }
   .info-footer>span:nth-child(2) { display: none; }
-  .intro-top, .intro-bottom { font-size: 10px; }
-  .intro--portrait .intro-initials { inset: var(--wm-top) auto auto 8px; display: block; font: 900 var(--wm)/.75 var(--display); letter-spacing: -.10em; transform: scaleY(1.115); }
-  .intro--portrait .intro-photo, .intro--portrait .intro-name { display: none; }
-  .intro--portrait .intro-top { position: absolute; top: calc(var(--wm-top) + var(--wm) * .815 + 15px); left: 15px; right: 15px; flex-direction: column; align-items: flex-start; gap: 0; font-size: 12px; line-height: 1.3; }
-  .intro--portrait .intro-bottom { position: absolute; top: calc(var(--wm-top) + var(--wm) * .815 + 15px); left: 15px; right: 15px; height: 46.8px; }
-  .intro--portrait .intro-side { flex-direction: row; align-items: baseline; width: 100%; justify-content: flex-end; }
-  .intro--portrait .intro-skip { position: fixed; bottom: calc(15px + env(safe-area-inset-bottom)); left: 15px; }
-  .intro--portrait .intro-status { display: none; }
-  .intro--portrait .intro-count { font: inherit; letter-spacing: 0; }
-  .intro--portrait .intro-count::before { content: '['; }
-  .intro--portrait .intro-count::after { content: '%]'; }
+  .intro--portrait .intro-initials { left: calc(var(--edge-left) - 7px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .noise::after { animation: none; }

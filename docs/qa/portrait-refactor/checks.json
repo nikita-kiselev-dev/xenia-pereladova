@@ -1,0 +1,5479 @@
+{
+  "date": "2026-10-24",
+  "baseURL": "http://127.0.0.1:4180/xenia-pereladova/",
+  "commands": {
+    "typecheck": "PASS",
+    "npm test": {
+      "passed": 6,
+      "failed": 0
+    },
+    "productionPrefixBuild": "PASS"
+  },
+  "additionalSessionChecks": {
+    "visualViewport": {
+      "css": "744px",
+      "canvas": 744
+    },
+    "pinchScale2": {
+      "normalizedHeight": "744px"
+    },
+    "webglContextLoss": {
+      "canvas": 0,
+      "visibleDOMPhotos": true
+    },
+    "GLSLComparisonAgainstHEAD": {
+      "blocks": 2,
+      "unchanged": true
+    }
+  },
+  "artifacts": {
+    "gallery-renderer-5BCose72.js": "b963f02607147320404a6575654bcf27c020f21cdf54690d4b72a7deecf7ea49",
+    "index-B3sExovs.css": "3f9d66ade1bd0d1d86e381824df4abaf1c6e07f8c0fc6629374e41a3821e9d82",
+    "index-Qums8ttM.js": "07409521495d6a78e8eab217a22df29522af037fdc1e3f9baa69c96eb3c84ec7"
+  },
+  "suites": {
+    "responsive": {
+      "passed": 264,
+      "failed": 0,
+      "errors": [],
+      "checks": [
+        {
+          "name": "320x480: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "320x480: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "320x480: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "320x480: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "320x480: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "320x480: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "320x480: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "320x480: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "320x480: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "320x480: list layout",
+          "passed": true
+        },
+        {
+          "name": "320x480: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "320x480: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "320x480: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "320x480: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "320x480: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "320x480: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "320x568: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "320x568: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "320x568: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "320x568: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "320x568: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "320x568: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "320x568: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "320x568: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "320x568: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "320x568: list layout",
+          "passed": true
+        },
+        {
+          "name": "320x568: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "320x568: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "320x568: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "320x568: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "320x568: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "320x568: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "360x640: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "360x640: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "360x640: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "360x640: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "360x640: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "360x640: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "360x640: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "360x640: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "360x640: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "360x640: list layout",
+          "passed": true
+        },
+        {
+          "name": "360x640: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "360x640: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "360x640: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "360x640: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "360x640: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "360x640: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "375x812: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "375x812: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "375x812: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "375x812: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "375x812: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "375x812: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "375x812: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "375x812: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "375x812: list layout",
+          "passed": true
+        },
+        {
+          "name": "375x812: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "375x812: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "375x812: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "375x812: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "drag starting on Close does not activate it",
+          "passed": true
+        },
+        {
+          "name": "375x812: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "375x812: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "390x844: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "390x844: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "390x844: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "390x844: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "390x844: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "390x844: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "390x844: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "390x844: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "390x844: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "390x844: list layout",
+          "passed": true
+        },
+        {
+          "name": "390x844: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "390x844: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "390x844: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "390x844: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "390x844: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "390x844: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "430x932: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "430x932: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "430x932: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "430x932: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "430x932: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "430x932: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "430x932: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "430x932: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "430x932: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "430x932: list layout",
+          "passed": true
+        },
+        {
+          "name": "430x932: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "430x932: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "430x932: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "430x932: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "430x932: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "430x932: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "540x720: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "540x720: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "540x720: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "540x720: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "540x720: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "540x720: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "540x720: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "540x720: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "540x720: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "540x720: list layout",
+          "passed": true
+        },
+        {
+          "name": "540x720: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "540x720: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "540x720: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "540x720: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "540x720: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "540x720: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "600x800: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "600x800: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "600x800: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "600x800: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "600x800: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "600x800: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "600x800: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "600x800: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "600x800: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "600x800: list layout",
+          "passed": true
+        },
+        {
+          "name": "600x800: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "600x800: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "600x800: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "600x800: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "600x800: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "600x800: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "601x962: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "601x962: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "601x962: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "601x962: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "601x962: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "601x962: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "601x962: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "601x962: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "601x962: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "601x962: list layout",
+          "passed": true
+        },
+        {
+          "name": "601x962: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "601x962: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "601x962: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "601x962: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "601x962: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "601x962: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "768x1024: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "768x1024: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "768x1024: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "768x1024: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "768x1024: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "768x1024: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "768x1024: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "768x1024: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "768x1024: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "768x1024: list layout",
+          "passed": true
+        },
+        {
+          "name": "768x1024: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "768x1024: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "768x1024: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "768x1024: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "768x1024: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "768x1024: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "820x1180: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "820x1180: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "820x1180: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "820x1180: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "820x1180: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "820x1180: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "820x1180: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "820x1180: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "820x1180: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "820x1180: list layout",
+          "passed": true
+        },
+        {
+          "name": "820x1180: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "820x1180: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "820x1180: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "820x1180: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "820x1180: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "820x1180: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: list layout",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: list layout",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "1280x1920: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "812x375: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "812x375: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "812x375: controls have 44px touch targets",
+          "passed": true
+        },
+        {
+          "name": "812x375: portrait composition",
+          "passed": true
+        },
+        {
+          "name": "812x375: caption clears strip",
+          "passed": true
+        },
+        {
+          "name": "812x375: strip clears footer",
+          "passed": true
+        },
+        {
+          "name": "812x375: trusted horizontal touch moves photos without opening",
+          "passed": true
+        },
+        {
+          "name": "812x375: touch drives bend shader",
+          "passed": true
+        },
+        {
+          "name": "812x375: open retains animation shader",
+          "passed": true
+        },
+        {
+          "name": "812x375: list layout",
+          "passed": true
+        },
+        {
+          "name": "812x375: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "812x375: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "812x375: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "812x375: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "812x375: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "812x375: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x768: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x768: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "1024x768: list layout",
+          "passed": true
+        },
+        {
+          "name": "1024x768: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x768: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "1024x768: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "1024x768: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "1024x768: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "1024x768: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1440x900: no document overflow",
+          "passed": true
+        },
+        {
+          "name": "1440x900: shader draws photos",
+          "passed": true
+        },
+        {
+          "name": "1440x900: list layout",
+          "passed": true
+        },
+        {
+          "name": "1440x900: list has no overflow",
+          "passed": true
+        },
+        {
+          "name": "1440x900: photo clears fixed heading",
+          "passed": true
+        },
+        {
+          "name": "1440x900: photo clears fixed counter",
+          "passed": true
+        },
+        {
+          "name": "1440x900: Close has a 44px target",
+          "passed": true
+        },
+        {
+          "name": "1440x900: series scrolls natively",
+          "passed": true
+        },
+        {
+          "name": "1440x900: Info has no overflow",
+          "passed": true
+        },
+        {
+          "name": "vertical touch also moves horizontal gallery without document scroll",
+          "passed": true
+        },
+        {
+          "name": "visual viewport resize updates CSS and canvas without window resize",
+          "passed": true
+        },
+        {
+          "name": "pinch zoom does not rearrange gallery",
+          "passed": true
+        },
+        {
+          "name": "safe areas: caption and strip stay apart",
+          "passed": true
+        },
+        {
+          "name": "resize 844x390: composition changes",
+          "passed": true
+        },
+        {
+          "name": "resize 844x390: no overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 1024x1366: composition changes",
+          "passed": true
+        },
+        {
+          "name": "resize 1024x1366: no overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 1366x1024: composition changes",
+          "passed": true
+        },
+        {
+          "name": "resize 1366x1024: no overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 390x744: composition changes",
+          "passed": true
+        },
+        {
+          "name": "resize 390x744: no overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 390x844: composition changes",
+          "passed": true
+        },
+        {
+          "name": "resize 390x844: no overflow",
+          "passed": true
+        },
+        {
+          "name": "rotation retains current photo and relative scroll",
+          "passed": true
+        },
+        {
+          "name": "breakpoint during transition settles in desktop List",
+          "passed": true
+        },
+        {
+          "name": "breakpoint restores accessible portrait List",
+          "passed": true
+        },
+        {
+          "name": "no-webgl: DOM photos remain",
+          "passed": true
+        },
+        {
+          "name": "no-webgl: touch still navigates gallery",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion: DOM photos remain",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion: touch still navigates gallery",
+          "passed": true
+        },
+        {
+          "name": "no console errors or runtime exceptions",
+          "passed": true
+        }
+      ],
+      "measurements": [
+        {
+          "name": "320x480 overview",
+          "width": 320,
+          "height": 480,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 49.23202896118164,
+            "w": 173.875,
+            "h": 111.84844970703125,
+            "right": 181.875,
+            "bottom": 161.0804786682129
+          },
+          "caption": {
+            "x": 15,
+            "y": 184,
+            "w": 290,
+            "h": 55.171875,
+            "right": 305,
+            "bottom": 239.171875
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 152.796875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 188.8125,
+              "bottom": 55
+            },
+            {
+              "x": 261.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 305,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 80,
+              "y": 272,
+              "w": 115.1875,
+              "h": 144,
+              "right": 195.1875,
+              "bottom": 416
+            },
+            {
+              "x": 199.1999969482422,
+              "y": 272,
+              "w": 115.18751525878906,
+              "h": 144,
+              "right": 314.38751220703125,
+              "bottom": 416
+            },
+            {
+              "x": 318.3999938964844,
+              "y": 272,
+              "w": 115.1875,
+              "h": 144,
+              "right": 433.5874938964844,
+              "bottom": 416
+            },
+            {
+              "x": -20.030000686645508,
+              "y": 272,
+              "w": 96.015625,
+              "h": 144,
+              "right": 75.98562431335449,
+              "bottom": 416
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 451
+          }
+        },
+        {
+          "name": "320x480 project",
+          "width": 320,
+          "height": 480,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 320,
+            "h": 104,
+            "right": 320,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 369,
+            "w": 320,
+            "h": 111,
+            "right": 320,
+            "bottom": 480
+          },
+          "frame": {
+            "x": 60.796875,
+            "y": 112,
+            "w": 198.390625,
+            "h": 247.984375,
+            "right": 259.1875,
+            "bottom": 359.984375
+          },
+          "controls": [
+            {
+              "x": 240.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 305,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 7.6558529209877015,
+            "animation": 0.3,
+            "draws": 3329
+          }
+        },
+        {
+          "name": "320x568 overview",
+          "width": 320,
+          "height": 568,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 45.97339630126953,
+            "w": 272.125,
+            "h": 175.03759765625,
+            "right": 280.125,
+            "bottom": 221.01099395751953
+          },
+          "caption": {
+            "x": 15,
+            "y": 245.59375,
+            "w": 290,
+            "h": 55.171875,
+            "right": 305,
+            "bottom": 300.765625
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 152.796875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 188.8125,
+              "bottom": 55
+            },
+            {
+              "x": 261.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 305,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 80,
+              "y": 333.6000061035156,
+              "w": 136.3125,
+              "h": 170.390625,
+              "right": 216.3125,
+              "bottom": 503.9906311035156
+            },
+            {
+              "x": 220.32000732421875,
+              "y": 333.6000061035156,
+              "w": 136.3125,
+              "h": 170.390625,
+              "right": 356.63250732421875,
+              "bottom": 503.9906311035156
+            },
+            {
+              "x": -37.63999938964844,
+              "y": 333.6000061035156,
+              "w": 113.625,
+              "h": 170.390625,
+              "right": 75.98500061035156,
+              "bottom": 503.9906311035156
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 665
+          }
+        },
+        {
+          "name": "320x568 project",
+          "width": 320,
+          "height": 568,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 320,
+            "h": 104,
+            "right": 320,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 457,
+            "w": 320,
+            "h": 111,
+            "right": 320,
+            "bottom": 568
+          },
+          "frame": {
+            "x": 25.59375,
+            "y": 112,
+            "w": 268.796875,
+            "h": 335.984375,
+            "right": 294.390625,
+            "bottom": 447.984375
+          },
+          "controls": [
+            {
+              "x": 240.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 305,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 7.678221031377447,
+            "animation": 0.3,
+            "draws": 3572
+          }
+        },
+        {
+          "name": "360x640 overview",
+          "width": 360,
+          "height": 640,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 44.13249969482422,
+            "w": 327.609375,
+            "h": 210.7349853515625,
+            "right": 335.609375,
+            "bottom": 254.86748504638672
+          },
+          "caption": {
+            "x": 15,
+            "y": 280.375,
+            "w": 330,
+            "h": 55.171875,
+            "right": 345,
+            "bottom": 335.546875
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 172.796875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 208.8125,
+              "bottom": 55
+            },
+            {
+              "x": 301.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 345,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 90,
+              "y": 384,
+              "w": 153.59375,
+              "h": 192,
+              "right": 243.59375,
+              "bottom": 576
+            },
+            {
+              "x": 247.60000610351562,
+              "y": 384,
+              "w": 153.59375,
+              "h": 192,
+              "right": 401.1937561035156,
+              "bottom": 576
+            },
+            {
+              "x": -42.040000915527344,
+              "y": 384,
+              "w": 128.03125,
+              "h": 192,
+              "right": 85.99124908447266,
+              "bottom": 576
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 668
+          }
+        },
+        {
+          "name": "360x640 project",
+          "width": 360,
+          "height": 640,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 360,
+            "h": 104,
+            "right": 360,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 529,
+            "w": 360,
+            "h": 111,
+            "right": 360,
+            "bottom": 640
+          },
+          "frame": {
+            "x": 18,
+            "y": 113.5,
+            "w": 324,
+            "h": 405,
+            "right": 342,
+            "bottom": 518.5
+          },
+          "controls": [
+            {
+              "x": 280.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 345,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 9.839897380967441,
+            "animation": 0.3,
+            "draws": 3133
+          }
+        },
+        {
+          "name": "375x812 overview",
+          "width": 375,
+          "height": 812,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 43.6796875,
+            "w": 341.25,
+            "h": 219.515625,
+            "right": 349.25,
+            "bottom": 263.1953125
+          },
+          "caption": {
+            "x": 15,
+            "y": 288.9375,
+            "w": 345,
+            "h": 55.171875,
+            "right": 360,
+            "bottom": 344.109375
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 180.296875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 216.3125,
+              "bottom": 55
+            },
+            {
+              "x": 316.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 360,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 93.75,
+              "y": 504.3999938964844,
+              "w": 194.875,
+              "h": 243.59378051757812,
+              "right": 288.625,
+              "bottom": 747.9937744140625
+            },
+            {
+              "x": 292.6300048828125,
+              "y": 504.3999938964844,
+              "w": 194.875,
+              "h": 243.59378051757812,
+              "right": 487.5050048828125,
+              "bottom": 747.9937744140625
+            },
+            {
+              "x": -72.69999694824219,
+              "y": 504.3999938964844,
+              "w": 162.4375,
+              "h": 243.59378051757812,
+              "right": 89.73750305175781,
+              "bottom": 747.9937744140625
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 546
+          }
+        },
+        {
+          "name": "375x812 project",
+          "width": 375,
+          "height": 812,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 375,
+            "h": 104,
+            "right": 375,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 701,
+            "w": 375,
+            "h": 111,
+            "right": 375,
+            "bottom": 812
+          },
+          "frame": {
+            "x": 18.75,
+            "y": 191.0625,
+            "w": 337.5,
+            "h": 421.875,
+            "right": 356.25,
+            "bottom": 612.9375
+          },
+          "controls": [
+            {
+              "x": 295.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 360,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 11.624336628537588,
+            "animation": 0.15,
+            "draws": 1269
+          }
+        },
+        {
+          "name": "390x844 overview",
+          "width": 390,
+          "height": 844,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 43.22687530517578,
+            "w": 354.90625,
+            "h": 228.2962646484375,
+            "right": 362.90625,
+            "bottom": 271.5231399536133
+          },
+          "caption": {
+            "x": 15,
+            "y": 297.484375,
+            "w": 360,
+            "h": 55.171875,
+            "right": 375,
+            "bottom": 352.65625
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 187.796875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 223.8125,
+              "bottom": 55
+            },
+            {
+              "x": 331.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 375,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 97.5,
+              "y": 526.7999877929688,
+              "w": 202.546875,
+              "h": 253.1875,
+              "right": 300.046875,
+              "bottom": 779.9874877929688
+            },
+            {
+              "x": 304.05999755859375,
+              "y": 526.7999877929688,
+              "w": 202.546875,
+              "h": 253.1875,
+              "right": 506.60687255859375,
+              "bottom": 779.9874877929688
+            },
+            {
+              "x": -75.3499984741211,
+              "y": 526.7999877929688,
+              "w": 168.84375,
+              "h": 253.1875,
+              "right": 93.4937515258789,
+              "bottom": 779.9874877929688
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 510
+          }
+        },
+        {
+          "name": "390x844 project",
+          "width": 390,
+          "height": 844,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 104,
+            "right": 390,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 733,
+            "w": 390,
+            "h": 111,
+            "right": 390,
+            "bottom": 844
+          },
+          "frame": {
+            "x": 19.5,
+            "y": 198.625,
+            "w": 351,
+            "h": 438.75,
+            "right": 370.5,
+            "bottom": 637.375
+          },
+          "controls": [
+            {
+              "x": 310.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 375,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 8.358166704130824,
+            "animation": 0.3,
+            "draws": 2486
+          }
+        },
+        {
+          "name": "430x932 overview",
+          "width": 430,
+          "height": 932,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 42.019371032714844,
+            "w": 391.3125,
+            "h": 251.71124267578125,
+            "right": 399.3125,
+            "bottom": 293.7306137084961
+          },
+          "caption": {
+            "x": 15,
+            "y": 320.3125,
+            "w": 400,
+            "h": 55.171875,
+            "right": 415,
+            "bottom": 375.484375
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 207.796875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 243.8125,
+              "bottom": 55
+            },
+            {
+              "x": 371.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 415,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 107.5,
+              "y": 582.5,
+              "w": 223.671875,
+              "h": 279.59375,
+              "right": 331.171875,
+              "bottom": 862.09375
+            },
+            {
+              "x": 335.17999267578125,
+              "y": 582.5,
+              "w": 223.671875,
+              "h": 279.59375,
+              "right": 558.8518676757812,
+              "bottom": 862.09375
+            },
+            {
+              "x": -82.95999908447266,
+              "y": 582.5,
+              "w": 186.453125,
+              "h": 279.59375,
+              "right": 103.49312591552734,
+              "bottom": 862.09375
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 425
+          }
+        },
+        {
+          "name": "430x932 project",
+          "width": 430,
+          "height": 932,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 430,
+            "h": 104,
+            "right": 430,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 821,
+            "w": 430,
+            "h": 111,
+            "right": 430,
+            "bottom": 932
+          },
+          "frame": {
+            "x": 21.5,
+            "y": 220.125,
+            "w": 387,
+            "h": 483.75,
+            "right": 408.5,
+            "bottom": 703.875
+          },
+          "controls": [
+            {
+              "x": 350.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 415,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 7.653952041706058,
+            "animation": 0.3,
+            "draws": 1950
+          }
+        },
+        {
+          "name": "540x720 overview",
+          "width": 540,
+          "height": 720,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 40.3428955078125,
+            "w": 441.84375,
+            "h": 284.220458984375,
+            "right": 449.84375,
+            "bottom": 324.5633544921875
+          },
+          "caption": {
+            "x": 15,
+            "y": 352,
+            "w": 510,
+            "h": 55.171875,
+            "right": 525,
+            "bottom": 407.171875
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 262.796875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 298.8125,
+              "bottom": 55
+            },
+            {
+              "x": 481.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 525,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 135,
+              "y": 440,
+              "w": 172.796875,
+              "h": 216,
+              "right": 307.796875,
+              "bottom": 656
+            },
+            {
+              "x": 311.79998779296875,
+              "y": 440,
+              "w": 172.796875,
+              "h": 216,
+              "right": 484.59686279296875,
+              "bottom": 656
+            },
+            {
+              "x": 488.6000061035156,
+              "y": 440,
+              "w": 172.79684448242188,
+              "h": 216,
+              "right": 661.3968505859375,
+              "bottom": 656
+            },
+            {
+              "x": -13.039999961853027,
+              "y": 440,
+              "w": 144.03125,
+              "h": 216,
+              "right": 130.99125003814697,
+              "bottom": 656
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 258
+          }
+        },
+        {
+          "name": "540x720 project",
+          "width": 540,
+          "height": 720,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 540,
+            "h": 104,
+            "right": 540,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 609,
+            "w": 540,
+            "h": 111,
+            "right": 540,
+            "bottom": 720
+          },
+          "frame": {
+            "x": 74.796875,
+            "y": 112,
+            "w": 390.390625,
+            "h": 487.984375,
+            "right": 465.1875,
+            "bottom": 599.984375
+          },
+          "controls": [
+            {
+              "x": 460.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 525,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 11.772687424017626,
+            "animation": 0.3,
+            "draws": 1583
+          }
+        },
+        {
+          "name": "600x800 overview",
+          "width": 600,
+          "height": 800,
+          "overflow": 0,
+          "logo": {
+            "x": 8,
+            "y": 37.37983703613281,
+            "w": 531.15625,
+            "h": 341.6778564453125,
+            "right": 539.15625,
+            "bottom": 379.0576934814453
+          },
+          "caption": {
+            "x": 15,
+            "y": 408,
+            "w": 570,
+            "h": 55.171875,
+            "right": 585,
+            "bottom": 463.171875
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 292.796875,
+              "y": 0,
+              "w": 36.015625,
+              "h": 55,
+              "right": 328.8125,
+              "bottom": 55
+            },
+            {
+              "x": 541.78125,
+              "y": 0,
+              "w": 43.21875,
+              "h": 55,
+              "right": 585,
+              "bottom": 55
+            },
+            {
+              "x": 15,
+              "y": 0,
+              "w": 64.828125,
+              "h": 55,
+              "right": 79.828125,
+              "bottom": 55
+            }
+          ],
+          "tiles": [
+            {
+              "x": 150,
+              "y": 496,
+              "w": 192,
+              "h": 240,
+              "right": 342,
+              "bottom": 736
+            },
+            {
+              "x": 346,
+              "y": 496,
+              "w": 192,
+              "h": 240,
+              "right": 538,
+              "bottom": 736
+            },
+            {
+              "x": 542,
+              "y": 496,
+              "w": 192,
+              "h": 240,
+              "right": 734,
+              "bottom": 736
+            },
+            {
+              "x": -14.050000190734863,
+              "y": 496,
+              "w": 160.046875,
+              "h": 240,
+              "right": 145.99687480926514,
+              "bottom": 736
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 275
+          }
+        },
+        {
+          "name": "600x800 project",
+          "width": 600,
+          "height": 800,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 600,
+            "h": 104,
+            "right": 600,
+            "bottom": 104
+          },
+          "counter": {
+            "x": 0,
+            "y": 689,
+            "w": 600,
+            "h": 111,
+            "right": 600,
+            "bottom": 800
+          },
+          "frame": {
+            "x": 76,
+            "y": 116,
+            "w": 448,
+            "h": 560,
+            "right": 524,
+            "bottom": 676
+          },
+          "controls": [
+            {
+              "x": 520.171875,
+              "y": 1,
+              "w": 64.828125,
+              "h": 44,
+              "right": 585,
+              "bottom": 45
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 13.820937497818685,
+            "animation": 0.3,
+            "draws": 1626
+          }
+        },
+        {
+          "name": "601x962 overview",
+          "width": 601,
+          "height": 962,
+          "overflow": 0,
+          "logo": {
+            "x": 20,
+            "y": 57.026763916015625,
+            "w": 541.8125,
+            "h": 348.52459716796875,
+            "right": 561.8125,
+            "bottom": 405.5513610839844
+          },
+          "caption": {
+            "x": 20,
+            "y": 429.671875,
+            "w": 561,
+            "h": 55.171875,
+            "right": 581,
+            "bottom": 484.84375
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 433,
+              "y": 5,
+              "w": 36.015625,
+              "h": 44.390625,
+              "right": 469.015625,
+              "bottom": 49.390625
+            },
+            {
+              "x": 488.21875,
+              "y": 5,
+              "w": 43.21875,
+              "h": 44.390625,
+              "right": 531.4375,
+              "bottom": 49.390625
+            },
+            {
+              "x": 433,
+              "y": 37.390625,
+              "w": 148,
+              "h": 44.390625,
+              "right": 581,
+              "bottom": 81.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 150.25,
+              "y": 601.25,
+              "w": 230.875,
+              "h": 288.59375,
+              "right": 381.125,
+              "bottom": 889.84375
+            },
+            {
+              "x": 385.1300048828125,
+              "y": 601.25,
+              "w": 230.875,
+              "h": 288.59375,
+              "right": 616.0050048828125,
+              "bottom": 889.84375
+            },
+            {
+              "x": -46.209999084472656,
+              "y": 601.25,
+              "w": 192.453125,
+              "h": 288.59375,
+              "right": 146.24312591552734,
+              "bottom": 889.84375
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 107
+          }
+        },
+        {
+          "name": "601x962 project",
+          "width": 601,
+          "height": 962,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 601,
+            "h": 113.5625,
+            "right": 601,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 485.140625,
+            "y": 886,
+            "w": 95.859375,
+            "h": 64,
+            "right": 581,
+            "bottom": 950
+          },
+          "frame": {
+            "x": 60.09375,
+            "y": 192.5,
+            "w": 480.796875,
+            "h": 600.984375,
+            "right": 540.890625,
+            "bottom": 793.484375
+          },
+          "controls": [
+            {
+              "x": 516.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 581,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 11.802160663974512,
+            "animation": 0.3,
+            "draws": 705
+          }
+        },
+        {
+          "name": "768x1024 overview",
+          "width": 768,
+          "height": 1024,
+          "overflow": 0,
+          "logo": {
+            "x": 20,
+            "y": 51.76910400390625,
+            "w": 700.296875,
+            "h": 450.4774169921875,
+            "right": 720.296875,
+            "bottom": 502.24652099609375
+          },
+          "caption": {
+            "x": 20,
+            "y": 529.015625,
+            "w": 728,
+            "h": 55.171875,
+            "right": 748,
+            "bottom": 584.1875
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 600,
+              "y": 5,
+              "w": 36.015625,
+              "h": 44.390625,
+              "right": 636.015625,
+              "bottom": 49.390625
+            },
+            {
+              "x": 655.21875,
+              "y": 5,
+              "w": 43.21875,
+              "h": 44.390625,
+              "right": 698.4375,
+              "bottom": 49.390625
+            },
+            {
+              "x": 600,
+              "y": 37.390625,
+              "w": 148,
+              "h": 44.390625,
+              "right": 748,
+              "bottom": 81.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 192,
+              "y": 640,
+              "w": 245.75,
+              "h": 307.1875,
+              "right": 437.75,
+              "bottom": 947.1875
+            },
+            {
+              "x": 441.760009765625,
+              "y": 640,
+              "w": 245.75,
+              "h": 307.1875,
+              "right": 687.510009765625,
+              "bottom": 947.1875
+            },
+            {
+              "x": 691.52001953125,
+              "y": 640,
+              "w": 245.75,
+              "h": 307.1875,
+              "right": 937.27001953125,
+              "bottom": 947.1875
+            },
+            {
+              "x": -16.860000610351562,
+              "y": 640,
+              "w": 204.859375,
+              "h": 307.1875,
+              "right": 187.99937438964844,
+              "bottom": 947.1875
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 98
+          }
+        },
+        {
+          "name": "768x1024 project",
+          "width": 768,
+          "height": 1024,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 768,
+            "h": 113.5625,
+            "right": 768,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 652.140625,
+            "y": 948,
+            "w": 95.859375,
+            "h": 64,
+            "right": 748,
+            "bottom": 1012
+          },
+          "frame": {
+            "x": 97.28125,
+            "y": 165.59375,
+            "w": 573.4375,
+            "h": 716.796875,
+            "right": 670.71875,
+            "bottom": 882.390625
+          },
+          "controls": [
+            {
+              "x": 683.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 748,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 16.93132861485441,
+            "animation": 0.3,
+            "draws": 676
+          }
+        },
+        {
+          "name": "820x1180 overview",
+          "width": 820,
+          "height": 1180,
+          "overflow": 0,
+          "logo": {
+            "x": 20,
+            "y": 50.13304138183594,
+            "w": 749.640625,
+            "h": 482.20263671875,
+            "right": 769.640625,
+            "bottom": 532.3356781005859
+          },
+          "caption": {
+            "x": 20,
+            "y": 559.953125,
+            "w": 780,
+            "h": 55.171875,
+            "right": 800,
+            "bottom": 615.125
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 652,
+              "y": 5,
+              "w": 36.015625,
+              "h": 44.390625,
+              "right": 688.015625,
+              "bottom": 49.390625
+            },
+            {
+              "x": 707.21875,
+              "y": 5,
+              "w": 43.21875,
+              "h": 44.390625,
+              "right": 750.4375,
+              "bottom": 49.390625
+            },
+            {
+              "x": 652,
+              "y": 37.390625,
+              "w": 148,
+              "h": 44.390625,
+              "right": 800,
+              "bottom": 81.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 205,
+              "y": 737.5,
+              "w": 283.1875,
+              "h": 354,
+              "right": 488.1875,
+              "bottom": 1091.5
+            },
+            {
+              "x": 492.20001220703125,
+              "y": 737.5,
+              "w": 283.1875,
+              "h": 354,
+              "right": 775.3875122070312,
+              "bottom": 1091.5
+            },
+            {
+              "x": 779.4000244140625,
+              "y": 737.5,
+              "w": 283.1875,
+              "h": 354,
+              "right": 1062.5875244140625,
+              "bottom": 1091.5
+            },
+            {
+              "x": -35.06999969482422,
+              "y": 737.5,
+              "w": 236.0625,
+              "h": 354,
+              "right": 200.99250030517578,
+              "bottom": 1091.5
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 59
+          }
+        },
+        {
+          "name": "820x1180 project",
+          "width": 820,
+          "height": 1180,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 820,
+            "h": 113.5625,
+            "right": 820,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 704.140625,
+            "y": 1104,
+            "w": 95.859375,
+            "h": 64,
+            "right": 800,
+            "bottom": 1168
+          },
+          "frame": {
+            "x": 82,
+            "y": 192,
+            "w": 656,
+            "h": 820,
+            "right": 738,
+            "bottom": 1012
+          },
+          "controls": [
+            {
+              "x": 735.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 800,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 15.412300767902646,
+            "animation": 0.3,
+            "draws": 630
+          }
+        },
+        {
+          "name": "1024x1366 overview",
+          "width": 1024,
+          "height": 1366,
+          "overflow": 0,
+          "logo": {
+            "x": 20,
+            "y": 43.71099853515625,
+            "w": 943.203125,
+            "h": 606.7342529296875,
+            "right": 963.203125,
+            "bottom": 650.4452514648438
+          },
+          "caption": {
+            "x": 20,
+            "y": 681.3125,
+            "w": 984,
+            "h": 55.171875,
+            "right": 1004,
+            "bottom": 736.484375
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 856,
+              "y": 5,
+              "w": 36.015625,
+              "h": 44.390625,
+              "right": 892.015625,
+              "bottom": 49.390625
+            },
+            {
+              "x": 911.21875,
+              "y": 5,
+              "w": 43.21875,
+              "h": 44.390625,
+              "right": 954.4375,
+              "bottom": 49.390625
+            },
+            {
+              "x": 856,
+              "y": 37.390625,
+              "w": 148,
+              "h": 44.390625,
+              "right": 1004,
+              "bottom": 81.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 256,
+              "y": 853.75,
+              "w": 327.828125,
+              "h": 409.796875,
+              "right": 583.828125,
+              "bottom": 1263.546875
+            },
+            {
+              "x": 587.8400268554688,
+              "y": 853.75,
+              "w": 327.828125,
+              "h": 409.796875,
+              "right": 915.6681518554688,
+              "bottom": 1263.546875
+            },
+            {
+              "x": 919.6799926757812,
+              "y": 853.75,
+              "w": 327.82806396484375,
+              "h": 409.796875,
+              "right": 1247.508056640625,
+              "bottom": 1263.546875
+            },
+            {
+              "x": -21.290000915527344,
+              "y": 853.75,
+              "w": 273.28125,
+              "h": 409.796875,
+              "right": 251.99124908447266,
+              "bottom": 1263.546875
+            }
+          ],
+          "gl": 11,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 66
+          }
+        },
+        {
+          "name": "1024x1366 project",
+          "width": 1024,
+          "height": 1366,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 1024,
+            "h": 113.5625,
+            "right": 1024,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 900.671875,
+            "y": 1282.328125,
+            "w": 103.328125,
+            "h": 71.671875,
+            "right": 1004,
+            "bottom": 1354
+          },
+          "frame": {
+            "x": 129.515625,
+            "y": 216.90625,
+            "w": 764.953125,
+            "h": 956.1875,
+            "right": 894.46875,
+            "bottom": 1173.09375
+          },
+          "controls": [
+            {
+              "x": 939.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 1004,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 13.38814541169596,
+            "animation": 0.3,
+            "draws": 508
+          }
+        },
+        {
+          "name": "1280x1920 overview",
+          "width": 1280,
+          "height": 1920,
+          "overflow": 0,
+          "logo": {
+            "x": 20,
+            "y": 35.652923583984375,
+            "w": 1186.125,
+            "h": 762.990966796875,
+            "right": 1206.125,
+            "bottom": 798.6438903808594
+          },
+          "caption": {
+            "x": 20,
+            "y": 833.609375,
+            "w": 1240,
+            "h": 55.171875,
+            "right": 1260,
+            "bottom": 888.78125
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 1112,
+              "y": 5,
+              "w": 36.015625,
+              "h": 44.390625,
+              "right": 1148.015625,
+              "bottom": 49.390625
+            },
+            {
+              "x": 1167.21875,
+              "y": 5,
+              "w": 43.21875,
+              "h": 44.390625,
+              "right": 1210.4375,
+              "bottom": 49.390625
+            },
+            {
+              "x": 1112,
+              "y": 37.390625,
+              "w": 148,
+              "h": 44.390625,
+              "right": 1260,
+              "bottom": 81.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 320,
+              "y": 1200,
+              "w": 460.796875,
+              "h": 576,
+              "right": 780.796875,
+              "bottom": 1776
+            },
+            {
+              "x": 784.7999877929688,
+              "y": 1200,
+              "w": 460.79693603515625,
+              "h": 576,
+              "right": 1245.596923828125,
+              "bottom": 1776
+            },
+            {
+              "x": 1249.5999755859375,
+              "y": 1200,
+              "w": 460.796875,
+              "h": 576,
+              "right": 1710.3968505859375,
+              "bottom": 1776
+            },
+            {
+              "x": -68.12000274658203,
+              "y": 1200,
+              "w": 384.109375,
+              "h": 576,
+              "right": 315.98937225341797,
+              "bottom": 1776
+            }
+          ],
+          "gl": 7,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 48
+          }
+        },
+        {
+          "name": "1280x1920 project",
+          "width": 1280,
+          "height": 1920,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 1280,
+            "h": 113.5625,
+            "right": 1280,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 1139.265625,
+            "y": 1818.40625,
+            "w": 120.734375,
+            "h": 89.59375,
+            "right": 1260,
+            "bottom": 1908
+          },
+          "frame": {
+            "x": 128,
+            "y": 332,
+            "w": 1024,
+            "h": 1280,
+            "right": 1152,
+            "bottom": 1612
+          },
+          "controls": [
+            {
+              "x": 1195.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 1260,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 14.96647747419157,
+            "animation": 0.3,
+            "draws": 390
+          }
+        },
+        {
+          "name": "812x375 overview",
+          "width": 812,
+          "height": 375,
+          "overflow": 0,
+          "logo": {
+            "x": 20,
+            "y": 73.2076187133789,
+            "w": 54.046875,
+            "h": 34.75664520263672,
+            "right": 74.046875,
+            "bottom": 107.96426391601562
+          },
+          "caption": {
+            "x": 20,
+            "y": 123.875,
+            "w": 772,
+            "h": 55.171875,
+            "right": 792,
+            "bottom": 179.046875
+          },
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 644,
+              "y": 5,
+              "w": 36.015625,
+              "h": 44.390625,
+              "right": 680.015625,
+              "bottom": 49.390625
+            },
+            {
+              "x": 699.21875,
+              "y": 5,
+              "w": 43.21875,
+              "h": 44.390625,
+              "right": 742.4375,
+              "bottom": 49.390625
+            },
+            {
+              "x": 644,
+              "y": 37.390625,
+              "w": 148,
+              "h": 44.390625,
+              "right": 792,
+              "bottom": 81.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 203,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 282.296875,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 286.29998779296875,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 365.59686279296875,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 369.5899963378906,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 448.8868713378906,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 452.8900146484375,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 532.1868896484375,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 536.1799926757812,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 615.4768676757812,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 619.47998046875,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 698.77685546875,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 702.780029296875,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 782.076904296875,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 786.0700073242188,
+              "y": 211.8800048828125,
+              "w": 79.296875,
+              "h": 99.109375,
+              "right": 865.3668823242188,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": -7.300000190734863,
+              "y": 211.8800048828125,
+              "w": 66.09375,
+              "h": 99.109375,
+              "right": 58.79374980926514,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 62.79999923706055,
+              "y": 211.8800048828125,
+              "w": 66.09375,
+              "h": 99.109375,
+              "right": 128.89374923706055,
+              "bottom": 310.9893798828125
+            },
+            {
+              "x": 132.89999389648438,
+              "y": 211.8800048828125,
+              "w": 66.09375,
+              "h": 99.109375,
+              "right": 198.99374389648438,
+              "bottom": 310.9893798828125
+            }
+          ],
+          "gl": 13,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.15,
+            "draws": 49
+          }
+        },
+        {
+          "name": "812x375 project",
+          "width": 812,
+          "height": 375,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 812,
+            "h": 113.5625,
+            "right": 812,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 696.140625,
+            "y": 299,
+            "w": 95.859375,
+            "h": 64,
+            "right": 792,
+            "bottom": 363
+          },
+          "frame": {
+            "x": 345.59375,
+            "y": 124,
+            "w": 120.796875,
+            "h": 150.984375,
+            "right": 466.390625,
+            "bottom": 274.984375
+          },
+          "controls": [
+            {
+              "x": 727.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 792,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 14.058201496165614,
+            "animation": 0.3,
+            "draws": 1389
+          }
+        },
+        {
+          "name": "1024x768 overview",
+          "width": 1024,
+          "height": 768,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 669.140625,
+              "y": 20,
+              "w": 36.015625,
+              "h": 14.390625,
+              "right": 705.15625,
+              "bottom": 34.390625
+            },
+            {
+              "x": 724.359375,
+              "y": 20,
+              "w": 43.21875,
+              "h": 14.390625,
+              "right": 767.578125,
+              "bottom": 34.390625
+            },
+            {
+              "x": 669.140625,
+              "y": 37.390625,
+              "w": 148,
+              "h": 14.390625,
+              "right": 817.140625,
+              "bottom": 51.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 20,
+              "y": 52,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 104.15625,
+              "bottom": 157.21875
+            },
+            {
+              "x": 291.8999938964844,
+              "y": 52,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 376.0562438964844,
+              "bottom": 157.21875
+            },
+            {
+              "x": 380.0799865722656,
+              "y": 52,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 464.2362365722656,
+              "bottom": 157.21875
+            },
+            {
+              "x": 919.8300170898438,
+              "y": 52,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 1003.9862670898438,
+              "bottom": 157.21875
+            },
+            {
+              "x": 20,
+              "y": 283.4800109863281,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 104.15625,
+              "bottom": 388.6987609863281
+            },
+            {
+              "x": 582.3900146484375,
+              "y": 283.4800109863281,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 666.5462646484375,
+              "bottom": 388.6987609863281
+            },
+            {
+              "x": 919.8300170898438,
+              "y": 283.4800109863281,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 1003.9862670898438,
+              "bottom": 388.6987609863281
+            },
+            {
+              "x": 20,
+              "y": 514.9500122070312,
+              "w": 84.15625,
+              "h": 105.21875,
+              "right": 104.15625,
+              "bottom": 620.1687622070312
+            },
+            {
+              "x": 108.16999816894531,
+              "y": 514.9500122070312,
+              "w": 70.15625,
+              "h": 105.21875,
+              "right": 178.3262481689453,
+              "bottom": 620.1687622070312
+            },
+            {
+              "x": 371.8299865722656,
+              "y": 514.9500122070312,
+              "w": 70.15625,
+              "h": 105.21875,
+              "right": 441.9862365722656,
+              "bottom": 620.1687622070312
+            },
+            {
+              "x": 515.6699829101562,
+              "y": 514.9500122070312,
+              "w": 157.875,
+              "h": 105.21875,
+              "right": 673.5449829101562,
+              "bottom": 620.1687622070312
+            },
+            {
+              "x": 933.8300170898438,
+              "y": 514.9500122070312,
+              "w": 70.15625,
+              "h": 105.21875,
+              "right": 1003.9862670898438,
+              "bottom": 620.1687622070312
+            },
+            {
+              "x": 175.35000610351562,
+              "y": 746.4299926757812,
+              "w": 70.15625,
+              "h": 105.21875,
+              "right": 245.50625610351562,
+              "bottom": 851.6487426757812
+            },
+            {
+              "x": 439.8299865722656,
+              "y": 746.4299926757812,
+              "w": 70.15625,
+              "h": 105.21875,
+              "right": 509.9862365722656,
+              "bottom": 851.6487426757812
+            },
+            {
+              "x": 514,
+              "y": 746.4299926757812,
+              "w": 70.15625,
+              "h": 105.21875,
+              "right": 584.15625,
+              "bottom": 851.6487426757812
+            },
+            {
+              "x": 787.6199951171875,
+              "y": 746.4299926757812,
+              "w": 70.15625,
+              "h": 105.21875,
+              "right": 857.7762451171875,
+              "bottom": 851.6487426757812
+            }
+          ],
+          "gl": 16,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.9,
+            "draws": 240
+          }
+        },
+        {
+          "name": "1024x768 project",
+          "width": 1024,
+          "height": 768,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 1024,
+            "h": 113.5625,
+            "right": 1024,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 900.671875,
+            "y": 684.328125,
+            "w": 103.328125,
+            "h": 71.671875,
+            "right": 1004,
+            "bottom": 756
+          },
+          "frame": {
+            "x": 296.953125,
+            "y": 127.203125,
+            "w": 430.078125,
+            "h": 537.59375,
+            "right": 727.03125,
+            "bottom": 664.796875
+          },
+          "controls": [
+            {
+              "x": 939.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 1004,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.9,
+            "draws": 621
+          }
+        },
+        {
+          "name": "1440x900 overview",
+          "width": 1440,
+          "height": 900,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": null,
+          "counter": null,
+          "frame": null,
+          "controls": [
+            {
+              "x": 1045.140625,
+              "y": 20,
+              "w": 36.015625,
+              "h": 14.390625,
+              "right": 1081.15625,
+              "bottom": 34.390625
+            },
+            {
+              "x": 1100.359375,
+              "y": 20,
+              "w": 43.21875,
+              "h": 14.390625,
+              "right": 1143.578125,
+              "bottom": 34.390625
+            },
+            {
+              "x": 1045.140625,
+              "y": 37.390625,
+              "w": 148,
+              "h": 14.390625,
+              "right": 1193.140625,
+              "bottom": 51.78125
+            }
+          ],
+          "tiles": [
+            {
+              "x": 20,
+              "y": 52,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 118.625,
+              "bottom": 175.296875
+            },
+            {
+              "x": 421.57000732421875,
+              "y": 52,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 520.1950073242188,
+              "bottom": 175.296875
+            },
+            {
+              "x": 524.2100219726562,
+              "y": 52,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 622.8350219726562,
+              "bottom": 175.296875
+            },
+            {
+              "x": 1321.3599853515625,
+              "y": 52,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 1419.9849853515625,
+              "bottom": 175.296875
+            },
+            {
+              "x": 20,
+              "y": 323.260009765625,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 118.625,
+              "bottom": 446.556884765625
+            },
+            {
+              "x": 833.3499755859375,
+              "y": 323.260009765625,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 931.9749755859375,
+              "bottom": 446.556884765625
+            },
+            {
+              "x": 1321.3599853515625,
+              "y": 323.260009765625,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 1419.9849853515625,
+              "bottom": 446.556884765625
+            },
+            {
+              "x": 20,
+              "y": 594.52001953125,
+              "w": 98.625,
+              "h": 123.296875,
+              "right": 118.625,
+              "bottom": 717.81689453125
+            },
+            {
+              "x": 122.63999938964844,
+              "y": 594.52001953125,
+              "w": 82.21875,
+              "h": 123.296875,
+              "right": 204.85874938964844,
+              "bottom": 717.81689453125
+            },
+            {
+              "x": 527.3400268554688,
+              "y": 594.52001953125,
+              "w": 82.21875,
+              "h": 123.296875,
+              "right": 609.5587768554688,
+              "bottom": 717.81689453125
+            },
+            {
+              "x": 748.989990234375,
+              "y": 594.52001953125,
+              "w": 185.015625,
+              "h": 123.296875,
+              "right": 934.005615234375,
+              "bottom": 717.81689453125
+            },
+            {
+              "x": 1337.77001953125,
+              "y": 594.52001953125,
+              "w": 82.21875,
+              "h": 123.296875,
+              "right": 1419.98876953125,
+              "bottom": 717.81689453125
+            },
+            {
+              "x": 244.02000427246094,
+              "y": 865.780029296875,
+              "w": 82.21876525878906,
+              "h": 123.296875,
+              "right": 326.23876953125,
+              "bottom": 989.076904296875
+            },
+            {
+              "x": 635.77001953125,
+              "y": 865.780029296875,
+              "w": 82.21875,
+              "h": 123.296875,
+              "right": 717.98876953125,
+              "bottom": 989.076904296875
+            },
+            {
+              "x": 722,
+              "y": 865.780029296875,
+              "w": 82.21875,
+              "h": 123.296875,
+              "right": 804.21875,
+              "bottom": 989.076904296875
+            },
+            {
+              "x": 1126.9300537109375,
+              "y": 865.780029296875,
+              "w": 82.21875,
+              "h": 123.296875,
+              "right": 1209.1488037109375,
+              "bottom": 989.076904296875
+            }
+          ],
+          "gl": 16,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.9,
+            "draws": 192
+          }
+        },
+        {
+          "name": "1440x900 project",
+          "width": 1440,
+          "height": 900,
+          "overflow": 0,
+          "logo": null,
+          "caption": null,
+          "heading": {
+            "x": 0,
+            "y": 0,
+            "w": 1440,
+            "h": 113.5625,
+            "right": 1440,
+            "bottom": 113.5625
+          },
+          "counter": {
+            "x": 1288.359375,
+            "y": 787.203125,
+            "w": 131.640625,
+            "h": 100.796875,
+            "right": 1420,
+            "bottom": 888
+          },
+          "frame": {
+            "x": 468,
+            "y": 147,
+            "w": 504,
+            "h": 630,
+            "right": 972,
+            "bottom": 777
+          },
+          "controls": [
+            {
+              "x": 1355.171875,
+              "y": 6,
+              "w": 64.828125,
+              "h": 44,
+              "right": 1420,
+              "bottom": 50
+            }
+          ],
+          "tiles": [],
+          "gl": 0,
+          "canvas": 1,
+          "rows": 0,
+          "scroll": 0,
+          "shaders": {
+            "bend": 0,
+            "animation": 0.9,
+            "draws": 545
+          }
+        }
+      ]
+    },
+    "motion": {
+      "passed": 416,
+      "failed": 0,
+      "errors": [],
+      "checks": [
+        {
+          "name": "cold: intro exists",
+          "passed": true
+        },
+        {
+          "name": "cold overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "cold overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "cold: WebGL canvas mounted",
+          "passed": true
+        },
+        {
+          "name": "cold: XP is visible",
+          "passed": true
+        },
+        {
+          "name": "cold: XP is monochrome (filter none)",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: kept gallery branch observed",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "overview-project-kept-gallery: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "overview return: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview return: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "warm: full intro skipped",
+          "passed": true
+        },
+        {
+          "name": "warm overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "warm overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "warm overview: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "warm overview: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "overview-list: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview-list: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "overview-list: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "view switch: XP stays in place",
+          "passed": true
+        },
+        {
+          "name": "view switch: XP letters do not roll",
+          "passed": true
+        },
+        {
+          "name": "list: eight rows",
+          "passed": true
+        },
+        {
+          "name": "list: revealed characters visible",
+          "passed": true
+        },
+        {
+          "name": "list: extra biography hidden",
+          "passed": true
+        },
+        {
+          "name": "list: first row receives center pointer hit",
+          "passed": true
+        },
+        {
+          "name": "scrolled-list-overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "scrolled-list-overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "scrolled-list-overview: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "after scrolled list: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "after scrolled list: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "overview-info: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview-info: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "overview-info: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "overview: Info heading visible",
+          "passed": true
+        },
+        {
+          "name": "overview: Info portrait decoded",
+          "passed": true
+        },
+        {
+          "name": "overview: mobile Info portrait hidden",
+          "passed": true
+        },
+        {
+          "name": "info-close-overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "info-close-overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "info-close-overview: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "overview: Close restores previous view",
+          "passed": true
+        },
+        {
+          "name": "list: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-info: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-info: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-info: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list: Info heading visible",
+          "passed": true
+        },
+        {
+          "name": "list: Info portrait decoded",
+          "passed": true
+        },
+        {
+          "name": "list: mobile Info portrait hidden",
+          "passed": true
+        },
+        {
+          "name": "info-close-list: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "info-close-list: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "info-close-list: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list: Close restores previous view",
+          "passed": true
+        },
+        {
+          "name": "list before sasha-s-synom-v-otele: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before sasha-s-synom-v-otele: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-sasha-s-synom-v-otele: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-sasha-s-synom-v-otele: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-sasha-s-synom-v-otele: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-sasha-s-synom-v-otele: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct sasha-s-synom-v-otele: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct sasha-s-synom-v-otele: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "sasha-s-synom-v-otele: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return sasha-s-synom-v-otele: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return sasha-s-synom-v-otele: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list before mama-s-dochkoy: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before mama-s-dochkoy: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-mama-s-dochkoy: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-mama-s-dochkoy: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-mama-s-dochkoy: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-mama-s-dochkoy: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct mama-s-dochkoy: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct mama-s-dochkoy: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "mama-s-dochkoy: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return mama-s-dochkoy: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return mama-s-dochkoy: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list before korolevskaya-dvoynya: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before korolevskaya-dvoynya: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-korolevskaya-dvoynya: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-korolevskaya-dvoynya: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-korolevskaya-dvoynya: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-korolevskaya-dvoynya: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct korolevskaya-dvoynya: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct korolevskaya-dvoynya: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "korolevskaya-dvoynya: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return korolevskaya-dvoynya: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return korolevskaya-dvoynya: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list before novogodnie-studiynye: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before novogodnie-studiynye: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-novogodnie-studiynye: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-novogodnie-studiynye: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-novogodnie-studiynye: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-novogodnie-studiynye: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct novogodnie-studiynye: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct novogodnie-studiynye: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "novogodnie-studiynye: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return novogodnie-studiynye: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return novogodnie-studiynye: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list before fashion: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before fashion: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-fashion: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "fashion: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "fashion: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "fashion: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-fashion: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-fashion: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-fashion: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "fashion: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct fashion: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct fashion: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "fashion: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "fashion: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "fashion: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "fashion: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return fashion: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return fashion: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list before vyhodnoy-na-dache: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before vyhodnoy-na-dache: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-vyhodnoy-na-dache: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-vyhodnoy-na-dache: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-vyhodnoy-na-dache: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-vyhodnoy-na-dache: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct vyhodnoy-na-dache: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct vyhodnoy-na-dache: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "vyhodnoy-na-dache: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return vyhodnoy-na-dache: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return vyhodnoy-na-dache: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list before varvare-5-let: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before varvare-5-let: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-varvare-5-let: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-varvare-5-let: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-varvare-5-let: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-varvare-5-let: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct varvare-5-let: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct varvare-5-let: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "varvare-5-let: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return varvare-5-let: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return varvare-5-let: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list before loft-yula: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list before loft-yula: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "list-project-loft-yula: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: mobile project progress has 3 digits and is 0..100",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: project scroll moves",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: mobile percent progress increases after scroll",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-loft-yula: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-loft-yula: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "project-close-list-loft-yula: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: list scroll restored",
+          "passed": true
+        },
+        {
+          "name": "direct loft-yula: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct loft-yula: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: direct route is project",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: direct route no XP or caption",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: direct photo decoded",
+          "passed": true
+        },
+        {
+          "name": "loft-yula: direct mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "direct return loft-yula: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "direct return loft-yula: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "interrupted cover opening to List: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "interrupted cover opening to List: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "after opening cancellation with resize: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "after opening cancellation with resize: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "rapid info interruption: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "rapid info interruption: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "rapid interruption Close: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "rapid interruption Close: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "after interruptions: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "after interruptions: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "list: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "list: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "filter family: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "filter family: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "filter family: only matching rows",
+          "passed": true
+        },
+        {
+          "name": "filter family: selected button",
+          "passed": true
+        },
+        {
+          "name": "filter portrait: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "filter portrait: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "filter portrait: only matching rows",
+          "passed": true
+        },
+        {
+          "name": "filter portrait: selected button",
+          "passed": true
+        },
+        {
+          "name": "filter events: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "filter events: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "filter events: only matching rows",
+          "passed": true
+        },
+        {
+          "name": "filter events: selected button",
+          "passed": true
+        },
+        {
+          "name": "filter all: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "filter all: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "filter all: only matching rows",
+          "passed": true
+        },
+        {
+          "name": "filter all: selected button",
+          "passed": true
+        },
+        {
+          "name": "overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 375x635: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "resize 375x635: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 375x635: XP monochrome",
+          "passed": true
+        },
+        {
+          "name": "resize 375x635: strip visible",
+          "passed": true
+        },
+        {
+          "name": "resize 375x762: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "resize 375x762: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 375x762: XP monochrome",
+          "passed": true
+        },
+        {
+          "name": "resize 375x762: strip visible",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: XP monochrome",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: strip visible",
+          "passed": true
+        },
+        {
+          "name": "resize 390x844: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "resize 390x844: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 390x844: XP monochrome",
+          "passed": true
+        },
+        {
+          "name": "resize 390x844: strip visible",
+          "passed": true
+        },
+        {
+          "name": "resize 768x1024: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "resize 768x1024: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 768x1024: XP monochrome",
+          "passed": true
+        },
+        {
+          "name": "resize 768x1024: strip visible",
+          "passed": true
+        },
+        {
+          "name": "resize 812x375: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "resize 812x375: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 812x375: XP monochrome",
+          "passed": true
+        },
+        {
+          "name": "resize 812x375: strip visible",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: XP monochrome",
+          "passed": true
+        },
+        {
+          "name": "resize 375x812: strip visible",
+          "passed": true
+        },
+        {
+          "name": "after viewport resize: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "after viewport resize: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "desktop overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "desktop overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "desktop: mobile XP hidden",
+          "passed": true
+        },
+        {
+          "name": "desktop: overview photos visible",
+          "passed": true
+        },
+        {
+          "name": "desktop list: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "desktop list: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "desktop: photo list visible",
+          "passed": true
+        },
+        {
+          "name": "desktop portrait filter: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "desktop portrait filter: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "desktop: filter button applies",
+          "passed": true
+        },
+        {
+          "name": "desktop project: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "desktop project: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "desktop: next-project remains visible",
+          "passed": true
+        },
+        {
+          "name": "desktop: project counter retains 2 digits",
+          "passed": true
+        },
+        {
+          "name": "desktop project Close: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "desktop project Close: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "desktop Info: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "desktop Info: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "desktop: Info portrait remains visible",
+          "passed": true
+        },
+        {
+          "name": "desktop Info Close: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "desktop Info Close: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "no-webgl overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl: no canvas",
+          "passed": true
+        },
+        {
+          "name": "no-webgl: DOM photo fallback painted",
+          "passed": true
+        },
+        {
+          "name": "no-webgl: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "no-webgl: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "no-webgl list: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "no-webgl list: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "no-webgl-project: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "no-webgl project Close: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "no-webgl project Close: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl Info: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "no-webgl Info: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl Info Close: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "no-webgl Info Close: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl returned overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "no-webgl returned overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "no-webgl after returns: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "no-webgl after returns: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion: no canvas",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion: DOM photo fallback painted",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion list: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion list: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: transition never duplicates canvas",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: sampled project transition",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: gallery XP hidden over project",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: gallery caption hidden over project",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: kept gallery has no painted caption or XP",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: first photo decoded and visible",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion-project: mobile next-project hidden",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion project Close: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion project Close: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion Info: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion Info: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion Info Close: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion Info Close: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion returned overview: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion returned overview: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion after returns: wheel moves strip",
+          "passed": true
+        },
+        {
+          "name": "reduced-motion after returns: swipe moves strip",
+          "passed": true
+        },
+        {
+          "name": "counter resize compact project: one canvas maximum",
+          "passed": true
+        },
+        {
+          "name": "counter resize compact project: no horizontal document overflow",
+          "passed": true
+        },
+        {
+          "name": "counter resize: compact third figure is visible",
+          "passed": true
+        },
+        {
+          "name": "counter resize: wide third figure stays visible",
+          "passed": true
+        },
+        {
+          "name": "counter resize: wide counter preserves visible figure",
+          "passed": true
+        },
+        {
+          "name": "browser: no console errors or exceptions",
+          "passed": true
+        }
+      ]
+    },
+    "webkit": {
+      "passed": 36,
+      "failed": 0,
+      "errors": [],
+      "checks": [
+        {
+          "name": "320x568: portrait composition without overflow",
+          "passed": true
+        },
+        {
+          "name": "320x568: photos and animated grain",
+          "passed": true
+        },
+        {
+          "name": "320x568: WebGL shaders active",
+          "passed": true
+        },
+        {
+          "name": "320x568: all series accessible",
+          "passed": true
+        },
+        {
+          "name": "320x568: project photo clears chrome",
+          "passed": true
+        },
+        {
+          "name": "320x568: Info without overflow",
+          "passed": true
+        },
+        {
+          "name": "320x568: Close restores List",
+          "passed": true
+        },
+        {
+          "name": "390x844: portrait composition without overflow",
+          "passed": true
+        },
+        {
+          "name": "390x844: photos and animated grain",
+          "passed": true
+        },
+        {
+          "name": "390x844: WebGL shaders active",
+          "passed": true
+        },
+        {
+          "name": "390x844: all series accessible",
+          "passed": true
+        },
+        {
+          "name": "390x844: project photo clears chrome",
+          "passed": true
+        },
+        {
+          "name": "390x844: Info without overflow",
+          "passed": true
+        },
+        {
+          "name": "390x844: Close restores List",
+          "passed": true
+        },
+        {
+          "name": "600x800: portrait composition without overflow",
+          "passed": true
+        },
+        {
+          "name": "600x800: photos and animated grain",
+          "passed": true
+        },
+        {
+          "name": "600x800: WebGL shaders active",
+          "passed": true
+        },
+        {
+          "name": "600x800: all series accessible",
+          "passed": true
+        },
+        {
+          "name": "600x800: project photo clears chrome",
+          "passed": true
+        },
+        {
+          "name": "600x800: Info without overflow",
+          "passed": true
+        },
+        {
+          "name": "600x800: Close restores List",
+          "passed": true
+        },
+        {
+          "name": "768x1024: portrait composition without overflow",
+          "passed": true
+        },
+        {
+          "name": "768x1024: photos and animated grain",
+          "passed": true
+        },
+        {
+          "name": "768x1024: WebGL shaders active",
+          "passed": true
+        },
+        {
+          "name": "768x1024: all series accessible",
+          "passed": true
+        },
+        {
+          "name": "768x1024: project photo clears chrome",
+          "passed": true
+        },
+        {
+          "name": "768x1024: Info without overflow",
+          "passed": true
+        },
+        {
+          "name": "768x1024: Close restores List",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: portrait composition without overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: photos and animated grain",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: WebGL shaders active",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: all series accessible",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: project photo clears chrome",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: Info without overflow",
+          "passed": true
+        },
+        {
+          "name": "1024x1366: Close restores List",
+          "passed": true
+        },
+        {
+          "name": "no console errors or runtime exceptions",
+          "passed": true
+        }
+      ],
+      "measurements": [
+        {
+          "label": "320x568",
+          "overflow": 0,
+          "logo": true,
+          "canvas": 1,
+          "gl": 11,
+          "loaded": 11,
+          "grain": "grain"
+        },
+        {
+          "label": "390x844",
+          "overflow": 0,
+          "logo": true,
+          "canvas": 1,
+          "gl": 11,
+          "loaded": 11,
+          "grain": "grain"
+        },
+        {
+          "label": "600x800",
+          "overflow": 0,
+          "logo": true,
+          "canvas": 1,
+          "gl": 11,
+          "loaded": 11,
+          "grain": "grain"
+        },
+        {
+          "label": "768x1024",
+          "overflow": 0,
+          "logo": true,
+          "canvas": 1,
+          "gl": 11,
+          "loaded": 11,
+          "grain": "grain"
+        },
+        {
+          "label": "1024x1366",
+          "overflow": 0,
+          "logo": true,
+          "canvas": 1,
+          "gl": 11,
+          "loaded": 11,
+          "grain": "grain"
+        }
+      ]
+    }
+  },
+  "totalBrowserChecks": 716
+}

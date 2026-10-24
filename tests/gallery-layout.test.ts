@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { readFileSync } from 'node:fs';
 import { layout, nearest, wrap } from '../src/gallery-layout.ts';
+import { portraitLayout, projectFrame } from '../src/viewport.ts';
 
 // Same tile order as the gallery markup: every cover, then the fourth photo of each series.
 type Photo = { width: number; height: number };
@@ -16,6 +17,25 @@ test('wrap keeps a value inside one period and is continuous across cycles', () 
     assert.equal(((wrapped - value) % 1000 + 1000) % 1000, 0);
   }
   assert.equal(nearest(100, 2150, 1000), 2100);
+});
+
+test('portrait geometry reserves caption, browser controls and safe areas on phones and tablets', () => {
+  for (const [width, height] of [[320, 480], [320, 568], [360, 640], [375, 635], [375, 812], [430, 932], [600, 800], [601, 962], [768, 1024], [820, 1180], [1024, 1366], [1280, 1920], [812, 375]]) {
+    for (const insets of [{ top: 0, right: 0, bottom: 0, left: 0 }, { top: 59, right: 0, bottom: 34, left: 0 }, { top: 0, right: 44, bottom: 21, left: 44 }]) {
+      const view = { width, height, ...insets };
+      const portrait = portraitLayout(width, height, insets);
+      assert(portrait.wordmark > 0, `${width}x${height}: XP has room`);
+      assert(portrait.captionTop + 64 < portrait.photoTop, `${width}x${height}: caption clears strip`);
+      assert(portrait.photoTop + portrait.photoHeight <= height - insets.bottom - 64, `${width}x${height}: strip clears footer`);
+      for (const ratio of [.5, .8, 1, 1.5, 2]) {
+        const frame = projectFrame(ratio, view);
+        assert(frame.y >= 110 + insets.top, `${width}x${height}: photo clears heading`);
+        assert(frame.y + frame.h <= height - insets.bottom - 100, `${width}x${height}: photo clears counter`);
+        assert(frame.x >= insets.left && frame.x + frame.w <= width - insets.right, `${width}x${height}: photo clears cutouts`);
+        assert(Math.abs(frame.w / frame.h - ratio) < 1e-10);
+      }
+    }
+  }
 });
 
 test('full portfolio cycles without seams on every tested viewport, short filters stay still', () => {

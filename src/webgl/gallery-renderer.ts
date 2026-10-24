@@ -11,6 +11,7 @@ import {
   WebGLRenderer,
 } from 'three';
 import type { Texture } from 'three';
+import { readViewport } from '../viewport';
 
 /** Per-photo values the app tweens; the renderer copies them into uniforms every frame. */
 export interface PhotoState { hover: number; anim: number; opacity: number; order: number }
@@ -122,6 +123,7 @@ export class GalleryRenderer {
       this.canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;';
       this.canvas.addEventListener('webglcontextlost', this.onContextLost);
       window.addEventListener('resize', this.onResize);
+      window.visualViewport?.addEventListener('resize', this.onResize);
       this.onResize();
       if (!this.disposed) document.body.append(this.canvas);
     } catch {
@@ -211,6 +213,7 @@ export class GalleryRenderer {
     if (this.disposed) return;
     this.disposed = true;
     window.removeEventListener('resize', this.onResize);
+    window.visualViewport?.removeEventListener('resize', this.onResize);
     this.canvas.removeEventListener('webglcontextlost', this.onContextLost);
     for (const entry of this.images) this.release(entry);
     for (const texture of this.textures.values()) void texture.then(item => item.dispose(), () => undefined);
@@ -298,15 +301,19 @@ export class GalleryRenderer {
   private readonly onResize = (): void => {
     if (this.disposed || !this.renderer) return;
     try {
-      this.width = window.innerWidth;
-      this.height = window.innerHeight;
+      const view = readViewport();
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+      if (this.width === view.width && this.height === view.height && this.renderer.getPixelRatio() === ratio) return;
+      this.width = view.width;
+      this.height = view.height;
       this.camera.left = -this.width / 2;
       this.camera.right = this.width / 2;
       this.camera.top = this.height / 2;
       this.camera.bottom = -this.height / 2;
       this.camera.updateProjectionMatrix();
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      this.renderer.setPixelRatio(ratio);
       this.renderer.setSize(this.width, this.height, false);
+      this.canvas.style.height = `${this.height}px`;
       this.dirty = true;
     } catch {
       this.dispose();

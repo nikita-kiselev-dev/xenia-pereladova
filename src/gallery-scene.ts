@@ -4,6 +4,7 @@ import type { Category } from './data/projects';
 import { layout, wrap, type Box, type Layout, type Mode } from './gallery-layout';
 import { reducedMotion } from './motion';
 import type { GalleryRenderer, PhotoState } from './webgl/gallery-renderer';
+import { readViewport } from './viewport';
 
 gsap.registerPlugin(Observer);
 
@@ -36,7 +37,7 @@ export class GalleryScene {
   readonly tiles: Tile[];
   mode: Mode = 'overview';
   filter: Category = 'all';
-  enabled = false;
+  private active = false;
   dragged = false;
   speed = 0;
   private plan: Layout = { boxes: [], axis: 'y', period: 1, margin: 0, cycling: false, max: 0 };
@@ -63,22 +64,32 @@ export class GalleryScene {
     root.addEventListener('click', this.onClickCapture, true);
     root.addEventListener('dragstart', event => event.preventDefault());
     this.observer = Observer.create({
-      target: window,
+      target: root,
       type: 'wheel,touch,pointer',
       tolerance: 2,
       dragMinimum: 6,
+      lockAxis: true,
+      ignoreCheck: event => this.busy || ('touches' in event && (event as TouchEvent).touches.length > 1),
+      onPress: () => { this.dragged = false; this.target = this.offset; },
       onWheel: self => this.nudge(this.plan.axis === 'x' ? self.deltaY + self.deltaX : self.deltaY),
       onDrag: self => {
         this.dragged = true;
-        const delta = -(this.plan.axis === 'x' ? self.deltaX : self.deltaY);
+        const delta = -(this.plan.axis === 'x' && self.axis !== 'y' ? self.deltaX : self.deltaY);
         this.nudge(delta);
         if (this.enabled && !this.moving) this.offset = this.clamp(this.offset + delta);
       },
       onDragEnd: self => {
-        this.nudge(-(this.plan.axis === 'x' ? self.velocityX : self.velocityY) * .25);
-        setTimeout(() => { this.dragged = false; }, 0);
+        if (!reducedMotion.matches) this.nudge(-(this.plan.axis === 'x' && self.axis !== 'y' ? self.velocityX : self.velocityY) * .25);
       },
     });
+    this.observer.disable();
+  }
+
+  get enabled(): boolean { return this.active; }
+  set enabled(value: boolean) {
+    this.active = value;
+    if (value) this.observer.enable();
+    else { this.observer.disable(); this.dragged = false; }
   }
 
   attach(renderer?: GalleryRenderer): void {
@@ -88,6 +99,15 @@ export class GalleryScene {
 
   get busy(): boolean { return Boolean(this.moving?.isActive()); }
   get cycling(): boolean { return this.plan.cycling; }
+
+  /** A rotation during cover flight changes its landing box before the decoded photo takes over. */
+  alignCover(key: string, rect: Box): void {
+    const tile = this.tiles.find(item => item.key === key);
+    if (!tile) return;
+    tile.box = { ...rect, [this.plan.axis]: rect[this.plan.axis] + this.offset };
+    tile.free = false;
+    this.write();
+  }
 
   /** A killed parent timeline never runs the child's onComplete. Release input at the drawn positions. */
   cancel(): void {
@@ -164,25 +184,26 @@ export class GalleryScene {
     const shown = this.shown();
     if (reducedMotion.matches) return this.fade(timeline, [], shown);
     const heroTile = shown.find(tile => tile.key === hero?.key);
+    const height = readViewport().height;
     const stackSize = (() => { const box = this.plan.boxes[0]; return box ? { w: box.h * .8, h: box.h } : { w: 100, h: 125 }; })();
     shown.forEach((tile, index) => {
       const end = this.toScreen(this.plan.boxes[index]);
       const isHero = tile === heroTile;
       if (isHero && hero?.rect) tile.box = { ...hero.rect };
-      else if (kind === 'stack') tile.box = { x: (innerWidth - stackSize.w) / 2, y: (innerHeight - stackSize.h) / 2, ...stackSize };
+      else if (kind === 'stack') tile.box = { x: (innerWidth - stackSize.w) / 2, y: (height - stackSize.h) / 2, ...stackSize };
       else { tile.box = { ...end, x: this.aside(end) }; tile.state.opacity = 0; }
       tile.state.order = isHero || (kind === 'stack' && index === 0) ? 2 : 0;
       tile.el.style.zIndex = String(tile.state.order);
-      if (isHero && hero?.rect && innerWidth <= 600) {
+      if (isHero && hero?.rect && this.mode === 'strip') {
         // Reverse the phone opening: shrink in the centre, then return to the strip.
-        const centre = { ...end, x: (innerWidth - end.w) / 2, y: (innerHeight - end.h) / 2 };
+        const centre = { ...end, x: (innerWidth - end.w) / 2, y: (height - end.h) / 2 };
         timeline.to(tile.box, { ...centre, duration: 1.2, ease: 'power3.inOut' }, 0)
           .to(tile.state, { anim: .3, opacity: 1, duration: 1.2, ease: 'power4.inOut' }, 0)
           .to(tile.box, { x: end.x, y: end.y, duration: .65, ease: 'power4.inOut' }, 1.2)
           .to(tile.state, { anim: 0, duration: .5, ease: 'power4.inOut' }, 1.2);
         return;
       }
-      const delay = kind === 'sides' && !isHero ? (heroTile && innerWidth <= 600 ? .75 : .05) + (index % 6) * .03 : 0;
+      const delay = kind === 'sides' && !isHero ? (heroTile && this.mode === 'strip' ? .75 : .05) + (index % 6) * .03 : 0;
       timeline.to(tile.box, { x: end.x, y: end.y, duration: 1.4, ease: 'power3.inOut' }, delay)
         .to(tile.box, { w: end.w, h: end.h, duration: 1, ease: 'power3.inOut' }, delay + .2)
         .to(tile.state, { opacity: 1, duration: .8 }, delay);
@@ -213,6 +234,7 @@ export class GalleryScene {
     this.saved.set(this.key(), this.offset);
     const timeline = this.timeline();
     if (reducedMotion.matches) return this.fade(timeline, this.shown(), []);
+    const height = readViewport().height;
     for (const tile of this.shown()) {
       if (tile.key !== key) {
         timeline.to(tile.box, { x: this.aside(tile.box), duration: 1.4, ease: 'power4.inOut' }, 0);
@@ -220,8 +242,8 @@ export class GalleryScene {
       }
       tile.state.order = 2;
       tile.el.style.zIndex = '2';
-      const growAt = innerWidth <= 600 ? .33 : .65;
-      timeline.to(tile.box, { x: (innerWidth - tile.box.w) / 2, y: (innerHeight - tile.box.h) / 2, duration: .65, ease: 'power4.inOut' }, 0)
+      const growAt = this.mode === 'strip' ? .33 : .65;
+      timeline.to(tile.box, { x: (innerWidth - tile.box.w) / 2, y: (height - tile.box.h) / 2, duration: .65, ease: 'power4.inOut' }, 0)
         .to(tile.state, { anim: .3, hover: 0, duration: .5, ease: 'power4.inOut' }, 0)
         .to(tile.box, { ...rect, duration: 1.2, ease: 'power3.inOut' }, growAt)
         .to(tile.state, { anim: 0, duration: 1.2, ease: 'power4.inOut' }, growAt);
@@ -257,20 +279,20 @@ export class GalleryScene {
     const box = this.screen(tile);
     const axis = this.plan.axis;
     const size = axis === 'x' ? box.w : box.h;
-    const viewport = axis === 'x' ? innerWidth : innerHeight;
+    const viewport = axis === 'x' ? innerWidth : readViewport().height;
     if (box[axis] >= 70 && box[axis] + size <= viewport - 90) return;
     this.target = this.clamp(this.offset + box[axis] + size / 2 - viewport / 2);
   }
 
   tick(dt: number, time: number): void {
     if (!this.moving) {
-      this.offset += (this.target - this.offset) * (1 - Math.pow(1 - .085, dt * 60));
+      this.offset += (this.target - this.offset) * (reducedMotion.matches ? 1 : 1 - Math.pow(1 - .085, dt * 60));
       if (Math.abs(this.target - this.offset) < .05) this.offset = this.target;
       this.velocity = dt > 0 ? (this.offset - this.last) / dt : 0;
     } else this.velocity = 0;
     this.last = this.offset;
     // Bend in px at screen centre: fast flicks give a clear curve, rest returns to a flat photo.
-    const bend = Math.max(-260, Math.min(260, this.velocity * (innerWidth > 600 ? .06 : .025)));
+    const bend = reducedMotion.matches ? 0 : Math.max(-260, Math.min(260, this.velocity * (this.mode === 'strip' ? .025 : .06)));
     this.speed += (bend - this.speed) * (1 - Math.pow(1 - .1, dt * 60));
     if (Math.abs(this.speed) < .01) this.speed = 0;
     this.write();
@@ -295,7 +317,8 @@ export class GalleryScene {
       tile.el.hidden = !tile.shown;
     }
     this.root.querySelectorAll<HTMLElement>('.text-list>a').forEach(row => { row.hidden = filter !== 'all' && row.dataset.category !== filter; });
-    this.plan = layout(mode, this.shown().map(tile => tile.ratio), innerWidth, innerHeight);
+    const view = readViewport();
+    this.plan = layout(mode, this.shown().map(tile => tile.ratio), view.width, view.height, view);
     return this.key();
   }
 
@@ -352,7 +375,7 @@ export class GalleryScene {
   }
 
   private readonly onClickCapture = (event: MouseEvent): void => {
-    if (!this.dragged) return;
+    if (!this.dragged || event.detail === 0) return;
     event.preventDefault();
     event.stopPropagation();
   };

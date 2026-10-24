@@ -47,6 +47,7 @@ python scripts/import-portfolio.py
 Категория хранится как `?filter=family` внутри hash. Close/Escape возвращают контекст галереи; Back/Forward и refresh поддержаны.
 Motion по [WEBSITE_MOTION_PLAN.md](WEBSITE_MOTION_PLAN.md); что реализовано и проверено — [docs/qa/motion-report.md](docs/qa/motion-report.md).
 Портретная версия откалибрована отдельно по iPhone 13 mini (375×812 CSS px): [исследование оригинала](docs/research/portrait-2026-10-24.md), [исправления и browser QA](docs/qa/portrait/report.md).
+Адаптивный рефакторинг телефонов и планшетов: [изменения и актуальные проверки](docs/qa/portrait-refactor/report.md). Размеры XP, ленты и кадра серии рассчитываются в `src/viewport.ts`; portrait-композиция включается также на экранах шире 1023px, если высота больше ширины.
 Галерея — одна постоянная DOM-сцена (`src/gallery-scene.ts`, геометрия в `src/gallery-layout.ts`) с циклическим scroll и WebGL-зеркалом (`src/webgl/gallery-renderer.ts`); тексты и барабаны — `src/motion.ts`.
 Зерно и displacement — собственные `public/grain.png`, `public/disp.jpg` (`python scripts/make-textures.py`).
 Reduced motion отключает intro, Lenis, инерцию и WebGL, зерно статично. Ошибка GPU возвращает DOM-изображения.
@@ -56,9 +57,10 @@ Motion-клипы (нужны Chrome и ffmpeg): `node tests/motion-capture.mjs 
 ## Browser QA
 
 Результаты, границы проверки и снимки: [docs/qa/acceptance.md](docs/qa/acceptance.md).
-Один browser harness — `tests/browser-smoke.mjs`, использующий документированный CUA tab API в Codex; не предназначен для вставки в browser console.
+Базовый browser harness — `tests/browser-smoke.mjs`, использующий документированный CUA tab API в Codex; не предназначен для вставки в browser console.
 Функции: `runCore(tab, baseURL)`, `runResponsive(tab, viewport, saveScreenshot)`, `runResizePreservation(tab, viewport)`, `runNarrowOverview(tab, viewport)`, `runFallbacks(tab, qaBaseURL)`.
-Node-тесты маршрутов и целостности manifest запускаются обычным `npm test`.
+Node-тесты маршрутов, геометрии и целостности manifest запускаются обычным `npm test`.
+Расширенная матрица Chrome с trusted touch и shader uniforms — `tests/responsive-portrait.mjs`; отдельный проход WebKit — `tests/webkit-portrait.mjs`. Оба используют внешнюю Playwright installation, как `tests/portrait-motion.mjs`; команды и границы проверки указаны в отчёте рефакторинга.
 
 Для fault injection собрать отдельный QA artifact:
 

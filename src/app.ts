@@ -9,6 +9,7 @@ import { categoryName, escapeHtml, galleryMarkup, projectNumber } from './views/
 import { projectMarkup } from './views/project';
 import { infoMarkup } from './views/info';
 import type { GalleryRenderer } from './webgl/gallery-renderer';
+import { applyViewport, compactQuery, projectFrame, readViewport } from './viewport';
 
 type GalleryRoute = Extract<Route, { page: 'overview' | 'list' }>;
 type Position = { y: number; slug?: string };
@@ -31,7 +32,7 @@ export class App {
   private revision = 0;
   private lastGallery = '#/overview';
   private positions = new Map<string, Position>();
-  private compact = matchMedia('(max-width: 1023px)');
+  private compact = matchMedia(compactQuery);
   private photoObserver?: IntersectionObserver;
   private opening?: string;
   private lastOpened?: string;
@@ -41,6 +42,9 @@ export class App {
   private coverReveal?: gsap.core.Tween;
   private captionReveal?: gsap.core.Tween;
   private resizePending = false;
+  private resizeFrame = 0;
+  private viewport = readViewport();
+  private touchClose?: HTMLButtonElement;
   private cursorEl: HTMLElement;
   private hovered?: GalleryScene['tiles'][number];
   private mobileSlug?: string;
@@ -56,6 +60,7 @@ export class App {
   private intro?: { timeline: gsap.core.Timeline; skip: () => void; element: HTMLElement };
 
   constructor(private root: HTMLElement) {
+    applyViewport(this.viewport);
     history.scrollRestoration = 'manual';
     root.innerHTML = `<header class="site-header"><div class="edge-blur" aria-hidden="true"><i></i><i></i><i></i></div>
       <a class="site-name" href="#/overview" data-reveal data-scramble>${profile.name}</a>
@@ -85,6 +90,9 @@ export class App {
     try { this.lastGallery = sessionStorage.getItem('xenia:gallery') || this.lastGallery; } catch { /* Storage may be disabled. */ }
     if (!isGallery(parseRoute(this.lastGallery))) this.lastGallery = '#/overview';
     root.addEventListener('click', this.onClick);
+    root.addEventListener('pointerdown', this.onClosePress);
+    root.addEventListener('pointercancel', this.onCloseCancel);
+    root.addEventListener('touchend', this.onCloseTouchEnd, { passive: false });
     root.addEventListener('focusin', this.onFocusIn);
     root.addEventListener('focusout', this.onFocusOut);
     root.addEventListener('pointerover', this.onPointerOver);
@@ -92,6 +100,7 @@ export class App {
     window.addEventListener('hashchange', this.onHashChange);
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('resize', this.onResize);
+    window.visualViewport?.addEventListener('resize', this.onResize);
     window.addEventListener('pointermove', this.onPointerMove);
     window.addEventListener('blur', this.onPointerLeave);
     document.documentElement.addEventListener('pointerleave', this.onPointerLeave);
@@ -138,6 +147,22 @@ export class App {
     }
   };
 
+  private onClosePress = (event: PointerEvent) => {
+    this.touchClose = event.isPrimary && event.pointerType === 'touch' && event.target instanceof Element
+      ? event.target.closest<HTMLButtonElement>('button[data-close]') || undefined : undefined;
+  };
+
+  private onCloseCancel = () => { this.touchClose = undefined; };
+
+  private onCloseTouchEnd = (event: TouchEvent) => {
+    const button = this.touchClose;
+    this.touchClose = undefined;
+    if (!button || event.touches.length || !event.cancelable) return;
+    // Chrome may omit click when a tap stops native inertia. Cancel its compatibility click to avoid two Back steps.
+    event.preventDefault();
+    button.click();
+  };
+
   private onHashChange = () => {
     this.rememberPosition();
     const previous = this.route;
@@ -163,7 +188,7 @@ export class App {
     const steps: Record<string, number> = { ArrowDown: .35, ArrowRight: .35, PageDown: .8, ArrowUp: -.35, ArrowLeft: -.35, PageUp: -.8 };
     if (event.key in steps) {
       event.preventDefault();
-      this.scene.nudge(steps[event.key] * (this.scene.mode === 'overview' ? innerHeight : innerWidth));
+      this.scene.nudge(steps[event.key] * (this.scene.mode === 'overview' ? this.viewport.height : innerWidth));
     }
   };
 
@@ -188,18 +213,35 @@ export class App {
     location.reload();
   };
 
-  private onLayoutChange = () => {
-    if (!isGallery(this.route) || !this.shownRoute || !isGallery(this.shownRoute)) return;
-    this.transition?.progress(1).kill();
-    this.showGallery(this.route, 'instant');
-  };
+  private onLayoutChange = () => this.onResize();
 
   private onResize = () => {
-    this.lenis?.resize();
-    if (this.shownRoute?.page === 'project' && this.photoCounterCompact !== (innerWidth <= 600)) this.setupPhotoCounter();
-    if (this.root.dataset.phase === 'transition' || this.intro) this.resizePending = true;
-    else if (this.scene.enabled) this.scene.relayout();
+    if (this.resizeFrame) return;
+    this.resizeFrame = requestAnimationFrame(() => {
+      this.resizeFrame = 0;
+      const previous = this.viewport;
+      const view = readViewport();
+      if (Object.entries(view).every(([key, value]) => value === previous[key as keyof typeof view])) return;
+      const photoPosition = scrollY / previous.height;
+      applyViewport(view);
+      this.viewport = view;
+      this.lenis?.resize();
+      if (this.shownRoute?.page === 'project') {
+        if (this.photoCounterCompact !== (innerWidth <= 600)) this.setupPhotoCounter();
+        if (previous.height !== view.height && previous.width !== view.width && this.root.dataset.phase === 'ready' && photoPosition < this.main.querySelectorAll('.project-photo').length) this.setScroll(photoPosition * view.height);
+        if (this.scene.root.isConnected && this.lastOpened) this.scene.alignCover(this.lastOpened, this.firstFrameRect(this.shownRoute.slug));
+      }
+      if (this.root.dataset.phase === 'transition' || this.intro) this.resizePending = true;
+      else this.refreshLayout();
+    });
   };
+
+  private refreshLayout() {
+    if (!isGallery(this.route) || !this.shownRoute || !isGallery(this.shownRoute)) return;
+    const mode = this.sceneMode(this.route);
+    if (mode !== (this.scene.enabled ? this.scene.mode : undefined)) this.showGallery(this.route, 'instant');
+    else if (mode) this.scene.relayout(mode, this.route.filter);
+  }
 
   /** Each navigation: exit what is on screen, then enter the requested route. The newest request wins. */
   private go(initial: boolean) {
@@ -254,7 +296,7 @@ export class App {
         const scroll = { y: window.scrollY };
         this.lenis?.stop();
         exit.to(this.main.querySelector('.project-counter'), { autoAlpha: 0, duration: .3 }, 0)
-          .to(scroll, { y: 0, duration: Math.min(1.2, .2 + scroll.y / innerHeight * .2), ease: 'power3.inOut', onUpdate: () => this.lenis ? this.lenis.scrollTo(scroll.y, { immediate: true, force: true }) : window.scrollTo(0, scroll.y) }, 0)
+          .to(scroll, { y: 0, duration: Math.min(1.2, .2 + scroll.y / this.viewport.height * .2), ease: 'power3.inOut', onUpdate: () => this.lenis ? this.lenis.scrollTo(scroll.y, { immediate: true, force: true }) : window.scrollTo(0, scroll.y) }, 0)
           .call(() => {
             const frame = this.main.querySelector('.project-photo-frame')!.getBoundingClientRect();
             this.returnRect = { x: frame.left, y: frame.top, w: frame.width, h: frame.height };
@@ -295,7 +337,7 @@ export class App {
       this.root.dataset.phase = 'ready';
       if (this.resizePending) {
         this.resizePending = false;
-        if (this.scene.enabled) this.scene.relayout();
+        this.refreshLayout();
       }
     });
     this.root.dataset.ready = 'true';
@@ -354,7 +396,11 @@ export class App {
     this.openedKey = undefined;
     this.returnRect = undefined;
     this.scene.root.inert = false;
-    if (how === 'instant') { timeline.progress(1); return timeline; }
+    if (how === 'instant') {
+      gsap.set(this.scene.root.querySelectorAll('.mobile-wordmark, .gallery-intro--overview, .text-list'), { autoAlpha: 1 });
+      timeline.progress(1);
+      return timeline;
+    }
     const compactReturn = this.compact.matches && (how === 'return' || how === 'sides');
     if (how !== 'morph') timeline.add(this.chrome(true), how === 'intro' ? .2 : compactReturn ? 1.18 : .3);
     else {
@@ -426,6 +472,7 @@ export class App {
       this.observePhotos();
       const first = this.main.querySelector<HTMLImageElement>('.project-photo img');
       if (first && keepGallery) {
+        this.scene.alignCover(this.lastOpened!, this.firstFrameRect(route.slug));
         // The open transition left the cover where this frame appears: keep it under the frame until the frame has decoded.
         this.renderer!.setActive(true);
         this.scene.root.inert = true;
@@ -470,10 +517,7 @@ export class App {
   private firstFrameRect(slug: string): Box {
     const photo = projects.find(project => project.slug === slug)?.cover;
     const ratio = photo ? photo.width / photo.height : .8;
-    const narrow = innerWidth <= 600;
-    const w = narrow ? innerWidth * .9 : Math.min(innerHeight * .7 * ratio, innerWidth * .8);
-    const h = w / ratio;
-    return { x: (innerWidth - w) / 2, y: (innerHeight - h) / 2, w, h };
+    return projectFrame(ratio, readViewport());
   }
 
   private async mountRenderer() {
@@ -624,7 +668,7 @@ export class App {
     try { visited = Boolean(sessionStorage.getItem('xenia:visited')); sessionStorage.setItem('xenia:visited', 'true'); } catch { /* Full intro then. */ }
     if (visited || reducedMotion.matches) return false;
     const hero = this.scene.tiles.find(tile => tile.shown)!;
-    const portrait = innerWidth <= 600;
+    const portrait = this.compact.matches;
     const revision = this.revision;
     const element = document.createElement('div');
     element.className = `intro${portrait ? ' intro--portrait' : ''}`;
@@ -694,6 +738,7 @@ export class App {
 
   private dispose() {
     this.revision++;
+    cancelAnimationFrame(this.resizeFrame);
     this.transition?.kill();
     this.coverReveal?.kill();
     this.captionReveal?.kill();
@@ -704,6 +749,9 @@ export class App {
     this.photoObserver?.disconnect();
     gsap.ticker.remove(this.tick);
     this.root.removeEventListener('click', this.onClick);
+    this.root.removeEventListener('pointerdown', this.onClosePress);
+    this.root.removeEventListener('pointercancel', this.onCloseCancel);
+    this.root.removeEventListener('touchend', this.onCloseTouchEnd);
     this.root.removeEventListener('focusin', this.onFocusIn);
     this.root.removeEventListener('focusout', this.onFocusOut);
     this.root.removeEventListener('pointerover', this.onPointerOver);
@@ -711,6 +759,7 @@ export class App {
     window.removeEventListener('hashchange', this.onHashChange);
     window.removeEventListener('keydown', this.onKeyDown);
     window.removeEventListener('resize', this.onResize);
+    window.visualViewport?.removeEventListener('resize', this.onResize);
     window.removeEventListener('pointermove', this.onPointerMove);
     window.removeEventListener('blur', this.onPointerLeave);
     document.documentElement.removeEventListener('pointerleave', this.onPointerLeave);
