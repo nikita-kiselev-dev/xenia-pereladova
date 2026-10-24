@@ -70,7 +70,7 @@ export class App {
         <a data-nav="info" class="info-nav" href="#/info" data-reveal data-scramble>/ Обо мне</a>
       </nav><a class="site-contact text-link" href="${profile.telegram}" target="_blank" rel="noopener noreferrer" data-reveal data-scramble>Написать в Telegram</a>
     </header><main id="main" tabindex="-1"></main>
-    <footer class="site-footer"><div class="edge-blur" aria-hidden="true"><i></i><i></i><i></i></div><a class="copyright" href="#/info" data-reveal data-scramble>© ${new Date().getFullYear()}</a>
+    <footer class="site-footer"><div class="edge-blur" aria-hidden="true"><i></i><i></i><i></i></div><a class="copyright" href="#/info" aria-label="Обо мне" data-reveal data-scramble>© ${new Date().getFullYear()}</a>
       <div class="filters" aria-label="Категории фотографий">${categories.map((category, index) => `<button data-filter="${category.id}" aria-pressed="false" aria-label="${category.title}">${category.title}${index < categories.length - 1 ? ',' : ''}</button>`).join('')}</div>
       <div class="overview-focus" aria-hidden="true"><span class="hover-index" data-hover-index></span><p data-hover-caption></p></div>
       <span class="progress" aria-label="Просмотрено"><span aria-hidden="true">[</span><span data-progress></span><span aria-hidden="true">%]</span></span>

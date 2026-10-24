@@ -8,7 +8,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 button { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
-button:hover, .text-link:hover, .info-copy a:hover, .info-footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Hover only where it exists: after a tap, touch screens keep :hover stuck on the element. */
+@media (hover: hover) {
+  button:hover, .text-link:hover, .info-copy a:hover, .info-footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .site-nav a:hover { opacity: 1; }
+  .filters button:hover { color: var(--ink); text-decoration: none; }
+  .text-list>a:hover .text-list-name { text-decoration: underline; }
+}
 button:disabled { cursor: default; }
 figure, p, h1, h2 { margin: 0; }
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -44,8 +50,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .site-nav .nav-slash { padding: 0 .5em; }
 .site-nav .info-nav { flex-basis: 100%; margin-top: 3px; }
 .site-nav a { opacity: .65; }
-.site-nav a[aria-current='page'], .site-nav a:hover, .site-nav a:focus-visible { opacity: 1; }
+.site-nav a[aria-current='page'], .site-nav a:focus-visible { opacity: 1; }
 .site-contact { margin-left: 90px; align-self: flex-start; }
+/* Small text links get a 44px hit area without moving the text: padding grows the box, a negative margin gives the space back. */
+.site-name, .site-contact, .copyright, .info-heading>a, .info-footer>a, .not-found>a { padding-block: 15px; margin-block: -15px; }
+.not-found>a { display: inline-block; }
+/* The two nav rows are 3px apart: the top row's hit area grows only upward, the bottom row's only downward, so they never overlap. */
+.site-nav a:not(.info-nav) { padding-top: 10px; margin-top: -10px; }
+.site-nav .info-nav { padding-bottom: 10px; margin-bottom: -10px; }
 
 /* Gallery: one persistent fixed stage; JS places every photo (cyclic layout, transitions). */
 .gallery-main { height: var(--viewport-height); overflow: clip; }
@@ -57,7 +69,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .gallery-track { position: absolute; inset: 0; }
 .photo-link { position: absolute; left: 0; top: 0; display: block; pointer-events: auto; will-change: transform; -webkit-user-drag: none; user-select: none; }
 .photo-link figure { position: relative; }
-.photo-frame { position: relative; width: 100px; height: 125px; background: #e7e7e4; }
+.photo-frame { position: relative; width: 100px; height: 125px; background: var(--placeholder); }
 .photo-frame img { -webkit-user-drag: none; }
 .photo-frame:has(>img[data-gl]) { background: none; }
 .photo-link figcaption { position: absolute; left: 0; right: 0; top: calc(100% + 9px); display: flex; gap: 15px; justify-content: space-between; font-size: 10px; line-height: 1.35; opacity: 0; pointer-events: none; text-transform: uppercase; }
@@ -66,7 +78,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .photo-link:focus-visible .photo-frame { outline: 2px solid var(--ink); outline-offset: 5px; }
 /* While a photo flies and bends, the outline would trace the flat DOM box: it appears once the photo has landed. */
 [data-phase='transition'] .photo-link:focus-visible .photo-frame { outline-color: transparent; }
-.photo-frame[data-failed], .project-photo-frame[data-failed] { min-height: 130px; background: #ececea; }
+.photo-frame[data-failed], .project-photo-frame[data-failed] { min-height: 130px; background: var(--placeholder); }
 [data-failed]::after { content: 'Фото недоступно'; position: absolute; inset: 0; display: grid; place-items: center; color: #555; font: 500 11px var(--mono); }
 
 .site-footer { display: flex; align-items: flex-end; gap: 30px; position: fixed; z-index: 10; inset: auto 0 0; padding: var(--edge) var(--edge-right) var(--edge) var(--edge-left); padding-bottom: calc(var(--edge) + env(safe-area-inset-bottom)); pointer-events: none; min-height: calc(80px + env(safe-area-inset-bottom)); }
@@ -74,7 +86,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .copyright { flex: none; }
 .filters { display: flex; flex-wrap: nowrap; gap: 10px; margin-bottom: -12px; }
 .filters button { font: 700 clamp(48px, 5.56vw, 105px)/1.08 var(--display); letter-spacing: -.055em; color: var(--ghost); transition: color .3s; }
-.filters button[aria-pressed='true'], .filters button:hover, .filters button:focus-visible { color: var(--ink); text-decoration: none; }
+.filters button[aria-pressed='true'], .filters button:focus-visible { color: var(--ink); text-decoration: none; }
 .progress { margin-left: auto; flex: none; display: inline-flex; line-height: 1; }
 .overview-focus { display: none; position: absolute; left: 33.333%; bottom: 14px; align-items: flex-end; gap: 8vw; }
 .hover-index { display: inline-block; clip-path: inset(0 -.5em); font: 700 95px/1 var(--display); letter-spacing: -.06em; }
@@ -91,14 +103,14 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 /* Above the gallery canvas: the first frame fades in over the cover that travelled into its place. */
 .project-photos { position: relative; z-index: 3; }
 .project-photo { min-height: var(--viewport-height); padding: var(--project-top) var(--safe-right) var(--project-bottom) var(--safe-left); display: flex; align-items: center; justify-content: center; }
-.project-photo-frame { position: relative; flex: none; width: min(calc(var(--project-height) * var(--ratio)), var(--project-width)); aspect-ratio: var(--ratio); background: #e7e7e4; }
+.project-photo-frame { position: relative; flex: none; width: min(calc(var(--project-height) * var(--ratio)), var(--project-width)); aspect-ratio: var(--ratio); background: var(--placeholder); }
 .project-photo:first-child .project-photo-frame { background: none; }
 .project-counter { position: fixed; z-index: 10; bottom: calc(12px + env(safe-area-inset-bottom)); right: var(--edge); font: 700 clamp(64px, 7vw, 110px)/.9 var(--display); letter-spacing: -.07em; pointer-events: none; display: flex; align-items: baseline; }
 .counter-total { font: 500 12px var(--mono); letter-spacing: 0; margin-left: 12px; }
 .next-project { position: relative; z-index: 3; min-height: 70svh; padding: 100px var(--edge); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 30px; }
 .next-project>a { font: 700 clamp(40px, 6vw, 90px)/1.05 var(--display); letter-spacing: -.055em; max-width: 85%; text-wrap: balance; }
 .next-project>a span { margin-left: .3em; }
-.next-project>button { margin-top: 20px; }
+.next-project>button { padding-block: 10px; margin-block: 10px -10px; }
 
 .info-heading { display: grid; grid-template-columns: repeat(3, 1fr) auto; padding: var(--edge) var(--edge-right) var(--edge) var(--edge-left); padding-top: calc(var(--edge) + env(safe-area-inset-top)); gap: 15px; align-items: start; }
 .info-content { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding: 0 var(--edge-right) 0 var(--edge-left); min-height: calc(100svh - 180px); }
@@ -108,9 +120,11 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .info-name { text-transform: uppercase; }
 .info-section { margin-top: 48px; }
 .info-section .label { margin-bottom: 12px; text-transform: uppercase; }
-.info-section a { display: block; width: fit-content; }
+.info-section a { display: block; width: fit-content; padding-block: 3px; }
 .info-portrait { width: 148px; align-self: center; justify-self: end; margin-top: 100px; }
 .info-portrait img { height: auto; }
+/* Light frames would melt into the white page: a hairline keeps their edge. */
+.project-photo-frame img, .info-portrait img { outline: 1px solid rgb(0 0 0 / .08); outline-offset: -1px; }
 .info-portrait figcaption { font-size: 10px; line-height: 1.5; margin-top: 12px; }
 .info-footer { display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; padding: 30px var(--edge-right) calc(var(--edge) + var(--safe-bottom)) var(--edge-left); min-height: 100px; line-height: 1.5; }
 .info-footer>a { justify-self: end; }
@@ -148,6 +162,7 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
 .intro-name { font: 700 clamp(36px, 5.2vw, 96px)/.95 var(--display); letter-spacing: -.055em; text-transform: none; }
 .intro-side { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; text-align: right; }
 .intro-status { font-size: 10px; color: var(--muted); }
+.intro-skip { padding-block: 5px; margin-block: -5px; }
 .intro-count { font: 700 60px/1 var(--display); letter-spacing: -.06em; }
 
 @media (max-width: 1140px) {
@@ -179,11 +194,11 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .text-list-name { grid-column: 1; grid-row: 2; }
   .text-list small { display: block; font: inherit; margin-top: 4px; }
   .text-list-open { grid-column: 2; grid-row: 2; align-self: start; }
-  .text-list>a:hover .text-list-name { text-decoration: underline; }
   .site-footer { flex-wrap: wrap; row-gap: 18px; }
   .filters { order: -1; width: 100%; justify-content: space-between; gap: 5px; margin: 0; }
   .filters button { font-size: clamp(22px, 4.2vw, 40px); }
-  .site-nav a { min-height: 44px; padding: 15px 0; margin: -15px 0; }
+  .site-nav a:not(.info-nav) { padding-top: 30px; margin-top: -30px; }
+  .site-nav .info-nav { padding-block: 15px; margin-bottom: -15px; }
   .info-section a { min-height: 44px; padding: 10px 0; }
   .info-content { grid-template-columns: 1fr 1fr; gap: 25px; align-content: start; }
   .info-content h1 { grid-column: 1/-1; font-size: 15vw; }
@@ -209,7 +224,9 @@ html:has(.gallery-main:not(.view-list)) { overscroll-behavior: none; }
   .cursor { display: none; }
   .site-name, .site-bio, .site-contact, .site-nav .nav-slash { display: none; }
   .site-nav { width: 100%; justify-content: space-between; flex-wrap: nowrap; margin: 0; }
-  .site-nav .info-nav { order: -1; flex-basis: auto; margin-top: -15px; }
+  .site-nav .info-nav { order: -1; flex-basis: auto; }
+  /* One row on phones: a symmetric 44px area. */
+  .site-nav a:not(.info-nav), .site-nav .info-nav { padding-block: 15px; margin-block: -15px; }
   .site-nav a { opacity: .65; }
   .gallery-main.view-list { padding: var(--wm-top) var(--edge-right) calc(90px + var(--safe-bottom)) var(--edge-left); }
   .gallery-main .mobile-wordmark { margin-left: -7px; }
