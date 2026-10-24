@@ -481,7 +481,12 @@ export class App {
         this.scene.root.inert = true;
         this.main.append(this.scene.root);
         first.style.opacity = '0';
-        const ready = Promise.race([first.decode().catch(() => undefined), new Promise(resolve => setTimeout(resolve, 1500))]);
+        // No time cap: dropping the cover before the frame has loaded showed a white box until it arrived.
+        // decode() can also reject while the photo is still loading (its request was replaced): then wait for load/error.
+        const ready = first.decode().catch(() => first.complete ? undefined : new Promise(resolve => {
+          first.addEventListener('load', resolve, { once: true });
+          first.addEventListener('error', resolve, { once: true });
+        }));
         void ready.then(() => {
           if (this.shownRoute !== route) return;
           this.coverReveal = gsap.to(first, { opacity: 1, duration: .5, ease: 'power2.out', onComplete: () => {
