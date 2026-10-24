@@ -1,0 +1,18 @@
+[
+  {
+    "click": "LIST",
+    "listHidden": 27.69999998807907,
+    "listShown": 1319.0999999642372,
+    "listOpaque": 1319.0999999642372,
+    "captionHidden": 516.6999999880791,
+    "captionShown": 27.69999998807907
+  },
+  {
+    "click": "OVERVIEW",
+    "listHidden": 775.3999999761581,
+    "listShown": 17.299999952316284,
+    "captionHidden": 17.299999952316284,
+    "captionShown": 906.0999999642372,
+    "captionOpaque": 1457.7999999523163
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "url": "https://www.richardprescott.com/",
+  "scripts": [
+    "https://cs.iubenda.com/cookie-solution/confs/js/26700007.js",
+    "https://cdn.iubenda.com/cookie_solution/iubenda_cs/1.109.0/core-en-GB.js",
+    "https://www.richardprescott.com/_next/static/chunks/fd9d1056-6d017998b327d353.js",
+    "https://www.richardprescott.com/_next/static/chunks/23-30c7f9d107a85b98.js",
+    "https://www.richardprescott.com/_next/static/chunks/main-app-f73cdb3bce740b12.js",
+    "https://www.richardprescott.com/_next/static/chunks/c15bf2b0-03795515e990ec56.js",
+    "https://www.richardprescott.com/_next/static/chunks/661-b0f96a92d2376623.js",
+    "https://www.richardprescott.com/_next/static/chunks/716-c3767929ae7a7d99.js",
+    "https://www.richardprescott.com/_next/static/chunks/app/page-8545d93c0643b609.js",
+    "https://www.richardprescott.com/_next/static/chunks/138-c8f75ba2d865a37b.js",
+    "https://www.richardprescott.com/_next/static/chunks/819-2edd1599ac3f2db2.js",
+    "https://www.richardprescott.com/_next/static/chunks/877-becc161af240693f.js",
+    "https://www.richardprescott.com/_next/static/chunks/650-06197c7a59765b30.js",
+    "https://www.richardprescott.com/_next/static/chunks/app/layout-29141a38d3fdfea3.js",
+    "https://www.richardprescott.com/_next/static/chunks/app/not-found-95faefca658f6a2e.js",
+    "https://www.richardprescott.com/_next/static/chunks/polyfills-78c92fac7aa8fdd8.js",
+    "https://cs.iubenda.com/autoblocking/3650560.js",
+    "https://cdn.iubenda.com/cs/gpp/stub.js",
+    "https://cdn.iubenda.com/cs/iubenda_cs.js",
+    "https://www.richardprescott.com/_next/static/chunks/webpack-1b44850d5034d9ce.js"
+  ],
+  "styles": [
+    "https://www.richardprescott.com/_next/static/css/1319c7fb7eaf91c4.css",
+    "https://www.richardprescott.com/custom_iub.css",
+    "https://www.richardprescott.com/_next/static/css/38b7297ba45bfdba.css"
+  ],
+  "rowCount": 28,
+  "rows": [
+    "[00]Jaguar StealthJaguar / Commissioned[EXPLORE]YEAR: 2023",
+    "[01]Range Rover - ElectricRange Rover / Commissioned[EXPLORE]YEAR: 2023",
+    "[02]Henry Poole LondonLand Rover / Commissioned[EXPLORE]YEAR: 2019",
+    "[03]The Glass HouseOne Life / Commissioned[EXPLORE]YEAR: 2019",
+    "[04]Places and WanderingsPersonal[EXPLORE]YEAR: 2019",
+    "[05]New Range Rover SportRange Rover / Commissioned[EXPLORE]YEAR: 2023",
+    "[06]John Lobb BootmakerLand Rover / Commissioned[EXPLORE]YEAR: 2019",
+    "[07]Range Rover / CityRange Rover / Commissioned[EXPLORE]YEAR: 2022",
+    "[08]Night SurferPersonal[EXPLORE]YEAR: 2020",
+    "[09]Taken from CarraraPersonal[EXPLORE]YEAR: 2024",
+    "[10]Storm on the beachPersonal[EXPLORE]YEAR: 2023",
+    "[11]Places and Wanderings Personal[EXPLORE]YEAR: RKIV",
+    "[12]Minutes before the melt Land Rover / Commissioned[EXPLORE]YEAR: 2019",
+    "[13]Working FolkEnviri / Commissioned[EXPLORE]YEAR: 2023",
+    "[14]Range Rover / VelarRange Rover / Commissioned[EXPLORE]YEAR: 2020",
+    "[15]Between Hope and BurghPersonal[EXPLORE]YEAR: 2024",
+    "[16]New Defender Land Rover / Commissioned[EXPLORE]YEAR: 2022",
+    "[17]PatagoniaPersonal[EXPLORE]YEAR: RKIV",
+    "[18]Range Rover / Out of the woodsRange Rover / Commissioned[EXPLORE]YEAR: RKIV",
+    "[19]A break above DodmansPersonal[EXPLORE]YEAR: 2024",
+    "[20]DiscoveryLand Rover / Commissioned[EXPLORE]YEAR: 2022",
+    "[21]Range Rover Sport US AdvertisingLand Rover / Commissioned[EXPLORE]YEAR: RKIV",
+    "[22]Town made of red dustPersonal[EXPLORE]YEAR: RKIV",
+    "[23]The Ferryman PatagoniaPersonal[EXPLORE]YEAR: RKIV",
+    "[24]Never stop discovering - StagsLand Rover / Commissioned[EXPLORE]YEAR: 2020",
+    "[25]His Happy PlacePersonal[EXPLORE]YEAR: 2025",
+    "[26]Range Rover SV 'BLACK'Range Rover / Commissioned[EXPLORE]YEAR: 2025",
+    "[27]Range Rover / Refined Beyond Measure Range Rover / Commissioned[EXPLORE]YEAR: 2025"
+  ],
+  "infoStyles": [
+    "https://www.richardprescott.com/_next/static/css/f592a9c0291326a0.css"
+  ],
+  "infoImageVisibility": {
+    "source": "info-live.css",
+    "rule": "@media screen and (max-width:1140px): .contact_colWrapper__GUXqG:last-child {display:none}",
+    "meaning": "Info image column is hidden on iPhone 13 mini portrait"
+  }
+}

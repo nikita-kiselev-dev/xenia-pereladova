@@ -46,6 +46,7 @@ python scripts/import-portfolio.py
 Маршруты: `#/overview`, `#/list`, `#/project/<slug>`, `#/info`.
 Категория хранится как `?filter=family` внутри hash. Close/Escape возвращают контекст галереи; Back/Forward и refresh поддержаны.
 Motion по [WEBSITE_MOTION_PLAN.md](WEBSITE_MOTION_PLAN.md); что реализовано и проверено — [docs/qa/motion-report.md](docs/qa/motion-report.md).
+Портретная версия откалибрована отдельно по iPhone 13 mini (375×812 CSS px): [исследование оригинала](docs/research/portrait-2026-10-24.md), [исправления и browser QA](docs/qa/portrait/report.md).
 Галерея — одна постоянная DOM-сцена (`src/gallery-scene.ts`, геометрия в `src/gallery-layout.ts`) с циклическим scroll и WebGL-зеркалом (`src/webgl/gallery-renderer.ts`); тексты и барабаны — `src/motion.ts`.
 Зерно и displacement — собственные `public/grain.png`, `public/disp.jpg` (`python scripts/make-textures.py`).
 Reduced motion отключает intro, Lenis, инерцию и WebGL, зерно статично. Ошибка GPU возвращает DOM-изображения.
@@ -71,13 +72,14 @@ npm run preview -- --mode qa --port 4174
 
 ## GitHub Pages
 
-Workflow подготовлен в `.github/workflows/deploy.yml`, запускается вручную, без автоматической публикации при push.
+Workflow в `.github/workflows/deploy.yml` запускается вручную через Actions или изменением `.github/publication-request.txt` в `main`. Обычный push без изменения этого файла сайт не публикует.
 Он выполняет `npm ci`, typecheck, tests, build и deploy `dist`; `base` берётся из настроек Pages.
 Конфигурация опирается на [официальный workflow Vite](https://vite.dev/guide/static-deploy.html#github-pages) и [outputs configure-pages](https://github.com/actions/configure-pages/blob/v6/action.yml).
 
 Репозиторий: [nikita-kiselev-dev/xenia-pereladova](https://github.com/nikita-kiselev-dev/xenia-pereladova), ветка `main`. Pages source — GitHub Actions.
 Публикация 23 октября 2026 выполнена: [успешный workflow](https://github.com/nikita-kiselev-dev/xenia-pereladova/actions/runs/39990920004), commit `bd801807137b6555f371c9b8999e48ae9c269e51`.
 Для обновления отправить изменения в `main`, затем открыть Actions → «Публикация GitHub Pages» → Run workflow → `main`.
+Если доступен только Git SSH, записать новый идентификатор публикации в `.github/publication-request.txt`, закоммитить вместе с проверенными изменениями и отправить `main`. Это запускает тот же workflow с проверками и публикацией, без GitHub API credentials. Deployment остаётся из `main`: это требуется текущей политикой среды `github-pages`.
 Для ручной проверки project prefix:
 
 ```powershell

@@ -1,0 +1,120 @@
+{
+  "baseURL": "http://127.0.0.1:4175/xenia-pereladova/",
+  "checks": [
+    {
+      "name": "mobile 330: native wheel reaches requested scroll",
+      "passed": true
+    },
+    {
+      "name": "mobile 330: heading linear-gradient",
+      "passed": true
+    },
+    {
+      "name": "mobile 330: counter linear-gradient",
+      "passed": true
+    },
+    {
+      "name": "mobile 330: no gallery XP or caption",
+      "passed": true
+    },
+    {
+      "name": "mobile 330: visible photos decoded",
+      "passed": true
+    },
+    {
+      "name": "mobile 1100: native wheel reaches requested scroll",
+      "passed": true
+    },
+    {
+      "name": "mobile 1100: heading linear-gradient",
+      "passed": true
+    },
+    {
+      "name": "mobile 1100: counter linear-gradient",
+      "passed": true
+    },
+    {
+      "name": "mobile 1100: no gallery XP or caption",
+      "passed": true
+    },
+    {
+      "name": "mobile 1100: visible photos decoded",
+      "passed": true
+    },
+    {
+      "name": "wide: heading gradient absent",
+      "passed": true
+    },
+    {
+      "name": "wide: counter gradient absent",
+      "passed": true
+    },
+    {
+      "name": "browser: no console errors or exceptions",
+      "passed": true
+    }
+  ],
+  "states": [
+    {
+      "width": 375,
+      "height": 812,
+      "scrollY": 330,
+      "headingBackground": "linear-gradient(rgb(254, 254, 254) 50%, rgba(254, 254, 254, 0))",
+      "counterBackground": "linear-gradient(rgba(254, 254, 254, 0), rgb(254, 254, 254) 40%)",
+      "xp": false,
+      "caption": false,
+      "photos": [
+        {
+          "index": "1",
+          "decoded": true
+        },
+        {
+          "index": "2",
+          "decoded": true
+        }
+      ],
+      "canvas": 1
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "scrollY": 1100,
+      "headingBackground": "linear-gradient(rgb(254, 254, 254) 50%, rgba(254, 254, 254, 0))",
+      "counterBackground": "linear-gradient(rgba(254, 254, 254, 0), rgb(254, 254, 254) 40%)",
+      "xp": false,
+      "caption": false,
+      "photos": [
+        {
+          "index": "2",
+          "decoded": true
+        },
+        {
+          "index": "3",
+          "decoded": true
+        }
+      ],
+      "canvas": 1
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollY": 1219,
+      "headingBackground": "none",
+      "counterBackground": "none",
+      "xp": false,
+      "caption": false,
+      "photos": [
+        {
+          "index": "2",
+          "decoded": true
+        },
+        {
+          "index": "3",
+          "decoded": true
+        }
+      ],
+      "canvas": 1
+    }
+  ],
+  "errors": []
+}

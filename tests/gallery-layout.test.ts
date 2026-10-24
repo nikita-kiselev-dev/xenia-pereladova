@@ -19,7 +19,7 @@ test('wrap keeps a value inside one period and is continuous across cycles', () 
 });
 
 test('full portfolio cycles without seams on every tested viewport, short filters stay still', () => {
-  for (const [vw, vh] of [[1024, 700], [1440, 900], [1920, 1080], [2560, 1440], [390, 844], [768, 1024]]) {
+  for (const [vw, vh] of [[1024, 700], [1440, 900], [1920, 1080], [2560, 1440], [375, 635], [375, 762], [375, 812], [390, 844], [768, 1024]]) {
     for (const mode of vw >= 1024 ? ['overview', 'list'] as const : ['strip'] as const) {
       const result = layout(mode, portfolio, vw, vh);
       assert(result.cycling, `${mode} ${vw}x${vh} must cycle`);

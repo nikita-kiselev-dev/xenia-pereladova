@@ -1,0 +1,3634 @@
+{
+  "environment": "Chrome headless SwiftShader, 375x812 DPR3 touch",
+  "probes": [
+    {
+      "click": "LIST",
+      "start": 19610.600000023842,
+      "samples": [
+        {
+          "t": 27.69999998807907,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.6697,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 93.80000001192093,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.3018,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 182.19999998807907,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.1085,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 189.39999997615814,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0999,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 226.69999998807907,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0672,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 261,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0421,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 317.19999998807907,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0253,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 336,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0137,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 389.39999997615814,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0048,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 401,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0035,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 443.80000001192093,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0009,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 477.80000001192093,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.0001,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 516.6999999880791,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 548.1999999880791,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 577.8999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 610.1999999880791,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 620.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 643.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 667.8000000119209,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 711.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 739.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 748.3999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 770.8000000119209,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 799.3999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 820,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 838.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 861.3000000119209,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 880.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 899.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 922,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 940.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 958.1999999880791,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 977.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 996.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1019.8000000119209,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1036.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1055,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1073.300000011921,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1091.3999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1111.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1129.300000011921,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1147,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1166.300000011921,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1184.8999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1203.3999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1225.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1242.300000011921,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1261.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1280.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1319.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1343.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 140,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1368.3999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 280,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1394.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 280,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1400.5,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 280,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1414.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 420,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1438.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 420,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1443.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 420,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1463,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 560,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1487.3999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 560,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1506.300000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 560,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1530,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 672,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1553.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 672,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1573.800000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 784,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1594.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 784,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1615.3999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 896,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1632.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 896,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1656.699999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 896,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1674.800000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1008,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1698.8999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1008,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1720.300000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1109,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1740.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1109,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1766.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1152,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1784,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1152,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1806.8999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1152,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1825.8999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1195,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1850.800000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1195,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1870.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1235,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1930.300000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1275,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1949.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1275,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1954.800000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1275,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1972.8999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1312,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2012.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1312,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2034.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1349,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2045.800000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1349,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2058.300000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1349,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2077.699999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1384,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2099.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1384,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2126.099999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1416,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2143.699999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1416,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2166.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1446,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2183.800000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1446,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2201.300000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1446,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2226.099999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1474,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2263.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1495,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2287.599999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1495,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2306,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1495,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2316,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1513,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2328.099999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1513,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2348.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1513,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2371,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1531,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2408.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1531,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2415.099999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1542,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2433,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1542,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2451.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1542,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2473.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1546,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2493,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1546,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2511.5,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1549,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2530,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1549,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2551.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1549,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2572.300000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1552,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2594.399999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1552,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2613.699999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1554,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2632,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1554,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2655,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1554,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2672.699999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1556,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2699.099999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1556,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2717.099999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1557,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2727.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1557,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2739.599999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1557,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2757.5,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1557,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2772.399999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1558,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2789.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1558,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2807.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1558,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2826.5,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2848,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2884.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2904.699999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2928.899999976158,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2947.599999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2970.300000011921,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2989.199999988079,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 3007.599999964237,
+          "list": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        }
+      ],
+      "done": true
+    },
+    {
+      "click": "OVERVIEW",
+      "start": 23025.400000035763,
+      "samples": [
+        {
+          "t": 17.299999952316284,
+          "list": {
+            "display": "flex",
+            "opacity": 0.8424,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 38,
+          "list": {
+            "display": "flex",
+            "opacity": 0.7131,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 48.69999998807907,
+          "list": {
+            "display": "flex",
+            "opacity": 0.6523,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 73.39999997615814,
+          "list": {
+            "display": "flex",
+            "opacity": 0.5347,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 106.39999997615814,
+          "list": {
+            "display": "flex",
+            "opacity": 0.4049,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 132.89999997615814,
+          "list": {
+            "display": "flex",
+            "opacity": 0.3254,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 156.89999997615814,
+          "list": {
+            "display": "flex",
+            "opacity": 0.2664,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 174.79999995231628,
+          "list": {
+            "display": "flex",
+            "opacity": 0.2293,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 200,
+          "list": {
+            "display": "flex",
+            "opacity": 0.1865,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 235,
+          "list": {
+            "display": "flex",
+            "opacity": 0.1492,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 267.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 0.106,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 291.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0858,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 314,
+          "list": {
+            "display": "flex",
+            "opacity": 0.071,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 323.69999998807907,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0656,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 345,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0554,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 379.7999999523163,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0391,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 387.7999999523163,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0362,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 405.89999997615814,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0303,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 454.89999997615814,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0181,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 491.69999998807907,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0127,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 507.2999999523163,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0098,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 533.0999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0067,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 557.2999999523163,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0046,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 568.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0037,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 585.8999999761581,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0027,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 653,
+          "list": {
+            "display": "flex",
+            "opacity": 0.001,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 660.5999999642372,
+          "list": {
+            "display": "flex",
+            "opacity": 0.0003,
+            "visibleChars": 1559,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 775.3999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 793.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0.4642,
+            "visibleChars": 50,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 813,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0.5445,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 836.1999999880791,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0.6126,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 846.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0.6454,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 855.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0.6681,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 865.7999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "none",
+            "opacity": 0.6892,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 906.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.7627,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 919.6999999880791,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.7901,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 926.1999999880791,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.8006,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 950.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.8312,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 970.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.855,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 994,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.8764,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1036.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9106,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1061,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9248,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1083.3999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9374,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1107.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9481,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1126.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9547,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1143.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9612,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1168.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9684,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1191.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9744,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1217.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9797,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1241.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.984,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1260.8999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.987,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1287,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9902,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1316.7999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9933,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1369,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9968,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1436.8999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9986,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1457.7999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9997,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1491.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 0.9999,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1552.3999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 0,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1562,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1569.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 1,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1592.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 2,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1621.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 3,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1652.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 3,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1683.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 4,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1715.8999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 4,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1746.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 5,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1777.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 6,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1807.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 6,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1834.8999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 7,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1864.8999999761581,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 7,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1891.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 8,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1918.0999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 8,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1943.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 9,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1967.7999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 9,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 1991.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 10,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2016.5999999642372,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 10,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2041,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 11,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2070.7999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 12,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2097.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 12,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2130.899999976158,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 13,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2155.099999964237,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 13,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2182.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 14,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2209.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 14,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2238.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 15,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2267.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 15,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2296.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 16,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2328.899999976158,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 17,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2356.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 17,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2386.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 18,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2418,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 18,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2465.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 19,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2477.099999964237,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 20,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2502.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 20,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2526.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 21,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2551.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 21,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2580.599999964237,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 22,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2600.099999964237,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 22,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2615.7999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 22,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2642,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 23,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2671.399999976158,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 24,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2701,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 24,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2731.5,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 25,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2761,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 25,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2792.199999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 26,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2823.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 27,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2851.899999976158,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 27,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2884.699999988079,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 28,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2944.2999999523163,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 29,
+            "totalChars": 50
+          }
+        },
+        {
+          "t": 2974.399999976158,
+          "list": {
+            "display": "none",
+            "opacity": 0,
+            "visibleChars": 0,
+            "totalChars": 1559
+          },
+          "caption": {
+            "display": "flex",
+            "opacity": 1,
+            "visibleChars": 30,
+            "totalChars": 50
+          }
+        }
+      ],
+      "done": true
+    }
+  ]
+}

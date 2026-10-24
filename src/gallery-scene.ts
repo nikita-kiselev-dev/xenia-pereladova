@@ -89,6 +89,22 @@ export class GalleryScene {
   get busy(): boolean { return Boolean(this.moving?.isActive()); }
   get cycling(): boolean { return this.plan.cycling; }
 
+  /** A killed parent timeline never runs the child's onComplete. Release input at the drawn positions. */
+  cancel(): void {
+    this.moving?.kill();
+    this.moving = undefined;
+    for (const tile of this.tiles) {
+      const box = this.screen(tile);
+      tile.box = { ...box, [this.plan.axis]: box[this.plan.axis] + this.offset };
+      tile.free = false;
+      tile.state.anim = tile.state.order = 0;
+      tile.el.style.zIndex = '';
+      tile.el.hidden = !tile.shown;
+    }
+    this.target = this.last = this.offset;
+    this.velocity = this.speed = 0;
+  }
+
   nudge(delta: number): void {
     if (!this.enabled || this.moving || !Number.isFinite(delta)) return;
     this.target = this.clamp(this.target + delta);
@@ -157,7 +173,16 @@ export class GalleryScene {
       else { tile.box = { ...end, x: this.aside(end) }; tile.state.opacity = 0; }
       tile.state.order = isHero || (kind === 'stack' && index === 0) ? 2 : 0;
       tile.el.style.zIndex = String(tile.state.order);
-      const delay = kind === 'sides' && !isHero ? .05 + (index % 6) * .03 : 0;
+      if (isHero && hero?.rect && innerWidth <= 600) {
+        // Reverse the phone opening: shrink in the centre, then return to the strip.
+        const centre = { ...end, x: (innerWidth - end.w) / 2, y: (innerHeight - end.h) / 2 };
+        timeline.to(tile.box, { ...centre, duration: 1.2, ease: 'power3.inOut' }, 0)
+          .to(tile.state, { anim: .3, opacity: 1, duration: 1.2, ease: 'power4.inOut' }, 0)
+          .to(tile.box, { x: end.x, y: end.y, duration: .65, ease: 'power4.inOut' }, 1.2)
+          .to(tile.state, { anim: 0, duration: .5, ease: 'power4.inOut' }, 1.2);
+        return;
+      }
+      const delay = kind === 'sides' && !isHero ? (heroTile && innerWidth <= 600 ? .75 : .05) + (index % 6) * .03 : 0;
       timeline.to(tile.box, { x: end.x, y: end.y, duration: 1.4, ease: 'power3.inOut' }, delay)
         .to(tile.box, { w: end.w, h: end.h, duration: 1, ease: 'power3.inOut' }, delay + .2)
         .to(tile.state, { opacity: 1, duration: .8 }, delay);
@@ -195,10 +220,11 @@ export class GalleryScene {
       }
       tile.state.order = 2;
       tile.el.style.zIndex = '2';
+      const growAt = innerWidth <= 600 ? .33 : .65;
       timeline.to(tile.box, { x: (innerWidth - tile.box.w) / 2, y: (innerHeight - tile.box.h) / 2, duration: .65, ease: 'power4.inOut' }, 0)
         .to(tile.state, { anim: .3, hover: 0, duration: .5, ease: 'power4.inOut' }, 0)
-        .to(tile.box, { ...rect, duration: 1.2, ease: 'power3.inOut' }, .65)
-        .to(tile.state, { anim: 0, duration: 1.2, ease: 'power4.inOut' }, .65);
+        .to(tile.box, { ...rect, duration: 1.2, ease: 'power3.inOut' }, growAt)
+        .to(tile.state, { anim: 0, duration: 1.2, ease: 'power4.inOut' }, growAt);
     }
     return timeline;
   }

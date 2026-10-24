@@ -1,0 +1,17 @@
+{
+  "counterBackground": "linear-gradient(rgba(254, 254, 254, 0), rgb(254, 254, 254) 40%)",
+  "headingBackground": "linear-gradient(rgb(254, 254, 254) 50%, rgba(254, 254, 254, 0))",
+  "headingOutline": "none",
+  "scripts": [
+    "http://127.0.0.1:4175/xenia-pereladova/assets/index-D0MvuaYa.js"
+  ],
+  "scrollY": 812,
+  "styles": [
+    "http://127.0.0.1:4175/xenia-pereladova/assets/index-BHKXNitP.css"
+  ],
+  "viewport": [
+    375,
+    812
+  ],
+  "visibleGalleryLabels": false
+}

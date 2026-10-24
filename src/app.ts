@@ -3,7 +3,7 @@ import Lenis from 'lenis';
 import { categories, profile, projects } from './data/projects';
 import { GalleryScene } from './gallery-scene';
 import type { Box, Mode } from './gallery-layout';
-import { Counter, hideChars, maskIn, maskOut, maskRoll, reducedMotion, revealChars, scramble } from './motion';
+import { Counter, hideChars, maskIn, maskOut, reducedMotion, revealChars, scramble } from './motion';
 import { galleryHash, parseRoute, type Route } from './navigation';
 import { categoryName, escapeHtml, galleryMarkup, projectNumber } from './views/gallery';
 import { projectMarkup } from './views/project';
@@ -37,6 +37,10 @@ export class App {
   private lastOpened?: string;
   private openedKey?: string;
   private returnRect?: Box;
+  private coverFlight = false;
+  private coverReveal?: gsap.core.Tween;
+  private captionReveal?: gsap.core.Tween;
+  private resizePending = false;
   private cursorEl: HTMLElement;
   private hovered?: GalleryScene['tiles'][number];
   private mobileSlug?: string;
@@ -47,6 +51,8 @@ export class App {
   private mobileIndex: Counter;
   private wordmark: HTMLElement;
   private photoCounter?: Counter;
+  private photoCounterCompact = false;
+  private currentPhoto = 1;
   private intro?: { timeline: gsap.core.Timeline; skip: () => void; element: HTMLElement };
 
   constructor(private root: HTMLElement) {
@@ -190,7 +196,9 @@ export class App {
 
   private onResize = () => {
     this.lenis?.resize();
-    if (this.scene.enabled && !this.scene.busy) this.scene.relayout();
+    if (this.shownRoute?.page === 'project' && this.photoCounterCompact !== (innerWidth <= 600)) this.setupPhotoCounter();
+    if (this.root.dataset.phase === 'transition' || this.intro) this.resizePending = true;
+    else if (this.scene.enabled) this.scene.relayout();
   };
 
   /** Each navigation: exit what is on screen, then enter the requested route. The newest request wins. */
@@ -200,11 +208,26 @@ export class App {
     const to = this.route;
     this.transition?.kill();
     this.transition = undefined;
+    this.scene.cancel();
+    this.coverReveal?.kill();
+    this.captionReveal?.kill();
+    this.coverFlight = false;
     if (this.intro && !initial) this.endIntro();
     this.root.dataset.phase = 'transition';
     this.setHover(undefined);
     const enter = () => { if (revision === this.revision) this.enter(from, revision); };
-    if (initial || !from || (isGallery(from) && isGallery(to))) { enter(); return; }
+    if (initial || !from) { enter(); return; }
+    if (isGallery(from) && isGallery(to)) {
+      if (this.compact.matches && from.page !== to.page) {
+        // The phone keeps its logo; the previous caption/list leaves before CSS switches views.
+        const content = this.scene.root.querySelector(from.page === 'overview' ? '.gallery-intro--overview' : '.text-list');
+        const exit = gsap.timeline().to(content, { autoAlpha: 0, duration: .5, ease: 'power2.out' }, 0);
+        if (this.scene.enabled) exit.add(this.scene.leave(), 0);
+        exit.call(enter);
+        this.transition = exit;
+      } else enter();
+      return;
+    }
 
     let exit: gsap.core.Timeline;
     const tile = this.opening && this.scene.tiles.find(item => item.key === this.opening && item.shown);
@@ -215,6 +238,7 @@ export class App {
     if (closing) this.openedKey = this.lastOpened?.startsWith(`${from.slug}-`) ? this.lastOpened : `${from.slug}-0`;
     if (isGallery(from) && to.page === 'project' && tile && this.scene.enabled) {
       this.lastOpened = tile.key;
+      this.coverFlight = true;
       exit = this.scene.open(tile.key, this.firstFrameRect(to.slug));
       exit.add(this.chrome(false), 0);
     } else if (isGallery(from)) {
@@ -238,7 +262,7 @@ export class App {
       } else exit.to(this.main, { autoAlpha: 0, duration: .45, ease: 'power2.out' }, .1);
     }
     exit.call(enter);
-    exit.timeScale(speed);
+    if (!this.compact.matches) exit.timeScale(speed);
     this.transition = exit;
   }
 
@@ -265,8 +289,15 @@ export class App {
       ? `${categories.find(category => category.id === route.filter)?.title}. ${this.scene.tiles.filter(tile => tile.shown && tile.key.endsWith('-0')).length} серий.`
       : document.title;
     this.transition = timeline;
-    if (from) timeline.timeScale(speed);
-    timeline.call(() => { if (revision === this.revision) this.root.dataset.phase = 'ready'; });
+    if (from && !this.compact.matches) timeline.timeScale(speed);
+    timeline.call(() => {
+      if (revision !== this.revision) return;
+      this.root.dataset.phase = 'ready';
+      if (this.resizePending) {
+        this.resizePending = false;
+        if (this.scene.enabled) this.scene.relayout();
+      }
+    });
     this.root.dataset.ready = 'true';
   }
 
@@ -278,8 +309,6 @@ export class App {
   private showGallery(route: GalleryRoute, how: 'intro' | 'morph' | 'return' | 'sides' | 'instant'): gsap.core.Timeline {
     const mode = this.sceneMode(route);
     const previousView = this.main.dataset.view;
-    // Read before the view class moves it: in a scrolled List the in-flow initials are off screen.
-    const wordmarkSeen = how === 'morph' && this.compact.matches && this.wordmark.getBoundingClientRect().bottom > 0;
     if (this.scene.root.parentElement !== this.main) this.main.replaceChildren(this.scene.root);
     this.main.className = `gallery-main view-${route.page}`;
     this.main.dataset.view = route.page;
@@ -297,38 +326,53 @@ export class App {
     this.mobileSlug = undefined;
 
     const timeline = gsap.timeline();
+    let captionTile: ReturnType<GalleryScene['current']>;
     if (mode) {
       this.lenis?.stop();
       window.scrollTo(0, 0);
-      if (how === 'morph' && previousView) timeline.add(this.scene.morph(mode, route.filter), 0);
+      if (how === 'morph' && previousView && !(this.compact.matches && previousView !== route.page)) timeline.add(this.scene.morph(mode, route.filter), 0);
       else {
         this.scene.relayout(mode, route.filter);
+        if (mode === 'strip') captionTile = this.scene.current();
         if (how === 'return') timeline.add(this.scene.enter('sides', { key: this.openedKey || '', rect: this.returnRect }), 0);
-        else if (how === 'intro') timeline.add(this.scene.enter('stack'), 0);
+        else if (how === 'intro') timeline.add(this.scene.enter(this.compact.matches ? 'sides' : 'stack'), 0);
         else if (how === 'sides') timeline.add(this.scene.enter('sides'), 0);
+        else if (how === 'morph') timeline.add(this.scene.enter('sides'), 0);
       }
     } else {
-      this.scene.relayout('list', route.filter);
+      // Keep the hidden phone strip in its own layout; a text list has no desktop photo composition.
+      this.scene.relayout('strip', route.filter);
       this.lenis?.start();
       this.setScroll(this.positions.get(this.renderedHash)?.y || 0);
       const rows = [...this.scene.root.querySelectorAll<HTMLElement>('.text-list>a:not([hidden])')];
-      if (how !== 'instant') timeline.fromTo(rows, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, stagger: .045, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, .1);
+      gsap.set(rows, { clearProps: 'transform,opacity,visibility' });
+      if (how !== 'instant') {
+        timeline.fromTo(this.scene.root.querySelector('.text-list'), { autoAlpha: 0 }, { autoAlpha: 1, duration: .8 }, .2);
+        rows.forEach((row, index) => timeline.add(revealChars(row.querySelectorAll<HTMLElement>('.text-list-index, .text-list-name, .text-list-open'), 0, .035), .2 + index * .07));
+      }
     }
     this.openedKey = undefined;
     this.returnRect = undefined;
     this.scene.root.inert = false;
     if (how === 'instant') { timeline.progress(1); return timeline; }
-    if (how !== 'morph') timeline.add(this.chrome(true), how === 'intro' ? .2 : .3);
+    const compactReturn = this.compact.matches && (how === 'return' || how === 'sides');
+    if (how !== 'morph') timeline.add(this.chrome(true), how === 'intro' ? .2 : compactReturn ? 1.18 : .3);
     else {
       // An interrupted entry/exit may have left chrome text hidden: bring back whatever is not visible yet.
       const chars = this.root.querySelectorAll('.site-header .char, .site-footer [data-reveal] .char');
       timeline.to(chars, { autoAlpha: 1, duration: .01, stagger: .005 }, 0).to(this.footer.querySelectorAll('.progress, .overview-focus'), { autoAlpha: 1, duration: .4 }, 0);
       if (previousView !== route.page) {
         timeline.add(this.footerSwap(route.page), 0);
-        // The initials switch between their fixed (Overview) and in-flow (List) place: seen ones roll over, others rise in.
-        if (this.compact.matches) timeline.add(wordmarkSeen ? maskRoll(this.wordmark) : maskIn(this.wordmark), 0);
+        if (this.compact.matches) timeline.set(this.wordmark, { autoAlpha: 1 }, 0);
       }
       else if (route.page === 'list') timeline.to(this.footer.querySelectorAll('[data-filter] .char'), { yPercent: 0, rotate: 0, autoAlpha: 1, duration: .6, ease: 'power2.out' }, 0);
+    }
+    if (this.compact.matches && mode) {
+      timeline.fromTo(this.scene.root.querySelector('.gallery-intro--overview'), { autoAlpha: 0 }, { autoAlpha: 1, duration: compactReturn ? .5 : .8 }, compactReturn ? 1.28 : .2);
+      if (captionTile) {
+        const reveal = this.updateMobileCaption(captionTile);
+        if (reveal) timeline.add(reveal, compactReturn ? 1.78 : 1);
+      }
     }
     if (how === 'intro' && this.startIntro(timeline)) timeline.pause();
     return timeline;
@@ -343,11 +387,11 @@ export class App {
     if (show) {
       timeline.add(revealChars(reveal, 0, .03), 0).fromTo(counters, { autoAlpha: 0 }, { autoAlpha: 1, duration: .6 }, .3);
       if (this.footer.dataset.view === 'list') filters.forEach((filter, index) => timeline.add(maskIn(filter), index * .08));
-      if (this.compact.matches) timeline.add(maskIn(this.wordmark), .1);
+      if (this.compact.matches) timeline.to(this.scene.root.querySelectorAll('.mobile-wordmark, .text-list'), { autoAlpha: 1, duration: .5 }, .1);
     } else {
       timeline.add(hideChars(reveal), 0).to(counters, { autoAlpha: 0, duration: .4 }, 0);
       if (this.footer.dataset.view === 'list') filters.forEach(filter => timeline.add(maskOut(filter), 0));
-      if (this.compact.matches) timeline.add(maskOut(this.wordmark), 0);
+      if (this.compact.matches) timeline.to(this.scene.root.querySelectorAll('.mobile-wordmark, .gallery-intro--overview, .text-list'), { autoAlpha: 0, duration: .34 }, 0);
     }
     return timeline;
   }
@@ -369,14 +413,15 @@ export class App {
     this.scene.enabled = false;
     this.lenis?.start();
     const timeline = gsap.timeline();
-    const keepGallery = Boolean(from && isGallery(from) && route.page === 'project' && this.lastOpened && this.renderer && this.scene.root.isConnected);
+    const keepGallery = Boolean(this.coverFlight && from && isGallery(from) && route.page === 'project' && this.renderer && this.scene.root.isConnected);
+    this.coverFlight = false;
     if (route.page === 'project') {
       this.main.className = 'project-main';
       const project = projects.find(item => item.slug === route.slug);
       document.title = `${project?.title || 'Серия не найдена'} — ${profile.name}`;
       this.main.innerHTML = projectMarkup(route.slug);
-      const counter = this.main.querySelector<HTMLElement>('[data-current-photo]');
-      if (counter) { this.photoCounter = new Counter(counter, 2, value => `Фотография ${Number(value)}`); this.photoCounter.set(1, true); }
+      this.currentPhoto = 1;
+      this.setupPhotoCounter();
       this.setScroll(0);
       this.observePhotos();
       const first = this.main.querySelector<HTMLImageElement>('.project-photo img');
@@ -389,7 +434,7 @@ export class App {
         const ready = Promise.race([first.decode().catch(() => undefined), new Promise(resolve => setTimeout(resolve, 1500))]);
         void ready.then(() => {
           if (this.shownRoute !== route) return;
-          gsap.to(first, { opacity: 1, duration: .5, ease: 'power2.out', onComplete: () => {
+          this.coverReveal = gsap.to(first, { opacity: 1, duration: .5, ease: 'power2.out', onComplete: () => {
             first.style.removeProperty('opacity');
             if (this.shownRoute === route) { this.scene.root.remove(); this.renderer?.setActive(false); }
           } });
@@ -412,9 +457,10 @@ export class App {
       timeline.fromTo(this.main, { autoAlpha: 0 }, { autoAlpha: 1, duration: narrow ? .5 : 1, ease: 'power2.out', clearProps: 'opacity,visibility' }, 0)
         .add(maskIn(this.main.querySelector('h1')!, { duration: 1, stagger: .07 }), .55)
         .add(revealChars(this.main.querySelectorAll<HTMLElement>('.info-heading [data-reveal]'), 0, .02), .6)
-        .fromTo(this.main.querySelectorAll('.info-copy>p, .info-section'), { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .8, stagger: .08, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, .7)
         .fromTo(this.main.querySelector('.info-portrait'), { scale: 1.12, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 1.2, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, .86)
         .add(revealChars(this.main.querySelectorAll<HTMLElement>('.info-footer [data-reveal]'), 0, .02), 1);
+      if (narrow) this.main.querySelectorAll<HTMLElement>('.info-copy>p, .info-section>p, .info-section>a').forEach(element => timeline.add(revealChars(element, 0, .035), .6));
+      else timeline.fromTo(this.main.querySelectorAll('.info-copy>p, .info-section'), { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .8, stagger: .08, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, .7);
       this.main.querySelector<HTMLElement>('h1')?.focus({ preventScroll: true });
     }
     return timeline;
@@ -425,7 +471,7 @@ export class App {
     const photo = projects.find(project => project.slug === slug)?.cover;
     const ratio = photo ? photo.width / photo.height : .8;
     const narrow = innerWidth <= 600;
-    const w = Math.min(innerHeight * (narrow ? .66 : .7) * ratio, innerWidth * (narrow ? .92 : .8));
+    const w = narrow ? innerWidth * .9 : Math.min(innerHeight * .7 * ratio, innerWidth * .8);
     const h = w / ratio;
     return { x: (innerWidth - w) / 2, y: (innerHeight - h) / 2, w, h };
   }
@@ -454,9 +500,20 @@ export class App {
     this.photoObserver = new IntersectionObserver(entries => {
       const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       const index = visible?.target.getAttribute('data-photo-index');
-      if (index) this.photoCounter?.set(Number(index));
+      if (index) {
+        this.currentPhoto = Number(index);
+        if (!this.photoCounterCompact) this.photoCounter?.set(this.currentPhoto);
+      }
     }, { threshold: [.25, .5, .75] });
     this.main.querySelectorAll('[data-photo-index]').forEach(photo => this.photoObserver!.observe(photo));
+  }
+
+  private setupPhotoCounter() {
+    const counter = this.main.querySelector<HTMLElement>('[data-current-photo]');
+    if (!counter) return;
+    this.photoCounterCompact = innerWidth <= 600;
+    this.photoCounter = new Counter(counter, this.photoCounterCompact ? 3 : 2, value => this.photoCounterCompact ? `Просмотрено ${Number(value)}%` : `Фотография ${Number(value)}`);
+    this.photoCounter.set(this.photoCounterCompact ? 0 : this.currentPhoto, true);
   }
 
   private updateClock() {
@@ -473,11 +530,14 @@ export class App {
     if (this.scene.root.isConnected) this.scene.tick(dt, time);
     if (this.scene.enabled) {
       if (this.pointer.mouse && !this.compact.matches) this.setHover(this.pointer.inside && !this.pointer.overChrome && !this.scene.busy ? this.scene.pick(this.pointer.x, this.pointer.y) : undefined);
-      if (this.scene.mode === 'strip') this.updateMobileCaption();
+      if (this.scene.mode === 'strip' && isGallery(this.route) && this.route.page === 'overview' && this.shownRoute === this.route && !this.scene.busy) this.updateMobileCaption();
       this.progress.set(this.scene.phase());
     } else if (isGallery(this.route)) {
       const height = document.documentElement.scrollHeight - innerHeight;
       this.progress.set(height > 0 ? Math.min(100, Math.max(0, scrollY / height * 100)) : 0);
+    } else if (this.route.page === 'project' && this.photoCounterCompact) {
+      const height = document.documentElement.scrollHeight - innerHeight;
+      this.photoCounter?.set(height > 0 ? Math.floor(Math.min(100, Math.max(0, scrollY / height * 100))) : 0);
     }
     if (this.pointer.mouse && !reducedMotion.matches) {
       // Original lerp 0.075 per 60 Hz frame, made frame-rate independent.
@@ -530,8 +590,7 @@ export class App {
     }
   }
 
-  private updateMobileCaption() {
-    const tile = this.scene.current();
+  private updateMobileCaption(tile = this.scene.current()) {
     if (!tile || tile.slug === this.mobileSlug) return;
     this.mobileSlug = tile.slug;
     const project = projects.find(item => item.slug === tile.slug)!;
@@ -540,7 +599,9 @@ export class App {
     const category = this.scene.root.querySelector<HTMLElement>('[data-mobile-category]')!;
     title.innerHTML = `<span>${escapeHtml(project.title)}</span>`;
     category.innerHTML = `<span>${categoryName(project)}</span>`;
-    revealChars([title.firstElementChild as HTMLElement, category.firstElementChild as HTMLElement], .05, .02);
+    this.captionReveal?.kill();
+    this.captionReveal = revealChars([title.firstElementChild as HTMLElement, category.firstElementChild as HTMLElement], .05, .02);
+    return this.captionReveal;
   }
 
   private onPointerMove = (event: PointerEvent) => {
@@ -563,8 +624,10 @@ export class App {
     try { visited = Boolean(sessionStorage.getItem('xenia:visited')); sessionStorage.setItem('xenia:visited', 'true'); } catch { /* Full intro then. */ }
     if (visited || reducedMotion.matches) return false;
     const hero = this.scene.tiles.find(tile => tile.shown)!;
+    const portrait = innerWidth <= 600;
+    const revision = this.revision;
     const element = document.createElement('div');
-    element.className = 'intro';
+    element.className = `intro${portrait ? ' intro--portrait' : ''}`;
     element.innerHTML = `<div class="intro-top"><span data-reveal>Xenia / ${profile.name}</span><span data-reveal>Фотография<br>${profile.location}</span></div>
       <div class="intro-initials" aria-hidden="true">XP</div>
       <div class="intro-photo"><img src="${hero.img.currentSrc || hero.img.src}" alt="" /></div>
@@ -576,11 +639,12 @@ export class App {
     const status = element.querySelector<HTMLElement>('.intro-status')!;
     const progress = { value: 0 };
     const timeline = gsap.timeline();
-    timeline.add(maskIn(element.querySelector('.intro-initials')!), .1)
-      .add(maskIn(element.querySelector('.intro-name')!), .2)
-      .fromTo(photo, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.6, ease: 'power2.inOut' }, .1)
-      .fromTo(photo.firstElementChild, { scale: 1.5 }, { scale: 1.001, duration: 1.6, ease: 'power2.inOut' }, .1)
-      .add(revealChars(element.querySelectorAll<HTMLElement>('[data-reveal]'), 0), .6)
+    if (portrait) timeline.fromTo(element.querySelector('.intro-initials'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 2.4, ease: 'none' }, 0);
+    else timeline.add(maskIn(element.querySelector('.intro-initials')!), .1)
+        .add(maskIn(element.querySelector('.intro-name')!), .2)
+        .fromTo(photo, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.6, ease: 'power2.inOut' }, .1)
+        .fromTo(photo.firstElementChild, { scale: 1.5 }, { scale: 1.001, duration: 1.6, ease: 'power2.inOut' }, .1);
+    timeline.add(revealChars(element.querySelectorAll<HTMLElement>('[data-reveal]'), 0), .6)
       // The reels show the progress of the staged entry, not downloaded bytes; real loading has its own status line.
       .to(progress, { value: 100, duration: 2.4, ease: 'power2.inOut', onUpdate: () => count.set(progress.value, false, { duration: .3 }) }, .2)
       .addLabel('hold', 2.4);
@@ -588,19 +652,21 @@ export class App {
     const ready = Promise.race([Promise.allSettled([hero.img.decode(), document.fonts.ready]), new Promise(resolve => setTimeout(resolve, 6000))]);
     let released = false;
     const release = () => {
-      if (released || this.intro?.element !== element) return;
+      if (released || this.intro?.element !== element || revision !== this.revision) return;
       released = true;
       timeline.kill();
       status.textContent = 'Готово';
       const target = hero.el.querySelector('.photo-frame')!.getBoundingClientRect();
       const box = photo.getBoundingClientRect();
-      gsap.timeline()
-        .add(maskOut(element.querySelector('.intro-initials')!, { duration: .5 }), 0)
-        .add(maskOut(element.querySelector('.intro-name')!, { duration: .5 }), 0)
-        .to(element.querySelectorAll('.intro-top, .intro-side'), { autoAlpha: 0, duration: .5, ease: 'power2.out' }, 0)
-        .to(photo, { x: target.left - box.left + (target.width - box.width) / 2, y: target.top - box.top + (target.height - box.height) / 2, width: target.width, height: target.height, duration: .7, ease: 'power2.out' }, .15)
+      const exit = gsap.timeline();
+      this.intro.timeline = exit;
+      if (!portrait) exit.add(maskOut(element.querySelector('.intro-initials')!, { duration: .5 }), 0)
+          .add(maskOut(element.querySelector('.intro-name')!, { duration: .5 }), 0)
+          .to(photo, { x: target.left - box.left + (target.width - box.width) / 2, y: target.top - box.top + (target.height - box.height) / 2, width: target.width, height: target.height, duration: .7, ease: 'power2.out' }, .15);
+      exit.to(element.querySelectorAll('.intro-top, .intro-side'), { autoAlpha: 0, duration: .5, ease: 'power2.out' }, 0)
         .to(element, { backgroundColor: 'rgba(254,254,254,0)', duration: .25 }, .6)
         .call(() => {
+          if (this.intro?.element !== element || revision !== this.revision) return;
           // The gallery stack below now shows the same photo at the same box: drop the DOM copy, unfold the gallery.
           this.endIntro();
           gallery.play();
@@ -629,6 +695,8 @@ export class App {
   private dispose() {
     this.revision++;
     this.transition?.kill();
+    this.coverReveal?.kill();
+    this.captionReveal?.kill();
     this.endIntro();
     this.scene.dispose();
     this.renderer?.dispose();
